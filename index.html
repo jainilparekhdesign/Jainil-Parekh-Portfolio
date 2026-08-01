@@ -29,6 +29,8 @@
 
   .page {
     position: relative;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     overflow: hidden;
   }
@@ -107,11 +109,13 @@
   .hero {
     position: relative;
     z-index: 2;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 130px 24px 0;
+    padding: 24px;
   }
 
   .hero h1 {
@@ -265,7 +269,7 @@
   </div>
 
   <div class="toolbar">
-    <button type="button" id="btn-text-size" aria-label="Increase text size" title="Text size">
+    <button type="button" id="btn-text-size" aria-label="Increase text size (accessibility)" title="Increase text size (accessibility)">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M15 16L17.536 8.672C17.6053 8.47151 17.7354 8.29762 17.9082 8.17454C18.081 8.05147 18.2879 7.98532 18.5 7.98532C18.7121 7.98532 18.919 8.05147 19.0918 8.17454C19.2646 8.29762 19.3947 8.47151 19.464 8.672L22 16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M15.697 14H21.303" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
