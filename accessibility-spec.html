@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Accessibility — Jainil Parekh brand system</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #F8F8F6;
+    --paper: #FCFCFA;
+    --stone: #DEDED6;
+    --gr-100: #1A1A1F;
+    --gr-85: #3B3B3F;
+    --gr-70: #5D5D60;
+    --gr-50: #89898A;
+    --gr-30: #B5B5B6;
+    --gr-18: #D0D0CF;
+    --gr-8:  #E6E6E5;
+    --cobalt: #1F38A8;
+    --cobalt-pressed: #15267A;
+    --cobalt-wash: rgba(31, 56, 168, 0.10);
+    --font-display: 'Newsreader', Georgia, serif;
+    --font-sans: 'Geist', system-ui, sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--gr-85);
+    font-family: var(--font-sans);
+    font-size: 11pt;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  @page { size: A4; margin: 0; }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 16mm 20mm 18mm 20mm;
+    background: var(--bg);
+    position: relative;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .principles, .callout, table, pre.code { page-break-inside: avoid; }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 5mm;
+    border-bottom: 0.5px solid var(--gr-18);
+    margin-bottom: 7mm;
+  }
+
+  .page-footer {
+    margin-top: auto;
+    padding-top: 5mm;
+    border-top: 0.5px solid var(--gr-18);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: var(--gr-50);
+    letter-spacing: 0.04em;
+  }
+  .page-header .wm {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 72;
+    font-weight: 500;
+    font-size: 12pt;
+    color: var(--gr-100);
+    letter-spacing: -0.010em;
+  }
+  .page-header .meta {
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gr-50);
+  }
+
+  /* Cover */
+  .cover .cover-brand {
+    font-family: var(--font-mono);
+    font-size: 9pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin-bottom: 4mm;
+  }
+  .cover-title {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 72;
+    font-weight: 500;
+    font-size: 72pt;
+    line-height: 0.98;
+    letter-spacing: -0.026em;
+    color: var(--gr-100);
+    margin: 0 0 6mm 0;
+  }
+  .cover-sub {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 48;
+    font-weight: 400;
+    font-size: 24pt;
+    line-height: 1.15;
+    letter-spacing: -0.014em;
+    color: var(--gr-70);
+    margin: 0 0 12mm 0;
+    font-style: italic;
+  }
+  .cover-lede {
+    font-size: 12pt;
+    line-height: 1.55;
+    color: var(--gr-85);
+    max-width: 140mm;
+    margin: 0 0 8mm 0;
+  }
+  .cover-toc {
+    margin-top: auto;
+    padding-top: 12mm;
+    border-top: 0.5px solid var(--gr-18);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm 10mm;
+  }
+  .toc-item {
+    display: flex;
+    gap: 6mm;
+    font-size: 10.5pt;
+    color: var(--gr-85);
+    line-height: 1.4;
+  }
+  .toc-item .num {
+    font-family: var(--font-mono);
+    color: var(--cobalt);
+    font-size: 9pt;
+    padding-top: 2pt;
+  }
+
+  /* Eyebrow */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8pt;
+    margin-bottom: 5mm;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 3pt;
+    height: 3pt;
+    background: var(--cobalt);
+    opacity: 0.5;
+    border-radius: 50%;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 72;
+    font-weight: 500;
+    font-size: 36pt;
+    line-height: 1.05;
+    letter-spacing: -0.020em;
+    color: var(--gr-100);
+    margin: 0 0 3mm 0;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 48;
+    font-weight: 500;
+    font-size: 18pt;
+    line-height: 1.15;
+    letter-spacing: -0.014em;
+    color: var(--gr-100);
+    margin: 6mm 0 2mm 0;
+  }
+  h3 {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 11.5pt;
+    letter-spacing: -0.005em;
+    color: var(--gr-100);
+    margin: 5mm 0 1.5mm 0;
+  }
+  .lede {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 32;
+    font-weight: 400;
+    font-size: 13pt;
+    line-height: 1.4;
+    color: var(--gr-70);
+    margin: 0 0 6mm 0;
+    max-width: 150mm;
+    font-style: italic;
+  }
+  p { margin: 0 0 2.5mm 0; color: var(--gr-85); font-size: 10.5pt; line-height: 1.55; }
+  p.body { max-width: 150mm; }
+
+  .principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin-top: 4mm;
+  }
+  .principle {
+    background: var(--paper);
+    border: 0.5px solid var(--stone);
+    border-radius: 3mm;
+    padding: 5mm 5mm 5.5mm;
+  }
+  .principle-num {
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin-bottom: 2mm;
+  }
+  .principle h3 {
+    margin: 0 0 2mm 0;
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 32;
+    font-weight: 500;
+    font-size: 14pt;
+    line-height: 1.15;
+    letter-spacing: -0.010em;
+    color: var(--gr-100);
+  }
+  .principle p {
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--gr-85);
+    margin: 0;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    margin: 3mm 0;
+  }
+  th, td {
+    text-align: left;
+    padding: 1.8mm 3mm 1.8mm 0;
+    border-bottom: 0.5px solid var(--gr-18);
+    vertical-align: baseline;
+  }
+  th {
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--gr-50);
+    font-weight: 500;
+  }
+  td.mono, td.hex {
+    font-family: var(--font-mono);
+    font-size: 9pt;
+    color: var(--gr-85);
+  }
+  td.up { color: var(--cobalt); font-family: var(--font-mono); font-size: 9pt; font-weight: 500; }
+  td.same { color: var(--gr-50); font-family: var(--font-mono); font-size: 9pt; }
+  td.grade-aaa { color: var(--cobalt); font-family: var(--font-mono); font-size: 9pt; }
+  td.grade-aa { color: var(--gr-70); font-family: var(--font-mono); font-size: 9pt; }
+
+  /* Code */
+  pre.code {
+    background: var(--paper);
+    border: 0.5px solid var(--stone);
+    border-radius: 2mm;
+    padding: 4mm 5mm;
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    line-height: 1.55;
+    color: var(--gr-100);
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    margin: 3mm 0;
+  }
+  .code .k { color: var(--cobalt); }
+  .code .v { color: var(--gr-100); }
+  .code .c { color: var(--gr-50); font-style: italic; }
+  .code .s { color: var(--gr-70); }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 9.5pt;
+    color: var(--gr-100);
+    background: var(--gr-8);
+    padding: 0.5mm 1.5mm;
+    border-radius: 0.8mm;
+  }
+
+  ul.rules {
+    list-style: none;
+    padding: 0;
+    margin: 3mm 0;
+  }
+  ul.rules li {
+    padding: 2mm 0;
+    border-bottom: 0.5px solid var(--gr-18);
+    display: flex;
+    gap: 4mm;
+    font-size: 10pt;
+    color: var(--gr-85);
+    line-height: 1.5;
+  }
+  ul.rules li:last-child { border-bottom: 0; }
+  ul.rules li::before {
+    content: '·';
+    color: var(--cobalt);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    flex: none;
+  }
+
+  .callout {
+    background: var(--cobalt-wash);
+    border-left: 2pt solid var(--cobalt);
+    padding: 3.5mm 5mm;
+    margin: 4mm 0;
+    border-radius: 0 2mm 2mm 0;
+  }
+  .callout .label {
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin-bottom: 1.5mm;
+  }
+  .callout p {
+    margin: 0;
+    color: var(--gr-100);
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  /* Before / after demo */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin: 5mm 0;
+  }
+  .compare-card {
+    border: 0.5px solid var(--stone);
+    border-radius: 2mm;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .compare-label {
+    padding: 3mm 4mm 2mm;
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gr-50);
+    border-bottom: 0.5px solid var(--gr-18);
+    background: var(--bg);
+  }
+  .compare-body {
+    padding: 6mm 6mm 7mm;
+  }
+  .demo-title {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 32;
+    font-weight: 500;
+    letter-spacing: -0.010em;
+    color: var(--gr-100);
+    margin: 0 0 2mm 0;
+  }
+  .demo-body {
+    color: var(--gr-85);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Matrix table specific */
+  table.matrix { table-layout: fixed; }
+  table.matrix td { font-family: var(--font-mono); font-size: 9pt; color: var(--gr-85); }
+  table.matrix td.state { color: var(--cobalt); font-weight: 500; }
+
+  /* Icon inline */
+  .icon-box {
+    display: inline-block;
+    width: 8pt; height: 8pt;
+    border: 1pt solid var(--gr-70);
+    border-radius: 1pt;
+    vertical-align: middle;
+    margin-right: 3pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<section class="page cover">
+  <div class="page-header">
+    <span class="wm">Jainil Parekh</span>
+    <span class="meta">Brand System · Accessibility · v1.0</span>
+  </div>
+
+  <div style="padding-top: 20mm;">
+    <div class="cover-brand">companion mode spec</div>
+    <h1 class="cover-title">Accessibility.</h1>
+    <div class="cover-sub">Three companion modes.</div>
+    <p class="cover-lede">
+      The standard system already meets WCAG AA at every text combination
+      and AAA on the primary graphite scale. Accessibility is the baseline,
+      not a mode. These three companion switches — Larger text, High contrast,
+      Reduced motion — extend that baseline for users who need more than compliance.
+    </p>
+    <p class="cover-lede">
+      They are independent toggles that combine freely with each other and
+      with dark mode. Sixteen possible states; four of them need explicit spec.
+    </p>
+  </div>
+
+  <div class="cover-toc">
+    <div class="toc-item"><span class="num">01</span><span>Position &amp; principles</span></div>
+    <div class="toc-item"><span class="num">02</span><span>Larger text</span></div>
+    <div class="toc-item"><span class="num">03</span><span>High contrast</span></div>
+    <div class="toc-item"><span class="num">04</span><span>Reduced motion</span></div>
+    <div class="toc-item"><span class="num">05</span><span>Combined states</span></div>
+    <div class="toc-item"><span class="num">06</span><span>Implementation</span></div>
+    <div class="toc-item"><span class="num">07</span><span>Toggle UI</span></div>
+    <div class="toc-item"><span class="num">08</span><span>Invariants</span></div>
+  </div>
+
+  <div class="page-footer">
+    <span>Locked · August 2026 · Jainil Parekh</span>
+    <span>01</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 — POSITION & PRINCIPLES ============ -->
+<section class="page">
+  <div class="page-header">
+    <span class="wm">Jainil Parekh</span>
+    <span class="meta">Accessibility · Position &amp; principles</span>
+  </div>
+
+  <div class="eyebrow">01 — position</div>
+  <h1>Four principles.</h1>
+  <div class="lede">
+    Companion modes are additive infrastructure — they layer on top of a system already designed for accessibility, not compensating for a system that isn't.
+  </div>
+
+  <div class="principles">
+    <div class="principle">
+      <div class="principle-num">01</div>
+      <h3>Baseline first.</h3>
+      <p>The standard light and dark systems already meet WCAG AA at every combination and AAA on the primary graphite scale. Cobalt at 8.4:1 AAA in light, 7.8:1 AAA in dark. Companion modes are not fixes for a broken baseline — they are extensions for users whose needs exceed compliance.</p>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">02</div>
+      <h3>Three independent toggles.</h3>
+      <p>Larger text, High contrast, and Reduced motion are separate switches. Not one bundled "accessibility mode." A user with presbyopia may want larger text but no contrast change. A user with a vestibular disorder wants reduced motion regardless of text size. Bundling them forces false choices.</p>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">03</div>
+      <h3>Honor system preferences first.</h3>
+      <p>OS-level preferences — <code>prefers-reduced-motion</code>, <code>prefers-contrast</code>, browser text zoom — take effect automatically on first paint. Users who set these at the system level should not have to re-enable them per site. Manual toggles override system pref for site-specific choice.</p>
+    </div>
+
+    <div class="principle">
+      <div class="principle-num">04</div>
+      <h3>Persist explicit choice.</h3>
+      <p>Once a user picks manually, that choice persists in <code>localStorage</code> across sessions. System preference is the default; explicit toggle wins. This matters because users adjust their setup for the specific task — a designer might reduce motion when reading long-form case studies but not when browsing visual work.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Locked · August 2026 · Jainil Parekh</span>
+    <span>02</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 3 — LARGER TEXT ============ -->
+<section class="page">
+  <div class="page-header">
+    <span class="wm">Jainil Parekh</span>
+    <span class="meta">Accessibility · Larger text</span>
+  </div>
+
+  <div class="eyebrow">02 — larger text</div>
+  <h1>Larger text.</h1>
+  <div class="lede">
+    Serves users with low vision, presbyopia, small-screen contexts, or reading fatigue. Body-oriented sizes scale by 1.2×; display type stays fixed because it is already large.
+  </div>
+
+  <p class="body">The core insight: users who need larger text need it for <em>reading</em>. Body 16 to body 19 is a real gain. Hero 72 to hero 86 is invisible — the display was already large enough. Scaling everything uniformly wastes vertical space and pushes content off the fold without benefit.</p>
+
+  <h3>Scale mapping</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Normal</th>
+        <th>Larger (1.2×)</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Body — floor</td><td class="mono">16 / 26</td><td class="mono">19 / 30</td><td class="up">scales</td></tr>
+      <tr><td>UI label</td><td class="mono">14 / 20</td><td class="mono">17 / 24</td><td class="up">scales</td></tr>
+      <tr><td>Section deck</td><td class="mono">18 / 28</td><td class="mono">22 / 32</td><td class="up">scales</td></tr>
+      <tr><td>Subheading (Geist)</td><td class="mono">20 / 28</td><td class="mono">24 / 32</td><td class="up">scales</td></tr>
+      <tr><td>Card title</td><td class="mono">24 / 30</td><td class="mono">28 / 34</td><td class="up">scales</td></tr>
+      <tr><td>Section heading</td><td class="mono">28 / 34</td><td class="mono">28 / 34</td><td class="same">fixed</td></tr>
+      <tr><td>Case study cover</td><td class="mono">46 / 50</td><td class="mono">46 / 50</td><td class="same">fixed</td></tr>
+      <tr><td>Homepage hero</td><td class="mono">72 / 75</td><td class="mono">72 / 75</td><td class="same">fixed</td></tr>
+      <tr><td>Metric callout</td><td class="mono">40 / 40</td><td class="mono">40 / 40</td><td class="same">fixed</td></tr>
+      <tr><td>Eyebrow · 11</td><td class="mono">11 / 15</td><td class="mono">13 / 18</td><td class="up">scales (1.15×)</td></tr>
+      <tr><td>Caption · 12</td><td class="mono">12 / 18</td><td class="mono">14 / 20</td><td class="up">scales (1.15×)</td></tr>
+      <tr><td>Wordmark (nav)</td><td class="mono">22</td><td class="mono">22</td><td class="same">fixed · identity</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body">Small labels (eyebrows, captions) scale at 1.15× rather than 1.2× to avoid overtaking the sizes they annotate — an eyebrow that grows from 11 to 13 stays legible without becoming a heading of its own.</p>
+
+  <h3>Before &amp; after</h3>
+  <div class="compare">
+    <div class="compare-card">
+      <div class="compare-label">Normal · 16 / 26</div>
+      <div class="compare-body">
+        <p class="demo-title" style="font-size: 20pt;">Section title</p>
+        <p class="demo-body" style="font-size: 12pt;">The eligibility flow wasn't broken because of the interface. It was broken because applicants reached the cost-disclosure step too early.</p>
+      </div>
+    </div>
+    <div class="compare-card">
+      <div class="compare-label">Larger · 19 / 30</div>
+      <div class="compare-body">
+        <p class="demo-title" style="font-size: 24pt;">Section title</p>
+        <p class="demo-body" style="font-size: 14.5pt; line-height: 1.65;">The eligibility flow wasn't broken because of the interface. It was broken because applicants reached the cost-disclosure step too early.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Locked · August 2026 · Jainil Parekh</span>
+    <span>03</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 4 — HIGH CONTRAST ============ -->
+<section class="page">
+  <div class="page-header">
+    <span class="wm">Jainil Parekh</span>
+    <span class="meta">Accessibility · High contrast</span>
+  </div>
+
+  <div class="eyebrow">03 — high contrast</div>
+  <h1>High contrast.</h1>
+  <div class="lede">
+    Serves users with low-vision conditions, some color-blindness edge cases, and glare-heavy environments. The graphite scale shifts up one stop; structural borders thicken; subtle washes are removed.
+  </div>
+
+  <p class="body">The system already runs AAA on primary text. High contrast mode targets <em>secondary</em> text — the 70 and 50 stops that are AA-large-only — by shifting them up to their next-darker sibling. Every visible text element becomes AAA at any size.</p>
+
+  <h3>Token shift — light mode</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Normal</th>
+        <th>High contrast</th>
+        <th>Verified</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Body text (gr-85)</td><td class="mono">#3B3B3F · 10.5:1</td><td class="mono">#1A1A1F · 16.3:1</td><td class="grade-aaa">AAA</td></tr>
+      <tr><td>Secondary (gr-70)</td><td class="mono">#5D5D60 · 6.2:1</td><td class="mono">#3B3B3F · 10.5:1</td><td class="grade-aaa">AAA</td></tr>
+      <tr><td>Meta (gr-50)</td><td class="mono">#89898A · 3.3:1</td><td class="mono">#5D5D60 · 6.2:1</td><td class="grade-aaa">AAA</td></tr>
+      <tr><td>Disabled (gr-30)</td><td class="mono">#B5B5B6 · non-text</td><td class="mono">#89898A · 3.3:1</td><td class="grade-aa">AA large</td></tr>
+      <tr><td>Borders (stone)</td><td class="mono">#DEDED6</td><td class="mono">#B5B5B6</td><td class="same">stronger</td></tr>
+      <tr><td>Dividers (gr-18)</td><td class="mono">#D0D0CF</td><td class="mono">#89898A</td><td class="same">stronger</td></tr>
+      <tr><td>Cobalt</td><td class="mono">#1F38A8 · 8.4:1</td><td class="mono">#1F38A8 · 8.4:1</td><td class="grade-aaa">unchanged</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body">Cobalt does not shift. At 8.4:1 it is already AAA and reads as decisive against Snow. Changing it would break brand recognition without accessibility gain.</p>
+
+  <h3>Structural changes beyond color</h3>
+  <ul class="rules">
+    <li>Card borders thicken from <code>0.5px</code> to <code>1px</code>. Borders become load-bearing, not decorative.</li>
+    <li>Focus rings thicken from <code>2px</code> to <code>3px</code>. The current 2px reads clearly at AA; 3px reads unmistakably at any vision level.</li>
+    <li>Cobalt-wash backgrounds (pills, callout surfaces) drop to <code>0px</code> width — the wash becomes transparent and pills rely on their cobalt text + 1px cobalt border for definition.</li>
+    <li>Underline treatment on links becomes always-on (removes hover-only underlines).</li>
+    <li>Image containers gain a <code>1px</code> stone border. Media that previously floated on Snow now has a clear boundary.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="label">Dark mode + high contrast</div>
+    <p>Dark high-contrast follows the same principle in the inverted direction: gr-85 shifts up to gr-100, borders thicken to Stone dark at 1px, washes drop out. See §5 for the combined state matrix.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Locked · August 2026 · Jainil Parekh</span>
+    <span>04</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 5 — REDUCED MOTION ============ -->
+<section class="page">
+  <div class="page-header">
+    <span class="wm">Jainil Parekh</span>
+    <span class="meta">Accessibility · Reduced motion</span>
+  </div>
+
+  <div class="eyebrow">04 — reduced motion</div>
+  <h1>Reduced motion.</h1>
+  <div class="lede">
+    Serves users with vestibular disorders, ADHD, migraine sensitivity, and anyone doing focused work who finds movement distracting. Every transition collapses to instant; nothing else changes.
+  </div>
+
+  <h3>What zeros</h3>
+  <p class="body">Every duration in the system is expressed as either <code>var(--dur-micro)</code> (200ms) or <code>var(--dur-page)</code> (350ms). Reduced motion overrides both to <code>0ms</code>. All hover states, page transitions, scroll reveals, and micro-interactions become instant.</p>
+
+<pre class="code"><span class="k">@media</span> (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-micro: <span class="v">0ms</span>;
+    --dur-page:  <span class="v">0ms</span>;
+  }
+}
+
+[data-motion=<span class="s">"reduced"</span>] {
+  --dur-micro: <span class="v">0ms</span>;
+  --dur-page:  <span class="v">0ms</span>;
+}</pre>
+
+  <h3>What stays</h3>
+  <ul class="rules">
+    <li>Easing curves. <code>var(--ease)</code> still applies — at 0ms it is invisible, but keeps the code path consistent between modes.</li>
+    <li>Sequencing logic. Elements still fade in on scroll — just instantly. The <em>appearance</em> logic is preserved; only the animation is removed.</li>
+    <li>Focus rings. Reduced motion never affects focus visibility. If anything, focus rings become more important because users cannot rely on animated confirmation of state changes.</li>
+    <li>Loading indicators. A spinner or progress state is essential UX information, not motion decoration. Loaders remain animated even in reduced-motion mode. If a loader could be replaced with a static "Loading..." label, use the label instead.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="label">Boundary case — auto-playing video</div>
+    <p>Case study cover videos, background loops, and marquee-style animations must not auto-play in reduced motion. Replace with a static poster frame and a manual play button. This is a WCAG 2.1 Success Criterion (2.3.3) and non-negotiable.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Locked · August 2026 · Jainil Parekh</span>
+    <span>05</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 6 — COMBINED STATES ============ -->
+<section class="page">
+  <div class="page-header">
+    <span class="wm">Jainil Parekh</span>
+    <span class="meta">Accessibility · Combined states</span>
+  </div>
+
+  <div class="eyebrow">05 — combined states</div>
+  <h1>When modes combine.</h1>
+  <div class="lede">
+    Four independent toggles yield sixteen possible states. Twelve of them need no special handling — CSS variables cascade correctly. Four combinations need explicit spec.
+  </div>
+
+  <h3>The four toggles</h3>
+  <table>
+    <thead>
+      <tr><th>Attribute</th><th>Values</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="mono">data-theme</td><td class="mono">"light" | "dark"</td><td>manual / prefers-color-scheme</td></tr>
+      <tr><td class="mono">data-text</td><td class="mono">"normal" | "larger"</td><td>manual / browser zoom</td></tr>
+      <tr><td class="mono">data-contrast</td><td class="mono">"normal" | "high"</td><td>manual / prefers-contrast</td></tr>
+      <tr><td class="mono">data-motion</td><td class="mono">"normal" | "reduced"</td><td>manual / prefers-reduced-motion</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Combinations requiring explicit rules</h3>
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th style="width: 35%;">State</th>
+        <th>Behavior</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="state">Dark + High contrast</td>
+        <td>gr-85 → gr-100 (in dark), Stone dark thickens to 1px, cobalt-wash drops to transparent. Cobalt Lifted stays at #8FA2EE.</td>
+      </tr>
+      <tr>
+        <td class="state">Dark + Larger text</td>
+        <td>Standard body 19 on dark bg = same 13.4:1 as body 16 (color is what matters, size doesn't affect ratio). Verify only that display sizes remain visually balanced when body text grows.</td>
+      </tr>
+      <tr>
+        <td class="state">High contrast + Larger text</td>
+        <td>Compounds: gr-85 becomes gr-100 (16.3:1) AND body 16 becomes body 19. Text becomes maximally legible. No conflict.</td>
+      </tr>
+      <tr>
+        <td class="state">All three enabled</td>
+        <td>Maximum accessibility state. Larger text + high contrast + reduced motion. Design must remain functional here — this is the state to test against, not an edge case.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>The other twelve — no special handling</h3>
+  <p class="body">The remaining twelve states inherit correctly because CSS custom properties cascade through the token layer. When larger text is enabled in dark mode, the type sizes swap but colors stay in the dark scale. When reduced motion is enabled with high contrast, motion zeros but colors shift independently. Each toggle owns its own token scope and does not interact with others structurally.</p>
+
+  <div class="callout">
+    <div class="label">Testing rule</div>
+    <p>Every new component must be validated in three states minimum: baseline light, baseline dark, and all-three-enabled maximum accessibility. If it works in those three, it works in the other thirteen.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Locked · August 2026 · Jainil Parekh</span>
+    <span>06</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 7 — IMPLEMENTATION ============ -->
+<section class="page">
+  <div class="page-header">
+    <span class="wm">Jainil Parekh</span>
+    <span class="meta">Accessibility · Implementation</span>
+  </div>
+
+  <div class="eyebrow">06 — implementation</div>
+  <h1>Implementation.</h1>
+  <div class="lede">
+    Additions to <code>tokens.css</code> and one React hook that manages all four preferences.
+  </div>
+
+  <h3>tokens.css — companion mode additions</h3>
+<pre class="code"><span class="c">/* System pref defaults — apply automatically unless overridden */</span>
+<span class="k">@media</span> (prefers-reduced-motion: reduce) {
+  :root:not([data-motion=<span class="s">"normal"</span>]) {
+    --dur-micro: <span class="v">0ms</span>;
+    --dur-page:  <span class="v">0ms</span>;
+  }
+}
+
+<span class="k">@media</span> (prefers-contrast: more) {
+  :root:not([data-contrast=<span class="s">"normal"</span>]) {
+    --gr-85: <span class="v">#1A1A1F</span>;
+    --gr-70: <span class="v">#3B3B3F</span>;
+    --gr-50: <span class="v">#5D5D60</span>;
+    --stone: <span class="v">#B5B5B6</span>;
+    --gr-18: <span class="v">#89898A</span>;
+  }
+}
+
+<span class="c">/* Manual overrides */</span>
+[data-motion=<span class="s">"reduced"</span>] {
+  --dur-micro: <span class="v">0ms</span>;
+  --dur-page:  <span class="v">0ms</span>;
+}
+
+[data-contrast=<span class="s">"high"</span>] {
+  --gr-85: <span class="v">#1A1A1F</span>;
+  --gr-70: <span class="v">#3B3B3F</span>;
+  --gr-50: <span class="v">#5D5D60</span>;
+  --stone: <span class="v">#B5B5B6</span>;
+  --gr-18: <span class="v">#89898A</span>;
+}
+
+[data-contrast=<span class="s">"high"</span>] .card,
+[data-contrast=<span class="s">"high"</span>] .tag { border-width: <span class="v">1px</span>; }
+[data-contrast=<span class="s">"high"</span>] :focus-visible { outline-width: <span class="v">3px</span>; }
+[data-contrast=<span class="s">"high"</span>] .tag { background: <span class="v">transparent</span>; border-color: <span class="v">var(--cobalt)</span>; }
+
+<span class="c">/* Larger text — override specific classes */</span>
+[data-text=<span class="s">"larger"</span>] .t-body   { font-size: <span class="v">19px</span>; line-height: <span class="v">30px</span>; }
+[data-text=<span class="s">"larger"</span>] .t-ui     { font-size: <span class="v">17px</span>; line-height: <span class="v">24px</span>; }
+[data-text=<span class="s">"larger"</span>] .t-h3     { font-size: <span class="v">24px</span>; line-height: <span class="v">32px</span>; }
+[data-text=<span class="s">"larger"</span>] .t-eyebrow { font-size: <span class="v">13px</span>; line-height: <span class="v">18px</span>; }
+[data-text=<span class="s">"larger"</span>] .t-caption { font-size: <span class="v">14px</span>; line-height: <span class="v">20px</span>; }
+
+<span class="c">/* Dark + high contrast combined */</span>
+[data-theme=<span class="s">"dark"</span>][data-contrast=<span class="s">"high"</span>] {
+  --gr-85: <span class="v">#F5F5F0</span>;
+  --gr-70: <span class="v">#D8D8D3</span>;
+  --gr-50: <span class="v">#B0B0AC</span>;
+  --stone: <span class="v">#4E4E4C</span>;
+  --gr-18: <span class="v">#7E7E7B</span>;
+}</pre>
+
+  <h3>React hook — usePreferences</h3>
+<pre class="code"><span class="k">const</span> KEYS = { theme: <span class="s">'theme'</span>, text: <span class="s">'text-size'</span>, contrast: <span class="s">'contrast'</span>, motion: <span class="s">'motion'</span> };
+
+<span class="k">export function</span> usePreferences() {
+  <span class="k">const</span> [prefs, setPrefs] = useState(() => {
+    <span class="k">if</span> (<span class="k">typeof</span> window === <span class="s">'undefined'</span>) <span class="k">return</span> defaults;
+    <span class="k">const</span> mq = window.matchMedia;
+    <span class="k">return</span> {
+      theme:    localStorage.getItem(KEYS.theme)    ?? (mq(<span class="s">'(prefers-color-scheme: dark)'</span>).matches ? <span class="s">'dark'</span> : <span class="s">'light'</span>),
+      text:     localStorage.getItem(KEYS.text)     ?? <span class="s">'normal'</span>,
+      contrast: localStorage.getItem(KEYS.contrast) ?? (mq(<span class="s">'(prefers-contrast: more)'</span>).matches ? <span class="s">'high'</span> : <span class="s">'normal'</span>),
+      motion:   localStorage.getItem(KEYS.motion)   ?? (mq(<span class="s">'(prefers-reduced-motion: reduce)'</span>).matches ? <span class="s">'reduced'</span> : <span class="s">'normal'</span>),
+    };
+  });
+
+  useEffect(() => {
+    <span class="k">const</span> root = document.documentElement;
+    root.setAttribute(<span class="s">'data-theme'</span>,    prefs.theme);
+    root.setAttribute(<span class="s">'data-text'</span>,     prefs.text);
+    root.setAttribute(<span class="s">'data-contrast'</span>, prefs.contrast);
+    root.setAttribute(<span class="s">'data-motion'</span>,   prefs.motion);
+    Object.entries(prefs).forEach(([k, v]) => localStorage.setItem(KEYS[k], v));
+  }, [prefs]);
+
+  <span class="k">return</span> [prefs, setPrefs];
+}</pre>
+
+  <div class="page-footer">
+    <span>Locked · August 2026 · Jainil Parekh</span>
+    <span>07</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 8 — TOGGLE UI + INVARIANTS ============ -->
+<section class="page">
+  <div class="page-header">
+    <span class="wm">Jainil Parekh</span>
+    <span class="meta">Accessibility · Toggle UI &amp; invariants</span>
+  </div>
+
+  <div class="eyebrow">07 — toggle UI</div>
+  <h1>The accessibility menu.</h1>
+  <div class="lede">
+    One entry point, four toggles. Not scattered across the interface. Not hidden three levels deep. One button, one panel, four choices.
+  </div>
+
+  <h3>Entry point</h3>
+  <ul class="rules">
+    <li>Icon: Lucide <code>Accessibility</code> (stick figure with arms out). Standard convention — Apple, Google, and every major OS use variations of this icon. Alternate: <code>Settings2</code> if the figure icon reads awkwardly in a portfolio context.</li>
+    <li>Placement: right side of desktop nav, between the theme toggle and the CTA. Bottom of the mobile drawer, above the theme toggle.</li>
+    <li>Size: 20px icon, <code>--gr-70</code> color. Same visual weight as a nav link.</li>
+    <li>ARIA label: <code>aria-label="Accessibility settings"</code>. Never "A11y" or icon-only in screen reader context.</li>
+    <li>Click behavior: opens a small panel anchored to the button, dismissible via Escape, click-outside, or a close button. Not a modal — modals interrupt reading flow.</li>
+  </ul>
+
+  <h3>Panel contents</h3>
+  <table>
+    <thead>
+      <tr><th>Toggle</th><th>Label</th><th>ARIA label</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Theme</td><td>Dark mode</td><td>Switch to dark mode</td></tr>
+      <tr><td>Text</td><td>Larger text</td><td>Enable larger text</td></tr>
+      <tr><td>Contrast</td><td>High contrast</td><td>Enable high contrast</td></tr>
+      <tr><td>Motion</td><td>Reduce motion</td><td>Reduce motion and animation</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body">Each row is a labeled switch, not a checkbox — switches communicate "on/off state" more clearly. Below the four rows, a <code>Reset to system preferences</code> text link that clears all four localStorage keys and returns to OS-level defaults.</p>
+
+  <div class="eyebrow" style="margin-top: 12mm;">08 — invariants</div>
+  <h2 style="margin-top: 0;">What does not change.</h2>
+
+  <ul class="rules">
+    <li><b style="color: var(--gr-100);">Layout.</b> Grid, breakpoints, containers unchanged in any mode.</li>
+    <li><b style="color: var(--gr-100);">Voice.</b> Copy is not simplified, softened, or shortened for accessibility modes. Users deserve the same content.</li>
+    <li><b style="color: var(--gr-100);">Navigation structure.</b> Menu hierarchy is identical. Reduced motion does not remove menu items; larger text does not collapse to a simpler nav.</li>
+    <li><b style="color: var(--gr-100);">Information density.</b> Case study tables, project grids, and content blocks show the same information. Larger text may require more scroll — that is correct, not a regression.</li>
+    <li><b style="color: var(--gr-100);">Interactive affordances.</b> Buttons still look like buttons. Links still look like links. The visual grammar of clickability holds.</li>
+    <li><b style="color: var(--gr-100);">Cobalt as action color.</b> Cobalt marks the same elements in every mode — links, CTAs, eyebrows, focus rings. Users learn the color once.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="label">Why this matters</div>
+    <p>Accessibility modes that change layout, remove content, or simplify language treat disabled users as needing a lesser version of the site. The correct model is: same site, tuned for readability. Every user gets the full portfolio; the tuning changes how it presents, not what it says.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Locked · August 2026 · Jainil Parekh</span>
+    <span>08</span>
+  </div>
+</section>
+
+</body>
+</html>

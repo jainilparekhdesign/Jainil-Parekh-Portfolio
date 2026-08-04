@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Coming Soon | Jainil Parekh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Newsreader:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f8f6;
+    --ink: #1e1e1e;
+    --blue: #1f38a8;
+    --nav-active: #224590;
+    --body-text: #3b3b3f;
+    --pill-bg: #fcfcfa;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .bg-grid {
+    position: absolute;
+    top: 0;
+    left: 39px;
+    width: 1354px;
+    max-width: calc(100% - 39px);
+    height: 812px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    padding: 24px clamp(24px, 8vw, 120px);
+  }
+
+  .logo {
+    font-family: 'Newsreader', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .logo .dot { color: var(--blue); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    font-size: 16px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--nav-active);
+  }
+
+  .nav-links a.active {
+    color: var(--nav-active);
+    font-weight: 500;
+  }
+
+  .nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 1px;
+    background: var(--blue);
+  }
+
+  /* ---------- Hero / Coming soon ---------- */
+  .hero {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 150px 24px 0;
+  }
+
+  .eyebrow {
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin: 0 0 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1.1;
+    color: #000;
+    margin: 0 0 24px;
+  }
+
+  .hero p {
+    font-family: 'Newsreader', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 34px;
+    color: var(--body-text);
+    max-width: 620px;
+    margin: 0 0 40px;
+  }
+
+  .back-link {
+    font-family: 'Geist', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--nav-active);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--blue);
+    padding-bottom: 2px;
+  }
+
+  .back-link svg { display: block; }
+
+  /* ---------- Scroll indicator ---------- */
+  .scroll-indicator {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 51px;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+  }
+
+  .scroll-indicator svg { display: block; }
+
+  .scroll-dot {
+    animation: scrollDot 0.912266s linear infinite alternate;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  @keyframes scrollDot {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(8px); }
+  }
+
+  /* ---------- Floating toolbar ---------- */
+  .toolbar {
+    position: fixed;
+    z-index: 3;
+    right: clamp(24px, 8vw, 120px);
+    bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 16px 24px;
+    border-radius: 16px;
+    background: var(--pill-bg);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  .toolbar button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    color: #000;
+  }
+
+  .toolbar svg { display: block; width: 100%; height: 100%; }
+
+  @media (max-width: 640px) {
+    .nav-links { gap: 24px; font-size: 14px; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 18px; line-height: 28px; }
+    .toolbar { padding: 12px 16px; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <svg class="bg-grid" viewBox="0 0 1354 812" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M135.282 0.473239H0.473564V135.189H121.315L135.282 121.232V0.473239ZM149.62 135.189L135.834 121.412V0.473239H270.642V135.189H149.62ZM135.834 149.312L149.415 135.741H270.642V270.456H135.834V149.312ZM121.521 135.741L135.282 149.492V270.456H0.473564V135.741H121.521ZM0 0V135.268V135.662V270.535V270.93V405.803V406.197V541.07V541.465V676.338V676.732V812H135.361H135.755H270.721H271.116H406.081H406.476H541.442H541.837H676.802H677.197H812.163H812.557H947.524H947.918H1082.88H1083.28H1218.24H1218.64H1354L1354 676.732V541.465V541.07V405.803V270.93V135.662V135.268V0H1218.64H1218.24H1083.28H1082.88H947.918H947.524H812.557H812.163H677.197H676.802H541.837H541.442H406.476H406.081H271.116H270.721H135.755H135.361H0ZM271.194 0.473239H406.002V135.189H271.194V0.473239ZM541.363 0.473239H406.555V135.189H541.363V0.473239ZM541.916 0.473239H676.724V135.189H541.916V0.473239ZM812.084 0.473239H677.276V135.189H812.084V0.473239ZM812.637 0.473239H947.444V135.189H812.637V0.473239ZM1082.81 0.473239H947.997V135.189H1082.81V0.473239ZM1083.36 0.473239H1218.17V135.189H1083.36V0.473239ZM1353.53 0.473239H1218.72V135.189H1353.53V0.473239ZM271.194 135.741H406.002V270.456H271.194V135.741ZM541.363 135.741H406.555V270.456H527.803L541.363 256.906V135.741ZM555.259 270.456L541.916 257.123V135.741H676.724V270.456H555.259ZM541.916 284.986L555.857 271.054L555.811 271.008H676.724V405.724H541.916V284.986ZM527.251 271.008L527.205 271.054L541.363 285.203V405.724H406.555V271.008H527.251ZM812.084 135.741H677.276V270.456H812.084V135.741ZM812.637 135.741H947.444V270.456H812.637V135.741ZM1082.81 135.741H947.997V270.456H1082.81V135.741ZM1083.36 135.741H1218.17V233.082L1217.94 233.311L1180.77 270.456H1083.36V135.741ZM1180.21 271.008H1083.36V392.452L1083.81 392L1097.54 405.724H1218.17V309.027L1217.94 308.798L1180.53 271.42L1180.17 271.054L1180.21 271.008ZM1218.17 308.296L1180.9 271.054L1180.94 271.008H1204.02L1203.98 271.054L1218.17 285.234V308.296ZM1218.72 308.748V405.724H1353.53V271.008H1256.39L1256.44 271.054L1256.07 271.42L1218.72 308.748ZM1255.66 271.008L1255.71 271.054L1218.72 308.017V284.955L1232.63 271.054L1232.58 271.008H1255.66ZM1255.84 270.456H1353.53V135.741H1218.72V233.361L1255.84 270.456ZM1218.72 234.092L1255.11 270.456H1232.03L1218.72 257.154V234.092ZM1218.17 233.813L1181.5 270.456H1204.57L1218.17 256.875V233.813ZM1083.36 420.179L1083.81 420.632L1098.14 406.316L1098.1 406.276H1218.17V540.991H1083.36V420.179ZM1069.52 406.276L1069.48 406.316L1082.81 419.627V540.991H947.997V406.276H1069.52ZM1082.81 393.004L1070.08 405.724H947.997V271.008H1082.81V393.004ZM0.473564 271.008H135.282V405.724H0.473564V271.008ZM270.642 271.008H135.834V405.724H270.642V271.008ZM271.194 271.008H406.002V405.724H271.194V271.008ZM812.084 271.008H677.276V405.724H812.084V271.008ZM812.637 271.008H947.444V405.724H812.637V271.008ZM0.473564 406.276H135.282V540.991H0.473564V406.276ZM270.642 406.276H135.834V540.991H233.394L233.219 540.816L233.584 540.451L270.642 503.418V406.276ZM270.642 504.149L233.95 540.816L234.126 540.991H257.204L257.028 540.816L270.642 527.212V504.149ZM271.194 526.66V503.598L271.354 503.438L308.758 540.816L308.583 540.991H285.505L285.68 540.816L271.354 526.5L271.194 526.66ZM271.194 554.973L271.354 555.132L284.952 541.544H308.03L271.354 578.194L271.194 578.035V554.973ZM257.756 541.544L270.642 554.421V577.483L234.678 541.544H257.756ZM233.947 541.544H135.834V676.259H270.642V578.214L233.947 541.544ZM271.194 578.766V676.259H406.002V541.544H308.762L271.72 578.56L271.354 578.925L271.194 578.766ZM309.314 540.991H406.002V406.276H271.194V502.867L271.354 502.707L271.72 503.072L309.124 540.451L309.49 540.816L309.314 540.991ZM541.363 406.276H406.555V540.991H541.363V406.276ZM541.916 406.276H676.724V540.991H541.916V406.276ZM812.084 406.276H677.276V540.991H812.084V406.276ZM812.637 406.276H947.444V540.991H812.637V406.276ZM1353.53 406.276H1218.72V540.991H1353.53V406.276ZM0.473564 541.544H135.282V676.259H0.473564V541.544ZM541.363 541.544H406.555V676.259H541.363V541.544ZM541.916 541.544H676.724V676.259H541.916V541.544ZM812.084 541.544H677.276V676.259H812.084V541.544ZM812.637 541.544H947.444V676.259H812.637V541.544ZM1082.81 541.544H947.997V676.259H1082.81V541.544ZM1083.36 541.544H1218.17V676.259H1083.36V541.544ZM1353.53 541.544H1218.72V676.259H1353.53V541.544ZM0.473564 676.811H135.282V811.527H0.473564V676.811ZM270.642 676.811H135.834V811.527H270.642V676.811ZM271.194 676.811H406.002V811.527H271.194V676.811ZM541.363 676.811H406.555V811.527H541.363V676.811ZM541.916 676.811H676.724V811.527H541.916V676.811ZM812.084 676.811H677.276V811.527H812.084V676.811ZM812.637 676.811H947.444V811.527H812.637V676.811ZM1082.81 676.811H947.997V811.527H1082.81V676.811ZM1083.36 676.811H1218.17V811.527H1083.36V676.811ZM1353.53 676.811H1218.72V811.527H1353.53V676.811Z" fill="url(#paint0_radial)" fill-opacity="0.6"/>
+    <defs>
+      <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(677 -455.753) rotate(90) scale(1165.44 1943.37)">
+        <stop/>
+        <stop offset="1" stop-opacity="0.67"/>
+      </radialGradient>
+    </defs>
+  </svg>
+
+  <nav class="nav">
+    <div class="logo"><span class="dot">.</span> Jainil Parekh</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="projects-coming-soon.html" class="active">Projects</a>
+      <a href="index.html#about">About Me</a>
+      <a href="index.html#resume">Resume</a>
+    </div>
+  </nav>
+
+  <main class="hero">
+    <p class="eyebrow">Projects</p>
+    <h1>Coming Soon</h1>
+    <p>
+      I'm putting together case studies on the systems I've redesigned — the trust drop-offs, activation loops, and retention gaps I've traced and fixed. Check back shortly.
+    </p>
+    <a class="back-link" href="index.html">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#224590" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back to Home
+    </a>
+  </main>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8V14C1 17.866 4.13401 21 8 21C11.866 21 15 17.866 15 14V8Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="scroll-dot" d="M8 5V9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="toolbar">
+    <button type="button" aria-label="Text size">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 16L17.536 8.672C17.6053 8.47151 17.7354 8.29762 17.9082 8.17454C18.081 8.05147 18.2879 7.98532 18.5 7.98532C18.7121 7.98532 18.919 8.05147 19.0918 8.17454C19.2646 8.29762 19.3947 8.47151 19.464 8.672L22 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.697 14H21.303" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 16L6.039 6.31C6.07698 6.2189 6.14107 6.14109 6.22319 6.08635C6.30532 6.03161 6.4018 6.0024 6.5005 6.0024C6.5992 6.0024 6.69568 6.03161 6.77781 6.08635C6.85993 6.14109 6.92402 6.2189 6.962 6.31L11 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3.304 13H9.696" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button type="button" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 18C13.5913 18 15.1174 17.3679 16.2426 16.2426C17.3679 15.1174 18 13.5913 18 12C18 10.4087 17.3679 8.88258 16.2426 7.75736C15.1174 6.63214 13.5913 6 12 6V18Z" fill="black" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button type="button" aria-label="Audio">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.8 20V15.9L10.7 16.1C11.2531 16.0693 11.7766 15.8399 12.1742 15.4541C12.5717 15.0683 12.8167 14.552 12.864 14V8.3C12.8706 6.85934 12.3047 5.47506 11.2907 4.45167C10.2767 3.42829 8.89766 2.84963 7.457 2.843C6.01634 2.83637 4.63206 3.40231 3.60867 4.41632C2.58529 5.43033 2.00663 6.80934 2 8.25C2 11.05 2.656 11.304 3 12.8C3.23248 13.7035 3.24243 14.6498 3.029 15.558L2 20" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.8 17.8C21.2058 16.394 21.9958 14.4874 21.9964 12.4991C21.997 10.5109 21.208 8.60377 19.803 7.197" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 15C17.3272 14.6729 17.5863 14.2842 17.7622 13.8563C17.9382 13.4284 18.0277 12.9699 18.0253 12.5073C18.023 12.0446 17.929 11.5871 17.7487 11.161C17.5684 10.7349 17.3054 10.3488 16.975 10.025" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+</div>
+</body>
+</html>

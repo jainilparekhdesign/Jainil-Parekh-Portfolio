@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-bg: #f8f8f6;
+  --color-ink: #1e1e1e;
+  --color-blue: #1f38a8;
+  --color-nav-active: #224590;
+  --color-body-text: #3b3b3f;
+  --color-pill-bg: #fcfcfa;
+  --color-toolbar-outline: #deded6;
+  --color-toolbar-active: #1f38a8;
+  --toolbar-active-bg: rgba(31, 56, 168, 0.1);
+}
+
+.dark {
+  --color-bg: #17181c;
+  --color-ink: #f2f2f0;
+  --color-body-text: #c9c9cf;
+  --color-pill-bg: #22242a;
+  --color-toolbar-outline: #33353c;
+  --color-toolbar-active: #6c8bff;
+  --toolbar-active-bg: rgba(108, 139, 255, 0.15);
+  /* --color-blue / --color-nav-active intentionally unchanged, matches original */
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-ink: var(--color-ink);
+  --color-blue: var(--color-blue);
+  --color-nav-active: var(--color-nav-active);
+  --color-body-text: var(--color-body-text);
+  --color-pill-bg: var(--color-pill-bg);
+  --color-toolbar-outline: var(--color-toolbar-outline);
+  --color-toolbar-active: var(--color-toolbar-active);
+  --font-geist: var(--font-geist);
+  --font-newsreader: var(--font-newsreader);
+  --animate-scroll-dot: scrollDot 0.912266s linear infinite alternate;
+}
+
+@keyframes scrollDot {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(8px); }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
