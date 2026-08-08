@@ -67,7 +67,11 @@ export default function Toolbar() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="fixed z-[3] bottom-6 right-[clamp(24px,8vw,120px)] flex items-center gap-[22px] rounded-2xl bg-pill-bg px-6 py-4 shadow-[0_4px_20px_rgba(0,0,0,0.06)] max-[640px]:px-4 max-[640px]:py-3 max-[640px]:gap-[14px] xl:top-1/2 xl:bottom-auto xl:right-[clamp(24px,8vw,98px)] xl:-translate-y-1/2 xl:flex-col xl:justify-center">
+=======
+    <div className="fixed z-[3] top-1/2 right-[clamp(24px,8vw,98px)] -translate-y-1/2 flex flex-col items-center justify-center gap-[22px] rounded-2xl bg-pill-bg px-6 py-4 shadow-[0_4px_20px_rgba(0,0,0,0.06)] max-[640px]:px-4 max-[640px]:py-3 max-[640px]:gap-[14px]">
+>>>>>>> 5f9b7a0b371f50a33f333de98dcae6bc698071a4
       <button
         type="button"
         onClick={handleTextSize}
