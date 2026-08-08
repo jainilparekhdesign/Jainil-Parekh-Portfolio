@@ -1,0 +1,318 @@
+.shell {
+  min-height: 100vh;
+  background: #e8e0d6;
+  font-family: var(--font-dm-sans), sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0 100px;
+
+  --bg: #faf7f2;
+  --card-bg: #eee6d8;
+  --line: #d9c9b4;
+  --ink: #3d2e24;
+  --body: #615b44;
+  --muted: #8f7666;
+  --accent: #b5502a;
+  --accent-hover: #cf7a52;
+  --link: #1c3070;
+  --decor-warm: #e7754c;
+  --white: #ffffff;
+
+  --page-w: 816px;
+  --page-h: 1056px;
+  --margin: 52px;
+}
+
+.downloadWrap {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.downloadBtn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--white);
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 10px 24px;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(181, 80, 42, 0.3);
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.downloadBtn:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 6px 24px rgba(181, 80, 42, 0.4);
+}
+
+.page {
+  width: var(--page-w);
+  min-height: var(--page-h);
+  background: var(--bg);
+  padding: var(--margin);
+  box-shadow: 0 4px 32px rgba(45, 30, 18, 0.18);
+  position: relative;
+}
+
+.page a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.page a:hover {
+  color: var(--accent);
+}
+
+.resumeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 14px;
+}
+
+.headerLeft h1 {
+  font-family: var(--font-instrument-serif), serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+  margin-bottom: 4px;
+}
+
+.headerRole {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.headerContact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.headerContact a,
+.headerContact span {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.headerContact a:hover {
+  color: var(--accent);
+}
+
+.hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 14px 0;
+}
+
+.resumeBody {
+  display: grid;
+  grid-template-columns: 1fr 196px;
+  gap: 32px;
+  align-items: start;
+}
+
+.sectionLabel {
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.expItem {
+  margin-bottom: 18px;
+}
+
+.expItem:last-child {
+  margin-bottom: 0;
+}
+
+.expHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.expTitle {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.sep {
+  color: var(--decor-warm);
+  font-weight: 400;
+  margin: 0 4px;
+}
+
+.company {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.expDate {
+  font-size: 10.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.expBullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.expBullets li {
+  font-size: 11.5px;
+  color: var(--body);
+  line-height: 1.6;
+  padding-left: 13px;
+  position: relative;
+}
+
+.expBullets li::before {
+  content: "·";
+  position: absolute;
+  left: 1px;
+  top: -1px;
+  color: var(--decor-warm);
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.eduItem {
+  margin-bottom: 13px;
+}
+
+.eduItem:last-child {
+  margin-bottom: 0;
+}
+
+.eduSchool {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 2px;
+}
+
+.eduDegree {
+  font-size: 11.5px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.eduCourses {
+  font-size: 10.5px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.eduDate {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.skillsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skillGroupLabel {
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.skillList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.skillList li {
+  font-size: 11.5px;
+  color: var(--body);
+  line-height: 1.5;
+}
+
+.toolsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.toolTag {
+  font-size: 10.5px;
+  color: var(--body);
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  padding: 2px 9px;
+  border-radius: 100px;
+  line-height: 1.6;
+}
+
+@media print {
+  .shell {
+    background: none;
+    padding: 0;
+    min-height: 0;
+  }
+
+  .downloadWrap {
+    display: none;
+  }
+
+  .page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0.54in;
+    box-shadow: none;
+  }
+}
+
+@page {
+  size: letter;
+  margin: 0;
+}

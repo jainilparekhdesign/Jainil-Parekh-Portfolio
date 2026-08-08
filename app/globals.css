@@ -40,6 +40,7 @@
   --color-toolbar-active: var(--color-toolbar-active);
   --font-geist: var(--font-geist);
   --font-newsreader: var(--font-newsreader);
+  --font-geist-mono: var(--font-geist-mono);
   --animate-scroll-dot: scrollDot 0.912266s linear infinite alternate;
 }
 

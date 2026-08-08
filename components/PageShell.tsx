@@ -7,15 +7,20 @@ import Toolbar from "./Toolbar";
 type PageShellProps = {
   active: "home" | "projects";
   children: ReactNode;
+  showScrollIndicator?: boolean;
 };
 
-export default function PageShell({ active, children }: PageShellProps) {
+export default function PageShell({
+  active,
+  children,
+  showScrollIndicator = true,
+}: PageShellProps) {
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden">
       <BgGrid />
       <Nav active={active} />
       {children}
-      <ScrollIndicator />
+      {showScrollIndicator && <ScrollIndicator />}
       <Toolbar />
     </div>
   );
