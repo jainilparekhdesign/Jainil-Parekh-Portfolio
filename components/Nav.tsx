@@ -22,11 +22,7 @@ export default function Nav({ active }: NavProps) {
           Home
         </Link>
         <Link
-<<<<<<< HEAD
           href="/projects"
-=======
-          href="/projects-coming-soon"
->>>>>>> 5f9b7a0b371f50a33f333de98dcae6bc698071a4
           className={`relative no-underline transition-colors hover:text-nav-active dark:text-[#f2f2f0] dark:hover:text-nav-active ${
             active === "projects"
               ? "font-medium text-nav-active after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-2 after:h-px after:bg-blue"
@@ -42,11 +38,7 @@ export default function Nav({ active }: NavProps) {
           About Me
         </Link>
         <Link
-<<<<<<< HEAD
           href="/resume"
-=======
-          href="/#resume"
->>>>>>> 5f9b7a0b371f50a33f333de98dcae6bc698071a4
           className="relative font-normal text-black no-underline transition-colors hover:text-nav-active dark:text-[#f2f2f0] dark:hover:text-nav-active"
         >
           Resume

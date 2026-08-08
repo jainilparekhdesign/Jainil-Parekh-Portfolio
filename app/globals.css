@@ -22,15 +22,11 @@
   --color-toolbar-outline: #33353c;
   --color-toolbar-active: #6c8bff;
   --toolbar-active-bg: rgba(108, 139, 255, 0.15);
-<<<<<<< HEAD
   /* Lightened from the light-mode values (#1f38a8 / #224590) — those are
      ~1.9:1 against dark backgrounds, far below WCAG AA. These hit 7:1+
      (AAA) against both --color-bg (#17181c) and --color-pill-bg (#22242a). */
   --color-blue: #a0aeee;
   --color-nav-active: #9cb4e8;
-=======
-  /* --color-blue / --color-nav-active intentionally unchanged, matches original */
->>>>>>> 5f9b7a0b371f50a33f333de98dcae6bc698071a4
 }
 
 @theme inline {
@@ -44,10 +40,7 @@
   --color-toolbar-active: var(--color-toolbar-active);
   --font-geist: var(--font-geist);
   --font-newsreader: var(--font-newsreader);
-<<<<<<< HEAD
   --font-geist-mono: var(--font-geist-mono);
-=======
->>>>>>> 5f9b7a0b371f50a33f333de98dcae6bc698071a4
   --animate-scroll-dot: scrollDot 0.912266s linear infinite alternate;
 }
 
