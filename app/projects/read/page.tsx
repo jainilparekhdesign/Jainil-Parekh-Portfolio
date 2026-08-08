@@ -2,68 +2,42 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import PhoneMockup from "@/components/PhoneMockup";
 
 export const metadata: Metadata = {
   title: "Read — Case Study | Jainil Parekh",
 };
 
-function RoleIcon() {
+function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="block">
-      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" />
-      <path
-        d="M4 20c0-3.314 3.582-6 8-6s8 2.686 8 6"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
+    <p className="font-geist-mono text-[0.8125em] tracking-[0.04em] text-body-text uppercase">
+      {children}
+    </p>
   );
 }
 
-function TimelineIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" className="block">
-      <path d="M6.66667 29.3333H25.3333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M6.66667 2.66667H25.3333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M22.6667 29.3333V23.7707C22.6665 23.0635 22.3855 22.3853 21.8853 21.8853L16 16L10.1147 21.8853C9.61453 22.3853 9.33348 23.0635 9.33333 23.7707V29.3333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M9.33333 2.66667V8.22933C9.33348 8.93652 9.61453 9.61469 10.1147 10.1147L16 16L21.8853 10.1147C22.3855 9.61469 22.6665 8.93652 22.6667 8.22933V2.66667" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ToolsIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" className="block">
-      <path d="M13.3333 4H10.6667" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M20.0093 6.67733L25.3253 11.992" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M26.6667 20V25.3333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M28.232 9.084C28.9045 8.37269 29.2731 7.42717 29.2594 6.44839C29.2457 5.46961 28.8509 4.53474 28.1588 3.84249C27.4667 3.15023 26.532 2.75516 25.5532 2.74126C24.5744 2.72735 23.6288 3.09569 22.9173 3.768L5.12267 21.5667C4.81309 21.8753 4.58415 22.2554 4.456 22.6733L2.69467 28.476C2.66021 28.5913 2.6576 28.7138 2.68713 28.8305C2.71667 28.9471 2.77723 29.0536 2.86239 29.1387C2.94756 29.2237 3.05416 29.2841 3.17088 29.3134C3.2876 29.3428 3.41008 29.34 3.52533 29.3053L9.32933 27.5453C9.74689 27.4183 10.1269 27.1908 10.436 26.8827L28.232 9.084Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M29.3333 22.6667H24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M5.33333 6.66667V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8 9.33333H2.66667" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M12 2.66667V5.33333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function MetaItem({
-  icon,
-  label,
-  value,
+function SectionHeading({
+  children,
+  className = "",
 }: {
-  icon: ReactNode;
-  label: string;
-  value: string;
+  children: ReactNode;
+  className?: string;
 }) {
   return (
-    <div className="flex flex-col gap-1">
-      <div className="flex items-center gap-2 text-ink dark:text-[#f2f2f0]">
-        <span className="text-blue">{icon}</span>
-        <span className="font-geist text-[1em]">{label}</span>
-      </div>
-      <p className="font-geist ml-8 text-[0.875em] text-body-text">{value}</p>
+    <h2
+      className={`font-newsreader mt-3 text-[1.75em] leading-[1.2] text-ink dark:text-[#f2f2f0] ${className}`}
+    >
+      {children}
+    </h2>
+  );
+}
+
+function MetaItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <p className="font-geist-mono text-[0.8125em] text-body-text">{label}</p>
+      <p className="font-geist mt-1 text-[1em] text-ink dark:text-[#f2f2f0]">
+        {value}
+      </p>
     </div>
   );
 }
@@ -71,12 +45,41 @@ function MetaItem({
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="font-geist-mono text-[2.25em] font-semibold text-blue">
+      <p className="font-geist-mono text-[2em] font-semibold text-blue">
         {value}
       </p>
-      <p className="font-geist-mono mt-2 max-w-[240px] text-[1.125em] text-ink dark:text-[#f2f2f0]">
+      <p className="font-geist mt-2 max-w-[220px] text-[0.9375em] text-body-text">
         {label}
       </p>
+    </div>
+  );
+}
+
+function SolutionCard({
+  step,
+  eyebrow,
+  title,
+  children,
+}: {
+  step: number;
+  eyebrow: string;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="rounded-2xl border border-toolbar-outline bg-bg p-5">
+      <div className="flex items-center gap-2">
+        <span className="font-geist-mono flex h-6 w-6 items-center justify-center rounded-full bg-blue text-[0.75em] text-white">
+          {step}
+        </span>
+        <span className="font-geist-mono text-[0.75em] text-body-text">
+          {eyebrow}
+        </span>
+      </div>
+      <p className="font-newsreader mt-3 text-[1.125em] text-ink dark:text-[#f2f2f0]">
+        {title}
+      </p>
+      <div className="mt-4">{children}</div>
     </div>
   );
 }
@@ -91,19 +94,146 @@ function Feature({
   description: string;
 }) {
   return (
-    <div className="max-w-[253px]">
-      <p className="font-geist-mono text-[2.25em] font-semibold text-blue">
+    <div>
+      <p className="font-geist-mono text-[1.5em] font-semibold text-blue">
         {number}
       </p>
-      <p className="font-geist-mono mt-2 text-[1.125em] font-bold text-ink dark:text-[#f2f2f0]">
+      <p className="font-geist mt-2 text-[1.0625em] font-bold text-ink dark:text-[#f2f2f0]">
         {title}
       </p>
-      <p className="font-geist-mono mt-2 text-[1.125em] text-ink dark:text-[#f2f2f0]">
+      <p className="font-geist mt-2 text-[0.9375em] text-body-text">
         {description}
       </p>
     </div>
   );
 }
+
+function StrategyCard({
+  label,
+  title,
+  description,
+}: {
+  label: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="rounded-2xl bg-pill-bg p-6">
+      <p className="font-geist-mono text-[0.8125em] text-blue">{label}</p>
+      <p className="font-geist mt-2 text-[1.125em] font-semibold text-ink dark:text-[#f2f2f0]">
+        {title}
+      </p>
+      <p className="font-geist mt-2 text-[0.9375em] text-body-text">
+        {description}
+      </p>
+    </div>
+  );
+}
+
+function InsightItem({
+  number,
+  title,
+  description,
+}: {
+  number: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="grid gap-2 border-t border-toolbar-outline py-8 first:border-t-0 sm:grid-cols-[64px_1fr] sm:gap-8">
+      <p className="font-geist-mono text-[1.5em] font-semibold text-blue">
+        {number}
+      </p>
+      <div>
+        <p className="font-newsreader text-[1.25em] text-ink dark:text-[#f2f2f0]">
+          {title}
+        </p>
+        <p className="font-geist mt-2 max-w-[620px] text-[0.9375em] text-body-text">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function WireframeCard({ children }: { children?: ReactNode }) {
+  return (
+    <div className="flex h-[140px] w-[160px] flex-col justify-center gap-2 rounded-2xl border border-toolbar-outline bg-bg p-4">
+      {children}
+    </div>
+  );
+}
+
+function WireLine({ width = "100%" }: { width?: string }) {
+  return (
+    <div className="h-2 rounded-full bg-toolbar-outline" style={{ width }} />
+  );
+}
+
+function IterationBlock({
+  number,
+  title,
+  description,
+  changeCaption,
+  before,
+  after,
+}: {
+  number: string;
+  title: string;
+  description: string;
+  changeCaption: string;
+  before: ReactNode;
+  after: ReactNode;
+}) {
+  return (
+    <section>
+      <SectionLabel>Iteration {number}</SectionLabel>
+      <h3 className="font-newsreader mt-3 text-[1.5em] text-ink dark:text-[#f2f2f0]">
+        {title}
+      </h3>
+      <p className="font-geist mt-3 max-w-[620px] text-[0.9375em] text-body-text">
+        {description}
+      </p>
+      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        <div>
+          <p className="font-geist-mono text-[0.75em] text-body-text">
+            Before
+          </p>
+          <div className="mt-2 flex justify-center rounded-2xl bg-pill-bg p-6">
+            {before}
+          </div>
+        </div>
+        <div>
+          <p className="font-geist-mono text-[0.75em] text-blue">After</p>
+          <div className="mt-2 flex justify-center rounded-2xl bg-pill-bg p-6">
+            {after}
+          </div>
+        </div>
+      </div>
+      <p className="font-geist mt-4 text-[0.9375em] text-body-text">
+        <span className="font-semibold text-ink dark:text-[#f2f2f0]">
+          What changed —{" "}
+        </span>
+        {changeCaption}
+      </p>
+    </section>
+  );
+}
+
+function UsabilityStat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-2xl bg-pill-bg p-5">
+      <p className="font-newsreader text-[1.75em] text-ink dark:text-[#f2f2f0]">
+        {value}
+      </p>
+      <p className="font-geist mt-1 text-[0.8125em] text-body-text">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+const divider = <hr className="my-20 border-t border-toolbar-outline" />;
 
 export default function ReadCaseStudy() {
   return (
@@ -128,109 +258,399 @@ export default function ReadCaseStudy() {
           All Projects
         </Link>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_auto] lg:items-start lg:gap-16">
-          <div className="max-w-[620px]">
-            <div className="inline-block rounded-2xl bg-blue/10 px-3 py-2 text-[1em] text-blue">
-              ACADEMIC PROJECT . MOBILE DESIGN
-            </div>
-
-            <h1 className="font-newsreader mt-6 text-[2.75em] leading-[1.1] text-ink sm:text-[3.75em] dark:text-[#f2f2f0]">
-              <span className="text-blue">Read</span> One page. At a time.
-            </h1>
-
-            <p className="mt-6 max-w-[544px] text-[1.375em] leading-[1.4] text-ink dark:text-[#f2f2f0]">
-              A habit-forming reading app built for first-time readers
-              designed around{" "}
-              <span className="text-blue">
-                small daily goals, visible progress, and earned rewards.
-              </span>
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-x-12 gap-y-6">
-              <MetaItem icon={<RoleIcon />} label="Role" value="End-to-end UX Designer" />
-              <MetaItem icon={<TimelineIcon />} label="Timeline" value="16 Weeks" />
-              <MetaItem icon={<ToolsIcon />} label="Tools" value="Figma. Miro. Claude. Lovable" />
-            </div>
-          </div>
-
-          <div className="flex justify-center gap-6 lg:justify-end">
-            <PhoneMockup
-              screenshotSrc="/projects/read/hero-screen-1.jpg"
-              alt="Read app splash screen with the Read wordmark"
-              className="w-[150px] sm:w-[190px] lg:w-[210px]"
-            />
-            <PhoneMockup
-              screenshotSrc="/projects/read/hero-screen-2.jpg"
-              alt="Read app home screen showing streak, pages read, and today's reading goal"
-              className="w-[150px] sm:w-[190px] lg:mt-10 lg:w-[210px]"
-            />
+        <div className="mt-12 max-w-[620px]">
+          <SectionLabel>Academic project · Mobile design</SectionLabel>
+          <h1 className="font-newsreader mt-3 text-[2.5em] leading-[1.1] text-ink sm:text-[3em] dark:text-[#f2f2f0]">
+            Read — One page. At a time.
+          </h1>
+          <p className="font-geist mt-6 max-w-[544px] text-[1.125em] leading-[1.5] text-body-text">
+            A habit-forming reading app for first-time readers — designed
+            around small daily goals, visible progress, and earned rewards.
+          </p>
+          <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+            <MetaItem label="Role" value="End-to-end UX" />
+            <MetaItem label="Timeline" value="16 weeks" />
+            <MetaItem label="Type" value="Academic project" />
+            <MetaItem label="Tools" value="Figma · Miro · Lovable" />
           </div>
         </div>
 
-        <hr className="my-20 border-t border-toolbar-outline" />
+        <div className="mt-12 rounded-[24px] bg-pill-bg p-8 sm:p-12">
+          <div className="dark:bg-[#1e1f24] mx-auto w-full max-w-[340px] rounded-[28px] border border-toolbar-outline bg-bg p-6 shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+            <div className="flex items-center justify-between">
+              <span className="font-geist text-[0.9375em] text-body-text">
+                Good morning
+              </span>
+              <span className="font-geist rounded-full bg-blue/10 px-3 py-1 text-[0.8125em] text-blue">
+                12-day streak
+              </span>
+            </div>
+            <p className="font-newsreader mt-4 text-[1.5em] text-ink dark:text-[#f2f2f0]">
+              Today&rsquo;s goal
+            </p>
+            <div className="mt-4 rounded-2xl bg-blue/10 px-5 py-4">
+              <p className="font-geist-mono text-[0.8125em] text-blue">
+                Read for
+              </p>
+              <p className="font-newsreader text-[2em] text-blue">15 min</p>
+            </div>
+            <div className="mt-5">
+              <p className="font-geist-mono text-[0.8125em] text-body-text">
+                Currently reading
+              </p>
+              <p className="font-geist mt-1 text-[1em] font-semibold text-ink dark:text-[#f2f2f0]">
+                Atomic Habits
+              </p>
+              <p className="font-geist text-[0.875em] text-body-text">
+                Page 42 of 320
+              </p>
+            </div>
+            <div className="font-geist dark:text-[#17181c] mt-6 w-full rounded-full bg-ink py-3 text-center text-[0.9375em] font-medium text-bg">
+              Start reading
+            </div>
+          </div>
+        </div>
+
+        {divider}
 
         <section>
-          <p className="font-newsreader text-[1.5em] text-blue">The Gap</p>
-          <h2 className="font-geist mt-4 max-w-[615px] text-[1.75em] font-semibold text-ink dark:text-[#f2f2f0]">
+          <SectionLabel>The gap</SectionLabel>
+          <SectionHeading>
             The data shows a quiet crisis of unread books.
-          </h2>
-          <div className="mt-16 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
-            <Stat value="63%" label="of adults want to read more than they currently do" />
-            <Stat value="29%" label="of started books are abandoned before completion" />
-            <Stat value="12" label="Average books per year and declining" />
-            <Stat value="63%" label="of readers feel guilty about unfinished books" />
+          </SectionHeading>
+          <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-toolbar-outline pt-10 sm:grid-cols-4">
+            <Stat
+              value="63%"
+              label="of adults want to read more than they currently do"
+            />
+            <Stat
+              value="29%"
+              label="of started books are abandoned before completion"
+            />
+            <Stat value="12" label="average books per year — and declining" />
+            <Stat
+              value="30%"
+              label="of readers feel guilty about unfinished books"
+            />
           </div>
         </section>
 
-        <hr className="my-20 border-t border-toolbar-outline" />
+        {divider}
 
         <section>
-          <p className="font-newsreader text-[1.5em] text-blue">The Solution</p>
-          <h2 className="font-geist mt-4 max-w-[681px] text-[1.75em] font-semibold text-ink dark:text-[#f2f2f0]">
-            Don&rsquo;t sell them books. Help them become readers
-          </h2>
-          <p className="font-geist-mono mt-6 max-w-[1058px] text-[1.25em] text-ink dark:text-[#f2f2f0]">
-            Three core experiences across the daily reading loop, each making
-            progress visible at a different scale.
+          <SectionLabel>The solution</SectionLabel>
+          <SectionHeading className="max-w-[681px]">
+            Don&rsquo;t sell them books. Help them become readers.
+          </SectionHeading>
+          <p className="font-geist mt-4 max-w-[620px] text-[1em] text-body-text">
+            Three core experiences across the daily reading loop — each
+            making progress visible at a different scale.
           </p>
 
-          <div className="mt-16 grid gap-12 lg:grid-cols-[auto_1fr] lg:items-start lg:gap-16">
-            <div className="flex flex-col gap-14">
-              <Feature
-                number="01"
-                title="Small target goals"
-                description="Daily target from 1 min to 60. Calibrated to the users pace"
-              />
-              <Feature
-                number="02"
-                title="Daily Stats"
-                description="Invisible progress made visible- Minutes,Pace, pages."
-              />
-              <Feature
-                number="03"
-                title="Rewards & Growth"
-                description="Streaks, Badges and curated rewards over time"
-              />
-            </div>
+          <div className="mt-10 rounded-[24px] bg-pill-bg p-6 sm:p-10">
+            <div className="grid gap-6 sm:grid-cols-3">
+              <SolutionCard step={1} eyebrow="Set today" title="How long today?">
+                <div className="flex gap-2">
+                  {["5", "15", "30", "60"].map((m) => (
+                    <span
+                      key={m}
+                      className={`font-geist-mono rounded-lg px-2.5 py-1.5 text-[0.8125em] ${
+                        m === "15"
+                          ? "bg-blue/15 text-blue"
+                          : "bg-pill-bg text-body-text"
+                      }`}
+                    >
+                      {m}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-4 rounded-xl bg-blue/10 px-4 py-3">
+                  <p className="font-geist-mono text-[0.75em] text-blue">
+                    Today
+                  </p>
+                  <p className="font-newsreader text-[1.25em] text-blue">
+                    15 min
+                  </p>
+                </div>
+              </SolutionCard>
 
-            <div className="flex flex-wrap justify-center gap-8 lg:justify-start">
-              <PhoneMockup
-                screenshotSrc="/projects/read/hero-screen-2.jpg"
-                alt="Read app home screen with today's goal and rewards progress"
-                className="w-[180px] sm:w-[200px]"
-              />
-              <PhoneMockup
-                screenshotSrc="/projects/read/hero-screen-2.jpg"
-                alt="Read app home screen with today's goal and rewards progress"
-                className="w-[180px] sm:w-[200px]"
-              />
-              <PhoneMockup
-                screenshotSrc="/projects/read/hero-screen-2.jpg"
-                alt="Read app home screen with today's goal and rewards progress"
-                className="w-[180px] sm:w-[200px]"
-              />
+              <SolutionCard
+                step={2}
+                eyebrow="Session complete"
+                title="Nice work today."
+              >
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <p className="font-geist-mono text-[0.75em] text-body-text">
+                      Time
+                    </p>
+                    <p className="font-geist text-[1.125em] font-semibold text-ink dark:text-[#f2f2f0]">
+                      18 min
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-geist-mono text-[0.75em] text-body-text">
+                      Pace
+                    </p>
+                    <p className="font-geist text-[1.125em] font-semibold text-ink dark:text-[#f2f2f0]">
+                      240 wpm
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-3">
+                  <p className="font-geist-mono text-[0.75em] text-body-text">
+                    Pages read
+                  </p>
+                  <p className="font-geist text-[1.125em] font-semibold text-ink dark:text-[#f2f2f0]">
+                    11 pages
+                  </p>
+                </div>
+              </SolutionCard>
+
+              <SolutionCard step={3} eyebrow="You earned" title="A new badge.">
+                <div className="flex flex-col items-center py-1">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue/10">
+                    <span className="font-geist-mono text-[1.25em] font-semibold text-blue">
+                      12
+                    </span>
+                  </div>
+                  <p className="font-geist mt-2 text-[0.8125em] text-body-text">
+                    Day streak
+                  </p>
+                </div>
+                <div className="mt-3 rounded-xl bg-blue/10 px-4 py-3">
+                  <p className="font-geist text-[0.8125em] text-blue">
+                    Reward unlocked
+                  </p>
+                  <p className="font-geist text-[0.8125em] text-blue">
+                    15% off Penguin Classics
+                  </p>
+                </div>
+              </SolutionCard>
             </div>
           </div>
+
+          <div className="mt-12 grid gap-10 sm:grid-cols-3">
+            <Feature
+              number="01"
+              title="Small target goals"
+              description="Daily target from 1 min to 60. Calibrated to the user's pace."
+            />
+            <Feature
+              number="02"
+              title="Daily stats"
+              description="Invisible progress made visible — minutes, pace, pages."
+            />
+            <Feature
+              number="03"
+              title="Rewards & growth"
+              description="Streaks, badges, and curated rewards compound over time."
+            />
+          </div>
+        </section>
+
+        {divider}
+
+        <section>
+          <SectionLabel>Design strategy</SectionLabel>
+          <SectionHeading>
+            Designing for habit formation, not consumption.
+          </SectionHeading>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            <StrategyCard
+              label="Trigger"
+              title="What brings them back"
+              description="Internal: the pull of an unfinished book. External: timed pushes and home-screen widgets."
+            />
+            <StrategyCard
+              label="Action"
+              title="The simplest behavior"
+              description="Open the app, hit start, read. One button press to a daily session."
+            />
+            <StrategyCard
+              label="Variable reward"
+              title="Fulfilling, never the same"
+              description="Stats, streak status, an occasional gift card or new badge — different feedback each time."
+            />
+            <StrategyCard
+              label="Investment"
+              title="Why the next session is richer"
+              description="Streaks accumulate. Stats build a profile. Monthly summaries show the reader being formed."
+            />
+          </div>
+        </section>
+
+        {divider}
+
+        <section>
+          <SectionLabel>Research insights</SectionLabel>
+          <SectionHeading>
+            Three findings that shaped every design decision.
+          </SectionHeading>
+          <div className="mt-10">
+            <InsightItem
+              number="01"
+              title="Early readers don't fail at reading. They fail at starting."
+              description="The most common pattern in interviews wasn't lack of interest — it was decision fatigue at the entry point. Which book, which app, what time of day. Removing those choices mattered more than any feature."
+            />
+            <InsightItem
+              number="02"
+              title="The subscription is a commitment trap."
+              description={
+                'Paid reading apps assume their users already identify as readers. For people still forming the habit, paying upfront creates a "what if I waste this money" anxiety that stops them before they start.'
+              }
+            />
+            <InsightItem
+              number="03"
+              title="Reading is the rare habit with no visible evidence."
+              description="Unlike exercise or journaling, reading produces nothing external. Without a system that surfaces minutes read or progress made, every session feels like nothing happened."
+            />
+          </div>
+
+          <div className="mt-10 rounded-2xl bg-pill-bg p-8 sm:p-10">
+            <p className="font-geist-mono text-[0.8125em] text-body-text">
+              From the research
+            </p>
+            <p className="font-newsreader mt-4 text-[1.375em] leading-[1.4] text-ink dark:text-[#f2f2f0]">
+              &ldquo;I keep starting new books because I feel guilty about the
+              ones on my shelf. None of them actually feel like a reading
+              habit — they feel like a list of things I haven&rsquo;t done
+              yet.&rdquo;
+            </p>
+            <div className="mt-6 flex items-center gap-3">
+              <span className="font-geist-mono flex h-9 w-9 items-center justify-center rounded-full bg-blue text-[0.8125em] text-white">
+                MK
+              </span>
+              <div>
+                <p className="font-geist text-[0.9375em] font-semibold text-ink dark:text-[#f2f2f0]">
+                  Participant · Usability study
+                </p>
+                <p className="font-geist text-[0.8125em] text-body-text">
+                  Aspiring reader, 28
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {divider}
+
+        <IterationBlock
+          number="01"
+          title="The timer wasn't doing its work."
+          description="Participants didn't notice the reading timer during sessions — and the timer is the most important live signal that a habit is in progress."
+          changeCaption="Repositioned and color-coded the timer so the in-progress reading state becomes a visible reward in itself."
+          before={
+            <WireframeCard>
+              <div className="flex justify-end">
+                <span className="font-geist-mono text-[0.6875em] text-body-text">
+                  0:32
+                </span>
+              </div>
+              <WireLine />
+              <WireLine width="80%" />
+              <WireLine width="60%" />
+            </WireframeCard>
+          }
+          after={
+            <WireframeCard>
+              <div className="flex justify-start">
+                <span className="font-geist-mono rounded-full bg-blue/15 px-2 py-0.5 text-[0.6875em] text-blue">
+                  0:32
+                </span>
+              </div>
+              <WireLine />
+              <WireLine width="80%" />
+              <WireLine width="60%" />
+            </WireframeCard>
+          }
+        />
+
+        {divider}
+
+        <IterationBlock
+          number="02"
+          title="Rewards were invisible to the surfaces that needed them."
+          description="The rewards system is core to the variable-reward loop, but participants weren't aware of what they could earn — weakening the loop before it could compound."
+          changeCaption="Pulled rewards onto the home screen and post-session screen, so users see what's available before, during, and after each reading window."
+          before={
+            <WireframeCard>
+              <WireLine />
+              <WireLine width="70%" />
+              <div className="mt-2 h-4 w-4 rounded bg-toolbar-outline" />
+            </WireframeCard>
+          }
+          after={
+            <WireframeCard>
+              <div className="rounded-lg bg-blue/10 p-2">
+                <p className="font-geist text-[0.625em] text-blue">
+                  Reward ready
+                </p>
+                <p className="font-geist text-[0.625em] text-blue">
+                  15% off books
+                </p>
+              </div>
+              <div className="mt-1 flex gap-1">
+                <div className="h-5 w-5 rounded bg-blue/20" />
+                <div className="h-5 w-5 rounded bg-blue/20" />
+                <div className="h-5 w-5 rounded bg-blue/20" />
+              </div>
+            </WireframeCard>
+          }
+        />
+
+        {divider}
+
+        <IterationBlock
+          number="03"
+          title="The hero card wasn't pulling its weight."
+          description="The home screen's hero card needed to be the single most important glanceable surface — and it wasn't clearly communicating the user's current state."
+          changeCaption="Redesigned the hero card to lead with the user's today-state — current goal, progress, and active streak — making the first screen of every visit a snapshot of the habit in progress."
+          before={
+            <WireframeCard>
+              <WireLine />
+              <WireLine width="90%" />
+              <WireLine width="70%" />
+            </WireframeCard>
+          }
+          after={
+            <WireframeCard>
+              <div className="rounded-lg bg-blue/10 p-2">
+                <p className="font-geist-mono text-[0.625em] text-blue">
+                  Today
+                </p>
+                <p className="font-newsreader text-[1em] text-blue">
+                  15 min
+                </p>
+              </div>
+              <WireLine width="60%" />
+            </WireframeCard>
+          }
+        />
+
+        {divider}
+
+        <section>
+          <SectionLabel>Usability testing</SectionLabel>
+          <SectionHeading>
+            Validated with real readers, not assumptions.
+          </SectionHeading>
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <UsabilityStat value="5" label="Participants" />
+            <UsabilityStat value="76%" label="Task success" />
+            <UsabilityStat value="85%" label="Confidence" />
+            <UsabilityStat value="10" label="Core tasks" />
+          </div>
+        </section>
+
+        {divider}
+
+        <section>
+          <SectionLabel>Biggest learning</SectionLabel>
+          <p className="font-newsreader mt-3 max-w-[700px] text-[1.75em] leading-[1.3] text-ink dark:text-[#f2f2f0]">
+            The hardest part of building a reading habit isn&rsquo;t reading
+            — it&rsquo;s removing every reason not to start.
+          </p>
         </section>
       </main>
     </PageShell>
