@@ -45,7 +45,7 @@ function MetaItem({ label, value }: { label: string; value: string }) {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="font-geist-mono text-[2em] font-semibold text-blue">
+      <p className="font-geist-mono text-[2em] font-semibold text-rust">
         {value}
       </p>
       <p className="font-geist mt-2 max-w-[220px] text-[0.9375em] text-body-text">
@@ -223,7 +223,7 @@ function IterationBlock({
 function UsabilityStat({ value, label }: { value: string; label: string }) {
   return (
     <div className="rounded-2xl bg-pill-bg p-5">
-      <p className="font-newsreader text-[1.75em] text-ink dark:text-[#f2f2f0]">
+      <p className="font-newsreader text-[1.75em] text-rust">
         {value}
       </p>
       <p className="font-geist mt-1 text-[0.8125em] text-body-text">
@@ -507,7 +507,7 @@ export default function ReadCaseStudy() {
             />
           </div>
 
-          <div className="mt-10 rounded-2xl bg-pill-bg p-8 sm:p-10">
+          <div className="mt-10 rounded-2xl bg-[var(--rust-wash)] p-8 sm:p-10">
             <p className="font-geist-mono text-[0.8125em] text-body-text">
               From the research
             </p>
@@ -518,7 +518,7 @@ export default function ReadCaseStudy() {
               yet.&rdquo;
             </p>
             <div className="mt-6 flex items-center gap-3">
-              <span className="font-geist-mono flex h-9 w-9 items-center justify-center rounded-full bg-blue text-[0.8125em] text-white">
+              <span className="font-geist-mono flex h-9 w-9 items-center justify-center rounded-full bg-rust text-[0.8125em] text-white">
                 MK
               </span>
               <div>

@@ -3,15 +3,31 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  /* Snow / Paper / Stone */
   --color-bg: #f8f8f6;
-  --color-ink: #1e1e1e;
-  --color-blue: #1f38a8;
-  --color-nav-active: #224590;
-  --color-body-text: #3b3b3f;
   --color-pill-bg: #fcfcfa;
   --color-toolbar-outline: #deded6;
-  --color-toolbar-active: #1f38a8;
-  --toolbar-active-bg: rgba(31, 56, 168, 0.1);
+
+  /* Graphite scale */
+  --color-ink: #1a1a1a;
+  --color-body-text: #3d3d3d;
+  --color-graphite-70: #5e5e5e;
+  --color-graphite-50: #8b8b8b;
+  --color-graphite-30: #b5b5b5;
+  --color-graphite-18: #d0d0d0;
+  --color-graphite-8: #e6e6e6;
+
+  /* Forest (action) — occupies the --color-blue / --color-nav-active /
+     toolbar-active slots that used to be the site's cobalt blue */
+  --color-blue: #2a5548;
+  --color-nav-active: #1e3f35;
+  --color-toolbar-active: #2a5548;
+  --toolbar-active-bg: rgba(42, 85, 72, 0.1);
+
+  /* Rust (editorial) — metric callouts, pull quotes */
+  --color-rust: #8b3a1e;
+  --color-rust-pressed: #6b2b14;
+  --rust-wash: rgba(139, 58, 30, 0.1);
 }
 
 .dark {
@@ -20,13 +36,23 @@
   --color-body-text: #c9c9cf;
   --color-pill-bg: #22242a;
   --color-toolbar-outline: #33353c;
-  --color-toolbar-active: #6c8bff;
-  --toolbar-active-bg: rgba(108, 139, 255, 0.15);
-  /* Lightened from the light-mode values (#1f38a8 / #224590) — those are
-     ~1.9:1 against dark backgrounds, far below WCAG AA. These hit 7:1+
-     (AAA) against both --color-bg (#17181c) and --color-pill-bg (#22242a). */
-  --color-blue: #a0aeee;
-  --color-nav-active: #9cb4e8;
+  --color-graphite-70: #a3a3a3;
+  --color-graphite-50: #7a7a7a;
+  --color-graphite-30: #4d4d4d;
+  --color-graphite-18: #35353a;
+  --color-graphite-8: #26262b;
+
+  /* Lightened from the light-mode Forest/Rust values — those sit at
+     ~1.5-2:1 against dark backgrounds, far below WCAG AA. These hit
+     7:1+ (AAA) against both --color-bg (#17181c) and --color-pill-bg
+     (#22242a), same methodology as the earlier blue->dark-mode fix. */
+  --color-blue: #8bc6b4;
+  --color-nav-active: #76bca7;
+  --color-toolbar-active: #8bc6b4;
+  --toolbar-active-bg: rgba(139, 198, 180, 0.15);
+  --color-rust: #e6a18a;
+  --color-rust-pressed: #ebb5a3;
+  --rust-wash: rgba(230, 161, 138, 0.15);
 }
 
 @theme inline {
@@ -38,8 +64,18 @@
   --color-pill-bg: var(--color-pill-bg);
   --color-toolbar-outline: var(--color-toolbar-outline);
   --color-toolbar-active: var(--color-toolbar-active);
-  --font-geist: var(--font-geist);
-  --font-newsreader: var(--font-newsreader);
+  --color-graphite-70: var(--color-graphite-70);
+  --color-graphite-50: var(--color-graphite-50);
+  --color-graphite-30: var(--color-graphite-30);
+  --color-graphite-18: var(--color-graphite-18);
+  --color-graphite-8: var(--color-graphite-8);
+  --color-rust: var(--color-rust);
+  --color-rust-pressed: var(--color-rust-pressed);
+  /* Figtree replaces both Geist and Newsreader (see app/layout.tsx) —
+     kept under the old variable names so every existing font-geist /
+     font-newsreader class site-wide picks it up without a mass rename. */
+  --font-geist: var(--font-figtree);
+  --font-newsreader: var(--font-figtree);
   --font-geist-mono: var(--font-geist-mono);
   --animate-scroll-dot: scrollDot 0.912266s linear infinite alternate;
 }
