@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LogoMark from "./LogoMark";
 
 type NavProps = {
   active: "home" | "projects";
@@ -6,9 +7,10 @@ type NavProps = {
 
 export default function Nav({ active }: NavProps) {
   return (
-    <nav className="relative z-[2] flex items-center justify-between h-[72px] px-[clamp(24px,8vw,120px)] py-6">
-      <div className="font-newsreader text-[1.375em] whitespace-nowrap text-ink dark:text-[#f2f2f0]">
-        <span className="text-blue">.</span> Jainil Parekh
+    <nav className="relative z-[2] flex items-center justify-between h-[88px] px-[clamp(24px,8vw,120px)] py-5">
+      <div className="font-newsreader flex items-center gap-2 text-[1.375em] whitespace-nowrap text-ink dark:text-[#f2f2f0]">
+        <LogoMark className="h-10 w-auto text-blue" />
+        Jainil Parekh
       </div>
       <div className="flex items-center gap-12 max-[640px]:gap-6 text-[0.875em] leading-[1.4286] whitespace-nowrap">
         <Link
