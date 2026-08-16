@@ -11,7 +11,7 @@ export default function Home() {
           Hi I&rsquo;m Jainil Parekh
         </h1>
         <p className="m-0 max-w-[862px] text-[1.75em] leading-[1.5] text-body-text max-[640px]:text-[1.25em] max-[640px]:leading-[1.6]">
-          A <span className="text-blue">Behavioral Systems Designer</span>. I
+          A <span className="text-rust">Behavioral Systems Designer</span>. I
           recognize the silent moments that users lose trust, drop out on
           activation, or are not retained. Then, I will re-design the whole
           system around them.
