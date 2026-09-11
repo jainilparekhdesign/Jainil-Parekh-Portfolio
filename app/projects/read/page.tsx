@@ -156,20 +156,6 @@ function InsightItem({
   );
 }
 
-function WireframeCard({ children }: { children?: ReactNode }) {
-  return (
-    <div className="flex h-[140px] w-[160px] flex-col justify-center gap-2 rounded-2xl border border-toolbar-outline bg-bg p-4">
-      {children}
-    </div>
-  );
-}
-
-function WireLine({ width = "100%" }: { width?: string }) {
-  return (
-    <div className="h-2 rounded-full bg-toolbar-outline" style={{ width }} />
-  );
-}
-
 function IterationBlock({
   number,
   title,
@@ -276,38 +262,17 @@ export default function ReadCaseStudy() {
         </div>
 
         <div className="mt-12 rounded-[24px] bg-pill-bg p-8 sm:p-12">
-          <div className="dark:bg-[#1e1f24] mx-auto w-full max-w-[340px] rounded-[28px] border border-toolbar-outline bg-bg p-6 shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
-            <div className="flex items-center justify-between">
-              <span className="font-geist text-[0.9375em] text-body-text">
-                Good morning
-              </span>
-              <span className="font-geist rounded-full bg-blue/10 px-3 py-1 text-[0.8125em] text-blue">
-                12-day streak
-              </span>
-            </div>
-            <p className="font-newsreader mt-4 text-[1.5em] text-ink dark:text-[#f2f2f0]">
-              Today&rsquo;s goal
-            </p>
-            <div className="mt-4 rounded-2xl bg-blue/10 px-5 py-4">
-              <p className="font-geist-mono text-[0.8125em] text-blue">
-                Read for
-              </p>
-              <p className="font-newsreader text-[2em] text-blue">15 min</p>
-            </div>
-            <div className="mt-5">
-              <p className="font-geist-mono text-[0.8125em] text-body-text">
-                Currently reading
-              </p>
-              <p className="font-geist mt-1 text-[1em] font-semibold text-ink dark:text-[#f2f2f0]">
-                Atomic Habits
-              </p>
-              <p className="font-geist text-[0.875em] text-body-text">
-                Page 42 of 320
-              </p>
-            </div>
-            <div className="font-geist dark:text-[#17181c] mt-6 w-full rounded-full bg-ink py-3 text-center text-[0.9375em] font-medium text-bg">
-              Start reading
-            </div>
+          <div className="relative mx-auto flex w-full max-w-[440px] items-end justify-center gap-3 sm:gap-4">
+            <img
+              src="/projects/read/splash.png"
+              alt="Read app splash screen with the wordmark and the tagline “One page. At a time.”"
+              className="w-[34%] max-w-[160px] -rotate-6 rounded-[26px] shadow-[0_16px_40px_rgba(0,0,0,0.18)]"
+            />
+            <img
+              src="/projects/read/dashboard.png"
+              alt="Read app home screen showing a 6-day streak, 500 pages read, today's reading goal, and rewards progress"
+              className="relative z-[1] w-[54%] max-w-[240px] rounded-[26px] shadow-[0_20px_48px_rgba(0,0,0,0.22)]"
+            />
           </div>
         </div>
 
@@ -483,50 +448,50 @@ export default function ReadCaseStudy() {
         {divider}
 
         <section>
-          <SectionLabel>Research insights</SectionLabel>
+          <SectionLabel>Usability findings</SectionLabel>
           <SectionHeading>
-            Three findings that shaped every design decision.
+            What testing surfaced that research alone wouldn&rsquo;t have.
           </SectionHeading>
           <div className="mt-10">
             <InsightItem
               number="01"
-              title="Early readers don't fail at reading. They fail at starting."
-              description="The most common pattern in interviews wasn't lack of interest — it was decision fatigue at the entry point. Which book, which app, what time of day. Removing those choices mattered more than any feature."
+              title="The features that mattered most were already invisible."
+              description={
+                'The reading timer, the current book, and the daily goal all existed in the prototype — participants simply never noticed them. "It also has a timer, so I get to know I reached my goal, but I had to ask," one participant said. The fix wasn’t new features. It was surfacing what had already shipped.'
+              }
             />
             <InsightItem
               number="02"
-              title="The subscription is a commitment trap."
+              title="Settings hid behind Rewards, and no one found their way back."
               description={
-                'Paid reading apps assume their users already identify as readers. For people still forming the habit, paying upfront creates a "what if I waste this money" anxiety that stops them before they start.'
+                'Updating a daily goal meant guessing it lived inside the Rewards tab. "I went to rewards to see if there were different ways to go for my rewards… that opened to Settings," one participant said — flagged as a real open issue for the next round, not one fixed in this pass.'
               }
             />
             <InsightItem
               number="03"
-              title="Reading is the rare habit with no visible evidence."
-              description="Unlike exercise or journaling, reading produces nothing external. Without a system that surfaces minutes read or progress made, every session feels like nothing happened."
+              title="Confidence and task success aren't the same signal."
+              description="Participants rated themselves 4-5 out of 5 on tasks they only partially completed. Self-reported ease has to be triangulated against what people actually did, not just what they say they felt."
             />
           </div>
 
           <div className="mt-10 rounded-2xl bg-[var(--rust-wash)] p-8 sm:p-10">
             <p className="font-geist-mono text-[0.8125em] text-body-text">
-              From the research
+              From the usability study
             </p>
             <p className="font-newsreader mt-4 text-[1.375em] leading-[1.4] text-ink dark:text-[#f2f2f0]">
-              &ldquo;I keep starting new books because I feel guilty about the
-              ones on my shelf. None of them actually feel like a reading
-              habit — they feel like a list of things I haven&rsquo;t done
-              yet.&rdquo;
+              &ldquo;I went to rewards to see if there were different ways to
+              go for my rewards&hellip; that opened to Settings.&rdquo;
             </p>
             <div className="mt-6 flex items-center gap-3">
               <span className="font-geist-mono flex h-9 w-9 items-center justify-center rounded-full bg-rust text-[0.8125em] text-white">
-                MK
+                P1
               </span>
               <div>
                 <p className="font-geist text-[0.9375em] font-semibold text-ink dark:text-[#f2f2f0]">
                   Participant · Usability study
                 </p>
                 <p className="font-geist text-[0.8125em] text-body-text">
-                  Aspiring reader, 28
+                  5-participant moderated study, April 2026
                 </p>
               </div>
             </div>
@@ -536,95 +501,92 @@ export default function ReadCaseStudy() {
         {divider}
 
         <IterationBlock
-          number="01"
-          title="The timer wasn't doing its work."
-          description="Participants didn't notice the reading timer during sessions — and the timer is the most important live signal that a habit is in progress."
-          changeCaption="Repositioned and color-coded the timer so the in-progress reading state becomes a visible reward in itself."
+          number="01 · Modify"
+          title="The reading timer wasn't doing its job."
+          description="The timer is the clearest live signal that a session is being tracked, but it sat small and bottom-anchored. Participants didn't notice it mid-session and didn't trust their progress was being recorded."
+          changeCaption="Moved the timer to the top of the reading screen, paired it with the book title and chapter, and wrapped it in a progress ring so the in-progress state is impossible to miss."
           before={
-            <WireframeCard>
-              <div className="flex justify-end">
-                <span className="font-geist-mono text-[0.6875em] text-body-text">
-                  0:32
-                </span>
-              </div>
-              <WireLine />
-              <WireLine width="80%" />
-              <WireLine width="60%" />
-            </WireframeCard>
+            <img
+              src="/projects/read/scamper-modify-before.png"
+              alt="Before: reading screen with a small timer pill in the bottom-right corner"
+              className="w-full max-w-[200px] rounded-2xl"
+            />
           }
           after={
-            <WireframeCard>
-              <div className="flex justify-start">
-                <span className="font-geist-mono rounded-full bg-blue/15 px-2 py-0.5 text-[0.6875em] text-blue">
-                  0:32
-                </span>
-              </div>
-              <WireLine />
-              <WireLine width="80%" />
-              <WireLine width="60%" />
-            </WireframeCard>
+            <img
+              src="/projects/read/scamper-modify-after.png"
+              alt="After: reading screen with the timer moved to the top next to the book title and chapter"
+              className="w-full max-w-[200px] rounded-2xl"
+            />
           }
         />
 
         {divider}
 
         <IterationBlock
-          number="02"
-          title="Rewards were invisible to the surfaces that needed them."
-          description="The rewards system is core to the variable-reward loop, but participants weren't aware of what they could earn — weakening the loop before it could compound."
-          changeCaption="Pulled rewards onto the home screen and post-session screen, so users see what's available before, during, and after each reading window."
+          number="02 · Adapt"
+          title="The home screen didn't say what you were reading."
+          description="The hero card on Home is the first thing every visit shows, but it only displayed the daily goal — not which book was in progress. Participants said this would confuse them if they were reading more than one book at a time."
+          changeCaption="Rebuilt the hero card to lead with the book itself — cover, title, chapter, and a day-by-day streak strip — alongside the daily goal."
           before={
-            <WireframeCard>
-              <WireLine />
-              <WireLine width="70%" />
-              <div className="mt-2 h-4 w-4 rounded bg-toolbar-outline" />
-            </WireframeCard>
+            <img
+              src="/projects/read/scamper-adapt-before.png"
+              alt="Before: home screen hero card showing only the daily goal, with no book information"
+              className="w-full max-w-[200px] rounded-2xl"
+            />
           }
           after={
-            <WireframeCard>
-              <div className="rounded-lg bg-blue/10 p-2">
-                <p className="font-geist text-[0.625em] text-blue">
-                  Reward ready
-                </p>
-                <p className="font-geist text-[0.625em] text-blue">
-                  15% off books
-                </p>
-              </div>
-              <div className="mt-1 flex gap-1">
-                <div className="h-5 w-5 rounded bg-blue/20" />
-                <div className="h-5 w-5 rounded bg-blue/20" />
-                <div className="h-5 w-5 rounded bg-blue/20" />
-              </div>
-            </WireframeCard>
+            <img
+              src="/projects/read/scamper-adapt-after.png"
+              alt="After: home screen hero card showing the book cover, title, chapter, and streak"
+              className="w-full max-w-[200px] rounded-2xl"
+            />
           }
         />
 
         {divider}
 
         <IterationBlock
-          number="03"
-          title="The hero card wasn't pulling its weight."
-          description="The home screen's hero card needed to be the single most important glanceable surface — and it wasn't clearly communicating the user's current state."
-          changeCaption="Redesigned the hero card to lead with the user's today-state — current goal, progress, and active streak — making the first screen of every visit a snapshot of the habit in progress."
+          number="03 · Combine"
+          title="Setting a daily goal meant typing a number into an empty field."
+          description="Onboarding asked people to set a reading goal with no guidance on what a reasonable number even was — every participant had to guess."
+          changeCaption="Combined preset pills (1–60 minutes) with the free-text field, so most people tap once while anyone with a different routine can still type their own value."
           before={
-            <WireframeCard>
-              <WireLine />
-              <WireLine width="90%" />
-              <WireLine width="70%" />
-            </WireframeCard>
+            <img
+              src="/projects/read/scamper-combine-before.png"
+              alt="Before: goal-setting screen with only an empty minutes field"
+              className="w-full max-w-[200px] rounded-2xl"
+            />
           }
           after={
-            <WireframeCard>
-              <div className="rounded-lg bg-blue/10 p-2">
-                <p className="font-geist-mono text-[0.625em] text-blue">
-                  Today
-                </p>
-                <p className="font-newsreader text-[1em] text-blue">
-                  15 min
-                </p>
-              </div>
-              <WireLine width="60%" />
-            </WireframeCard>
+            <img
+              src="/projects/read/scamper-combine-after.png"
+              alt="After: goal-setting screen with preset minute pills added above the field"
+              className="w-full max-w-[200px] rounded-2xl"
+            />
+          }
+        />
+
+        {divider}
+
+        <IterationBlock
+          number="04 · Substitute"
+          title="“Claim It” promised a prize and delivered a share sheet."
+          description="The rewards screen's top CTA read “Claim It,” but tapping it opened a social-share flow, not a reward. Participants expected points, not a prompt to post."
+          changeCaption="Renamed the CTA to “Share” and surfaced the points-for-sharing value inline, so the label matches exactly what happens next."
+          before={
+            <img
+              src="/projects/read/scamper-substitute-before.png"
+              alt="Before: rewards screen with a 'Claim It' button that actually opens a share sheet"
+              className="w-full max-w-[200px] rounded-2xl"
+            />
+          }
+          after={
+            <img
+              src="/projects/read/scamper-substitute-after.png"
+              alt="After: rewards screen with the button relabeled to 'Share'"
+              className="w-full max-w-[200px] rounded-2xl"
+            />
           }
         />
 
@@ -635,11 +597,22 @@ export default function ReadCaseStudy() {
           <SectionHeading>
             Validated with real readers, not assumptions.
           </SectionHeading>
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <p className="font-geist mt-4 max-w-[620px] text-[1em] text-body-text">
+            5 moderated sessions over 2 weeks, run over Zoom against a Figma
+            prototype. Tasks were structured around the Hook Model —
+            Trigger, Action, Variable Reward, Investment — so testing
+            covered the full habit loop, not just individual screens.
+          </p>
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
             <UsabilityStat value="5" label="Participants" />
-            <UsabilityStat value="76%" label="Task success" />
-            <UsabilityStat value="85%" label="Confidence" />
+            <UsabilityStat value="76%" label="Task success rate" />
+            <UsabilityStat value="85%" label="Avg. confidence & ease" />
             <UsabilityStat value="10" label="Core tasks" />
+            <UsabilityStat value="60" label="Net Promoter Score" />
+            <UsabilityStat
+              value="28"
+              label="Issues found & triaged by severity"
+            />
           </div>
         </section>
 
@@ -648,8 +621,9 @@ export default function ReadCaseStudy() {
         <section>
           <SectionLabel>Biggest learning</SectionLabel>
           <p className="font-newsreader mt-3 max-w-[700px] text-[1.75em] leading-[1.3] text-ink dark:text-[#f2f2f0]">
-            The hardest part of building a reading habit isn&rsquo;t reading
-            — it&rsquo;s removing every reason not to start.
+            The most damaging issues weren&rsquo;t structural — they were
+            one-word labels that mismatched what people expected. Words ship
+            cheaper than rebuilds.
           </p>
         </section>
       </main>
