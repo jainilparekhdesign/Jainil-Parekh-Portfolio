@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, DM_Sans } from "next/font/google";
 import styles from "./resume.module.css";
+import DownloadButton from "./DownloadButton";
 
 export const metadata: Metadata = {
   title: "Resume — Jainil Parekh",
@@ -23,9 +24,7 @@ export default function ResumePage() {
   return (
     <div className={`${styles.shell} ${instrumentSerif.variable} ${dmSans.variable}`}>
       <div className={styles.downloadWrap}>
-        <a href="/resume.pdf" download className={styles.downloadBtn}>
-          Download PDF
-        </a>
+        <DownloadButton />
       </div>
 
       <div className={styles.page}>
