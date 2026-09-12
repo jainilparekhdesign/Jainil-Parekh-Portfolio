@@ -139,7 +139,13 @@ export default function ResumePage() {
   return (
     <PageShell active="resume" showScrollIndicator={false} showBgGrid={false}>
       <main className="font-geist relative z-[2] pt-4 pb-6 pl-[clamp(24px,8vw,120px)] pr-[clamp(24px,8vw,120px)] print:p-0">
-        <div className="mx-auto flex max-w-[820px] justify-end print:hidden">
+        <div className="mx-auto flex max-w-[820px] items-center justify-between print:hidden">
+          <Link
+            href="/resume/v2"
+            className="text-caption font-normal text-body-text no-underline hover:text-nav-active"
+          >
+            View v2 (sectioned cards) →
+          </Link>
           <DownloadButton />
         </div>
 

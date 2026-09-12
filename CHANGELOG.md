@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.6] - 2026-09-12
+
+### Added
+- `/resume/v2` — an alternative resume layout where every section (header/contact, Objective, Experience, Projects, Education, Skills) is its own bordered card in a bento-style grid, instead of one unified card. Same content, same fit-to-page/download behavior as v1. Cross-linked both directions ("View v2" from v1, "Back to resume (v1)" from v2) so they're easy to compare side by side.
+
 ## [0.7.5] - 2026-09-12
 
 ### Added
