@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.2] - 2026-09-12
+
+### Added
+- `FitToPage`: the resume now fits within one screen instead of requiring a page scroll — it measures its own rendered height on load and scales down to fit the space below the nav (`transform: scale()`, capped at a minimum of 0.55× before it would fall back to normal scrolling rather than shrink to illegible text). Print is unaffected — it renders at natural size, sized by the existing `@page` margins.
+
 ## [0.7.1] - 2026-09-12
 
 ### Fixed

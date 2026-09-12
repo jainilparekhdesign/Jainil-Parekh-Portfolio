@@ -269,6 +269,14 @@ html, body {
   html, body {
     background: #fff;
   }
+  /* The resume's fit-to-viewport scaling (FitToPage) is a screen-only
+     concern — print at natural size, governed by @page margins instead. */
+  .fit-to-page-box {
+    height: auto !important;
+  }
+  .fit-to-page-content {
+    transform: none !important;
+  }
   /* Force light-mode colors on paper regardless of the active theme —
      dark-mode text colors would be unreadable against a forced-white page. */
   :root, .dark {

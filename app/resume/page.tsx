@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
 import DownloadButton from "./DownloadButton";
+import FitToPage from "./FitToPage";
 
 export const metadata: Metadata = {
   title: "Resume — Jainil Parekh",
@@ -137,11 +138,12 @@ function SkillGroup({ label, items }: { label: string; items: string }) {
 export default function ResumePage() {
   return (
     <PageShell active="resume" showScrollIndicator={false}>
-      <main className="font-geist relative z-[2] pt-4 pb-24 pl-[clamp(24px,8vw,120px)] pr-[clamp(24px,8vw,120px)] print:p-0">
+      <main className="font-geist relative z-[2] pt-4 pb-6 pl-[clamp(24px,8vw,120px)] pr-[clamp(24px,8vw,120px)] print:p-0">
         <div className="mx-auto flex max-w-[820px] justify-end print:hidden">
           <DownloadButton />
         </div>
 
+        <FitToPage>
         <div className="mx-auto mt-6 max-w-[820px] print:mt-0">
           <h1 className="font-newsreader text-case-cover text-ink">
             Jainil Parekh
@@ -278,6 +280,7 @@ export default function ResumePage() {
             </div>
           </div>
         </div>
+        </FitToPage>
       </main>
     </PageShell>
   );
