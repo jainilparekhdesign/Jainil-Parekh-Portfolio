@@ -1,7 +1,7 @@
 export default function BgGrid() {
   return (
     <svg
-      className="pointer-events-none absolute top-0 left-[39px] z-0 h-[812px] w-[1354px] max-w-[calc(100%-39px)]"
+      className="pointer-events-none absolute top-0 left-[39px] z-0 h-[812px] w-[1354px] max-w-[calc(100%-39px)] print:hidden"
       viewBox="0 0 1354 812"
       fill="none"
       preserveAspectRatio="none"

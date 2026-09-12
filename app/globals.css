@@ -260,3 +260,27 @@ html, body {
 [data-motion="reduced"] * {
   transition-duration: 0ms !important;
 }
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+  html, body {
+    background: #fff;
+  }
+  /* Force light-mode colors on paper regardless of the active theme —
+     dark-mode text colors would be unreadable against a forced-white page. */
+  :root, .dark {
+    --color-bg: #f8f8f6;
+    --color-pill-bg: #fcfcfa;
+    --color-toolbar-outline: #deded6;
+    --color-ink: #1a1a1a;
+    --color-body-text: #3d3d3d;
+    --color-graphite-70: #5e5e5e;
+    --color-graphite-50: #8b8b8b;
+    --color-blue: #2a5548;
+    --color-nav-active: #1e3f35;
+    --color-rust: #8b3a1e;
+  }
+}

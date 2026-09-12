@@ -63,11 +63,13 @@ function TestCard({
   name,
   strategy,
   hypothesis,
+  artifacts,
 }: {
   step: string;
   name: string;
   strategy: string;
   hypothesis: string;
+  artifacts?: { src: string; alt: string; caption: string }[];
 }) {
   return (
     <div className="card overflow-hidden">
@@ -93,6 +95,31 @@ function TestCard({
           </p>
         </div>
       </div>
+      {artifacts && (
+        <div className="border-t border-toolbar-outline bg-pill-bg px-6 py-6">
+          <p className="font-geist-mono mb-4 text-caption uppercase tracking-[0.04em] text-body-text">
+            Artifact
+          </p>
+          <div
+            className={`grid gap-4 ${
+              artifacts.length > 1 ? "sm:grid-cols-2" : ""
+            } ${artifacts.length > 2 ? "lg:grid-cols-3" : ""}`}
+          >
+            {artifacts.map((a) => (
+              <figure key={a.src} className="m-0">
+                <img
+                  src={a.src}
+                  alt={a.alt}
+                  className="w-full rounded-xl border border-toolbar-outline"
+                />
+                <figcaption className="font-geist-mono mt-2 text-center text-caption text-body-text">
+                  {a.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -301,6 +328,23 @@ export default function ReadValidationCaseStudy() {
               name="Fake Front Door"
               strategy="A Coming Soon landing page pitching Read, funneling visitors into a single low-friction waitlist signup capturing name, email, and reading interest. Shared organically for 2.5 weeks to measure raw demand — does anyone outside my immediate circle even want this?"
               hypothesis="If prospective customers are exposed to the product and the value it provides, they will sign up for the waitlist — a baseline demand signal."
+              artifacts={[
+                {
+                  src: "/projects/read-validation/test1-landing.png",
+                  alt: "Coming Soon landing page pitching Read with a 'Join the Waitlist' CTA",
+                  caption: "Landing page",
+                },
+                {
+                  src: "/projects/read-validation/test1-waitlist.png",
+                  alt: "Waitlist signup form capturing name, email, and reading interest",
+                  caption: "Waitlist form",
+                },
+                {
+                  src: "/projects/read-validation/test1-features.png",
+                  alt: "Features section listing flexible time, smart reminders, streak tracking, and read anything",
+                  caption: "Features section",
+                },
+              ]}
             />
             <ResultBlock
               stats={
@@ -328,6 +372,18 @@ export default function ReadValidationCaseStudy() {
               name="Mechanical Turk"
               strategy="A 7-Day Reading Challenge via a Google Form embedded on the landing page. Participants logged a daily check-in; I manually ran the loop — nudging, reviewing, encouraging — so the 'app' was me behind the scenes."
               hypothesis="At least 40% of new users will log a reading session for 7 consecutive days within their first 30 days."
+              artifacts={[
+                {
+                  src: "/projects/read-validation/test2-challenge.png",
+                  alt: "7-Day Reading Challenge CTA embedded on the landing page",
+                  caption: "Challenge CTA · on landing page",
+                },
+                {
+                  src: "/projects/read-validation/test2-sheet.png",
+                  alt: "Google Sheet of daily check-in responses from two participants",
+                  caption: "Daily check-in responses · Google Sheet",
+                },
+              ]}
             />
             <ResultBlock
               stats={
@@ -355,6 +411,18 @@ export default function ReadValidationCaseStudy() {
               name="Smoke Test · Pre-Sale"
               strategy="Two pre-sale mechanisms layered onto the landing page: a voluntary pledge with an open-text reason, and a two-tier pricing reservation ($1.99 early-bird / $3.99 regular) — no card, no charge, just intent."
               hypothesis="At least 30% of waitlist signups will take a pre-sale action — pledging or reserving a paid tier — a meaningfully stronger commitment than joining a waitlist."
+              artifacts={[
+                {
+                  src: "/projects/read-validation/test3-pricing.png",
+                  alt: "Pricing tiers screen comparing Free and Pro at $1.99/month",
+                  caption: "Pricing tiers · Free vs Pro ($1.99/$3.99)",
+                },
+                {
+                  src: "/projects/read-validation/test3-pledge.png",
+                  alt: "Pledge form asking for an email address and why the user wants Read to exist",
+                  caption: "Pledge form · email + open-text reason",
+                },
+              ]}
             />
             <ResultBlock
               stats={

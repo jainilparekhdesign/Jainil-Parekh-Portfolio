@@ -287,7 +287,7 @@ export default function Toolbar() {
   }
 
   return (
-    <div className="fixed z-[3] bottom-6 right-[clamp(24px,8vw,120px)] xl:top-1/2 xl:bottom-auto xl:right-[clamp(24px,8vw,98px)] xl:-translate-y-1/2">
+    <div className="fixed z-[3] bottom-6 right-[clamp(24px,8vw,120px)] print:hidden">
       {isPanelOpen && (
         <div
           role="dialog"

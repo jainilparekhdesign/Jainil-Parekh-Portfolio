@@ -5,7 +5,7 @@ import ScrollIndicator from "./ScrollIndicator";
 import Toolbar from "./Toolbar";
 
 type PageShellProps = {
-  active: "home" | "projects";
+  active: "home" | "projects" | "resume";
   children: ReactNode;
   showScrollIndicator?: boolean;
 };

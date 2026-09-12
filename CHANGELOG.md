@@ -3,6 +3,23 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.0] - 2026-09-12
+
+### Added
+- Real artifact screenshots (extracted from the source deck) in `/projects/read-validation`: the Fake Front Door landing page + waitlist form + features section, the Mechanical Turk challenge CTA + Google Sheet check-in log, and the Smoke Test pricing tiers + pledge form — the case study no longer reads as text-only.
+- Resume rebuilt from the actual current résumé PDF (the on-site version had drifted — wrong degree program dates, missing the Freelance role and Projects section) and moved into the site's real design system: lives inside the normal `PageShell` (Nav + accessibility toolbar) instead of a standalone bespoke page, set in Figtree/Newsreader with the site's Forest/Rust tokens instead of its own Instrument Serif/DM Sans palette. "Resume" in the nav now gets the same active-state underline as Home/Projects.
+
+### Changed
+- The accessibility toolbar stays bottom-anchored at every screen size now, instead of relocating to a vertical-centered side rail on extra-large screens.
+- Site chrome (Nav, the accessibility toolbar, the decorative background grid) is now hidden when printing, and printing forces light-mode colors regardless of the active theme — dark-mode text would otherwise print unreadably light against the forced-white page. This benefits every page's print/PDF output, not just the resume.
+- The resume's "Download PDF" now uses the shared `.btn-primary` style instead of its own bespoke button, and its print-to-PDF flow reuses this same light-mode-forcing print CSS.
+
+### Removed
+- `app/resume/resume.module.css` — no longer needed now that the resume uses the site's shared token system instead of a standalone stylesheet.
+
+### Known gap
+- The résumé's LinkedIn reference is shown as plain text, not a link — I don't have the real profile URL and didn't want to guess and risk linking to the wrong person. Give me the URL and I'll wire it up.
+
 ## [0.6.0] - 2026-09-12
 
 ### Added

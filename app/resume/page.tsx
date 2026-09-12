@@ -1,207 +1,284 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, DM_Sans } from "next/font/google";
-import styles from "./resume.module.css";
+import type { ReactNode } from "react";
+import Link from "next/link";
+import PageShell from "@/components/PageShell";
 import DownloadButton from "./DownloadButton";
 
 export const metadata: Metadata = {
   title: "Resume — Jainil Parekh",
 };
 
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
-});
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <p className="font-geist-mono mb-4 border-b border-toolbar-outline pb-2 text-caption tracking-[0.04em] text-blue uppercase">
+      {children}
+    </p>
+  );
+}
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-dm-sans",
-});
+function ExperienceItem({
+  title,
+  company,
+  location,
+  date,
+  bullets,
+}: {
+  title: string;
+  company: string;
+  location: string;
+  date: string;
+  bullets: string[];
+}) {
+  return (
+    <div className="mb-6 last:mb-0">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <p className="font-geist text-ui font-semibold text-ink">
+          {title} <span className="text-body-text">· {company}</span>
+        </p>
+        <p className="font-geist-mono text-caption whitespace-nowrap text-body-text">
+          {date}
+        </p>
+      </div>
+      <p className="font-geist-mono text-caption text-body-text">{location}</p>
+      <ul className="mt-2 flex flex-col gap-1.5">
+        {bullets.map((b) => (
+          <li
+            key={b}
+            className="font-geist relative pl-4 text-ui font-normal text-body-text"
+          >
+            <span className="absolute left-0 text-blue">·</span>
+            {b}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ProjectItem({
+  title,
+  href,
+  bullets,
+}: {
+  title: string;
+  href?: string;
+  bullets: string[];
+}) {
+  const heading = href ? (
+    <Link
+      href={href}
+      className="font-geist text-ui font-semibold text-ink no-underline hover:text-nav-active"
+    >
+      {title}
+    </Link>
+  ) : (
+    <p className="font-geist text-ui font-semibold text-ink">{title}</p>
+  );
+  return (
+    <div className="mb-5 last:mb-0">
+      {heading}
+      <ul className="mt-2 flex flex-col gap-1.5">
+        {bullets.map((b) => (
+          <li
+            key={b}
+            className="font-geist relative pl-4 text-ui font-normal text-body-text"
+          >
+            <span className="absolute left-0 text-blue">·</span>
+            {b}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function EduItem({
+  degree,
+  school,
+  location,
+  date,
+  detail,
+}: {
+  degree: string;
+  school: string;
+  location: string;
+  date: string;
+  detail?: string;
+}) {
+  return (
+    <div className="mb-5 last:mb-0">
+      <p className="font-geist text-ui font-semibold text-ink">{degree}</p>
+      <p className="font-geist-mono text-caption text-body-text">
+        {school}, {location}
+      </p>
+      <p className="font-geist-mono text-caption text-body-text">{date}</p>
+      {detail && (
+        <p className="font-geist mt-1.5 text-caption text-body-text">
+          {detail}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function SkillGroup({ label, items }: { label: string; items: string }) {
+  return (
+    <div className="mb-3 last:mb-0">
+      <p className="font-geist-mono text-caption uppercase tracking-[0.04em] text-blue">
+        {label}
+      </p>
+      <p className="font-geist mt-1 text-ui font-normal text-body-text">
+        {items}
+      </p>
+    </div>
+  );
+}
 
 export default function ResumePage() {
   return (
-    <div className={`${styles.shell} ${instrumentSerif.variable} ${dmSans.variable}`}>
-      <div className={styles.downloadWrap}>
-        <DownloadButton />
-      </div>
+    <PageShell active="resume" showScrollIndicator={false}>
+      <main className="font-geist relative z-[2] pt-4 pb-24 pl-[clamp(24px,8vw,120px)] pr-[clamp(24px,8vw,120px)] print:p-0">
+        <div className="flex justify-end print:hidden">
+          <DownloadButton />
+        </div>
 
-      <div className={styles.page}>
-        <div className={styles.resumeHeader}>
-          <div className={styles.headerLeft}>
-            <h1>Jainil Parekh</h1>
-            <div className={styles.headerRole}>Product Designer</div>
-          </div>
-          <div className={styles.headerContact}>
+        <div className="mt-6 max-w-[820px] print:mt-0">
+          <h1 className="font-newsreader text-case-cover text-ink">
+            Jainil Parekh
+          </h1>
+          <p className="font-geist mt-1 text-lede text-blue">
+            Product Designer — Fintech &amp; Behavioral Systems
+          </p>
+          <div className="font-geist-mono mt-4 flex flex-wrap gap-x-4 gap-y-1 text-caption text-body-text">
+            <span>(773) 696-8289</span>
+            <span>·</span>
+            <span>Philadelphia, PA (open to relocate)</span>
+            <span>·</span>
             <a
-              href="https://jainilparekhdesign.notion.site"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:jainilparekh.design@gmail.com"
+              className="text-body-text no-underline hover:text-nav-active"
             >
-              jainilparekhdesign.notion.site
-            </a>
-            <a href="mailto:jainilparekh.design@gmail.com">
               jainilparekh.design@gmail.com
             </a>
-            <a href="tel:+17736968289">(+1) 773-696-8289</a>
-          </div>
-        </div>
-
-        <hr className={styles.hr} />
-
-        <div className={styles.resumeBody}>
-          <div>
-            <div className={styles.sectionLabel}>Experience</div>
-
-            <div className={styles.expItem}>
-              <div className={styles.expHeader}>
-                <div className={styles.expTitle}>
-                  Associate Product Designer
-                  <span className={styles.sep}>·</span>
-                  <span className={styles.company}>Kuhoo Finance</span>
-                </div>
-                <div className={styles.expDate}>Jan 2024 – Mar 2025</div>
-              </div>
-              <ul className={styles.expBullets}>
-                <li>
-                  Identified negative rating bias caused by absence of in-app
-                  feedback capture; designed contextual rating prompts
-                  triggered at key task completion states.
-                </li>
-                <li>
-                  Led structured A/B testing to evaluate timing and placement
-                  of feedback interventions, increasing review engagement by
-                  135%.
-                </li>
-                <li>
-                  Built and implemented a scalable responsive design system
-                  to standardize components across core loan workflows.
-                </li>
-                <li>
-                  Partnered with product managers and engineers to align UX
-                  decisions with growth, retention, and conversion metrics.
-                </li>
-              </ul>
-            </div>
-
-            <div className={styles.expItem}>
-              <div className={styles.expHeader}>
-                <div className={styles.expTitle}>
-                  Product Design Intern
-                  <span className={styles.sep}>·</span>
-                  <span className={styles.company}>Nuvama Wealth</span>
-                </div>
-                <div className={styles.expDate}>Jan 2023 – Dec 2023</div>
-              </div>
-              <ul className={styles.expBullets}>
-                <li>
-                  Designed mobile and web workflows for internal CRM systems
-                  informed by user research and usability testing.
-                </li>
-                <li>
-                  Architected a lead management portal that improved
-                  internal processing efficiency by ~30%.
-                </li>
-                <li>
-                  Translated complex business requirements into structured
-                  interaction flows under stakeholder and compliance
-                  constraints.
-                </li>
-              </ul>
-            </div>
-
-            <div className={styles.expItem}>
-              <div className={styles.expHeader}>
-                <div className={styles.expTitle}>
-                  Accessibility Services Proctor
-                  <span className={styles.sep}>·</span>
-                  <span className={styles.company}>
-                    Thomas Jefferson University
-                  </span>
-                </div>
-                <div className={styles.expDate}>Nov 2025 – Present</div>
-              </div>
-              <ul className={styles.expBullets}>
-                <li>
-                  Operationalized ADA accommodation requirements into
-                  repeatable, time-sensitive exam workflows.
-                </li>
-                <li>
-                  Managed edge-case scenarios to ensure equitable testing
-                  experiences under strict compliance standards.
-                </li>
-              </ul>
-            </div>
+            <span>·</span>
+            <span>LinkedIn</span>
+            <span>·</span>
+            <a
+              href="https://jainilparekh.design"
+              className="text-body-text no-underline hover:text-nav-active"
+            >
+              jainilparekh.design
+            </a>
           </div>
 
-          <div className={styles.sidebar}>
+          <hr className="my-8 border-t border-toolbar-outline" />
+
+          <section className="mb-10">
+            <SectionLabel>Objective</SectionLabel>
+            <p className="font-geist text-body text-body-text">
+              Product Designer specializing in fintech and behavioral
+              interaction systems. Experienced in driving measurable
+              engagement improvements through experimentation, design
+              systems, and cross-functional collaboration.
+            </p>
+          </section>
+
+          <div className="grid gap-10 sm:grid-cols-[1fr_260px]">
             <div>
-              <div className={styles.sectionLabel}>Education</div>
-              <div className={styles.eduItem}>
-                <div className={styles.eduSchool}>
-                  Thomas Jefferson University
-                </div>
-                <div className={styles.eduDegree}>
-                  M.S. Interaction Design
-                </div>
-                <div className={styles.eduCourses}>
-                  User Research &amp; Usability Testing, UX Writing, Digital
-                  Communication Design, Mobile Communication, Human-Centered
-                  Product Strategy
-                </div>
-                <div className={styles.eduDate}>
-                  Aug 2025 – Present · Philadelphia, PA
-                </div>
-              </div>
-              <div className={styles.eduItem}>
-                <div className={styles.eduSchool}>VJTI Mumbai</div>
-                <div className={styles.eduDegree}>
-                  B.E. Information Technology
-                </div>
-                <div className={styles.eduCourses}>
-                  Information Architecture, Frontend Development,
-                  Information Systems
-                </div>
-                <div className={styles.eduDate}>Graduated 2024</div>
-              </div>
+              <section className="mb-10">
+                <SectionLabel>Experience</SectionLabel>
+                <ExperienceItem
+                  title="Product Designer"
+                  company="Kuhoo Finance Pvt. Ltd."
+                  location="Mumbai, IN"
+                  date="Jan 2024 – Mar 2025"
+                  bullets={[
+                    "Increased in-app engagement by 135% through personalized onboarding and contextual prompts.",
+                    "Conducted A/B testing on rating and feedback flows, improving app review volume and sentiment.",
+                    "Designed and maintained a scalable design system, improving navigation consistency.",
+                    "Collaborated with product managers and engineers to translate business goals into user flows.",
+                  ]}
+                />
+                <ExperienceItem
+                  title="Product Design Intern"
+                  company="Nuvama Wealth"
+                  location="Mumbai, IN"
+                  date="Feb 2023 – Dec 2023"
+                  bullets={[
+                    "Designed mobile and web interfaces informed by user research and usability testing.",
+                    "Built an internal CRM portal improving lead-management efficiency by 30%.",
+                    "Contributed to a modular design system ensuring UI consistency across products.",
+                  ]}
+                />
+                <ExperienceItem
+                  title="Freelance UX / Product Designer"
+                  company="Independent"
+                  location="Mumbai, IN"
+                  date="May 2021 – Jan 2024"
+                  bullets={[
+                    "Designed end-to-end digital products for startups and small businesses, from discovery through handoff.",
+                    "Created scalable UI systems and brand identities used across web and product experiences.",
+                  ]}
+                />
+              </section>
+
+              <section>
+                <SectionLabel>Projects</SectionLabel>
+                <ProjectItem
+                  title="Habit Forming Application — Read"
+                  href="/projects/read"
+                  bullets={[
+                    "Designed a habit-forming reading app that helps users build a daily reading habit without pressure.",
+                    "Conducted user research, defined personas, and prioritized features using MoSCoW analysis.",
+                  ]}
+                />
+                <ProjectItem
+                  title='Astrobrights E-Commerce "Astroverse" UX Concept'
+                  bullets={[
+                    "Designed an e-commerce experience integrated with an AR-based storytelling concept.",
+                    "Conducted user research, defined personas, and prioritized features using MoSCoW analysis.",
+                  ]}
+                />
+              </section>
             </div>
 
             <div>
-              <div className={styles.sectionLabel}>Skills</div>
-              <div className={styles.skillsBlock}>
-                <div>
-                  <div className={styles.skillGroupLabel}>Core</div>
-                  <ul className={styles.skillList}>
-                    <li>Interaction Design</li>
-                    <li>Product Strategy</li>
-                    <li>Experimentation &amp; A/B Testing</li>
-                    <li>Behavioral UX &amp; Engagement</li>
-                  </ul>
-                </div>
-                <div>
-                  <div className={styles.skillGroupLabel}>Systems</div>
-                  <ul className={styles.skillList}>
-                    <li>Responsive Design</li>
-                    <li>Information Architecture</li>
-                    <li>Component &amp; Token Systems</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+              <section className="mb-10">
+                <SectionLabel>Education</SectionLabel>
+                <EduItem
+                  degree="M.S. User Experience & Interaction Design"
+                  school="Thomas Jefferson University"
+                  location="Philadelphia, PA"
+                  date="Expected 2027"
+                  detail="UX Design Studio · Interaction Design · User Research & Usability Testing · Information Architecture · Prototyping · Accessibility & Inclusive Design · Product Strategy"
+                />
+                <EduItem
+                  degree="B.Tech Information Technology"
+                  school="VJTI"
+                  location="Mumbai, IN"
+                  date="2018 – 2024"
+                />
+              </section>
 
-            <div>
-              <div className={styles.sectionLabel}>Tools</div>
-              <div className={styles.toolsList}>
-                <span className={styles.toolTag}>Figma</span>
-                <span className={styles.toolTag}>ProtoPie</span>
-                <span className={styles.toolTag}>Framer</span>
-                <span className={styles.toolTag}>Webflow</span>
-              </div>
+              <section>
+                <SectionLabel>Skills</SectionLabel>
+                <SkillGroup
+                  label="UX & Product"
+                  items="UX Research, User Interviews, Usability Testing, A/B Testing, Prototyping"
+                />
+                <SkillGroup
+                  label="Tools"
+                  items="Figma, Adobe XD, Sketch, FigJam, Miro, Notion"
+                />
+                <SkillGroup
+                  label="Collaboration"
+                  items="Product Thinking, Cross-Functional Collaboration, Stakeholder Communication, Agile/Scrum"
+                />
+              </section>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </main>
+    </PageShell>
   );
 }
