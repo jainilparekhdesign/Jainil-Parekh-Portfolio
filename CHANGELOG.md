@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.5] - 2026-09-12
+
+### Added
+- A "paper card" treatment for the resume: the content now sits in a bordered, softly-shadowed card (the existing `.card` style — pill-bg fill, stone border) on the page's plain background, instead of floating with no defined edge. Reverts to a flat, borderless layout when printing.
+
 ## [0.7.4] - 2026-09-12
 
 ### Fixed

@@ -144,7 +144,7 @@ export default function ResumePage() {
         </div>
 
         <FitToPage>
-        <div className="mx-auto mt-4 max-w-[820px] print:mt-0">
+        <div className="card mx-auto mt-4 max-w-[820px] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.06)] sm:p-10 print:mt-0 print:border-0 print:bg-transparent print:p-0 print:shadow-none">
           <h1 className="font-newsreader text-section-heading text-ink">
             Jainil Parekh
           </h1>
