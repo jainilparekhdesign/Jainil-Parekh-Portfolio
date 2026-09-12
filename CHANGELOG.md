@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.9] - 2026-09-12
+
+### Changed
+- `/resume` now renders two versions in the same page: the sectioned-cards layout on screen (hidden when printing), and the original single-card layout only when printing/downloading (hidden on screen). Reuses the same content components either way, so the two never drift apart. Clicking "Download PDF" now produces the original layout even though the page displays the new one.
+
 ## [0.7.8] - 2026-09-12
 
 ### Removed

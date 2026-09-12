@@ -153,8 +153,9 @@ export default function ResumePage() {
           <DownloadButton />
         </div>
 
+        <div className="print:hidden">
         <FitToPage>
-          <div className="mx-auto mt-4 flex max-w-[900px] flex-col gap-4 print:mt-0">
+          <div className="mx-auto mt-4 flex max-w-[900px] flex-col gap-4">
             <Card className="print:p-0">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
@@ -290,6 +291,135 @@ export default function ResumePage() {
             </div>
           </div>
         </FitToPage>
+        </div>
+
+        <div className="hidden print:block">
+          <div className="mx-auto max-w-[820px]">
+            <h1 className="font-newsreader text-section-heading text-ink">
+              Jainil Parekh
+            </h1>
+            <p className="font-geist mt-0.5 text-ui font-medium text-blue">
+              Product Designer — Fintech &amp; Behavioral Systems
+            </p>
+            <div className="font-geist-mono mt-2 flex flex-wrap gap-x-4 gap-y-1 text-caption text-body-text">
+              <span>(773) 696-8289</span>
+              <span>·</span>
+              <span>Philadelphia, PA (open to relocate)</span>
+              <span>·</span>
+              <span>jainilparekh.design@gmail.com</span>
+              <span>·</span>
+              <span>LinkedIn</span>
+              <span>·</span>
+              <span>jainilparekh.design</span>
+            </div>
+
+            <hr className="my-4 border-t border-toolbar-outline" />
+
+            <section className="mb-5">
+              <SectionLabel>Objective</SectionLabel>
+              <p className="font-geist text-caption text-body-text">
+                Product Designer specializing in fintech and behavioral
+                interaction systems. Experienced in driving measurable
+                engagement improvements through experimentation, design
+                systems, and cross-functional collaboration.
+              </p>
+            </section>
+
+            <div className="grid gap-6 sm:grid-cols-[1fr_260px]">
+              <div>
+                <section className="mb-5">
+                  <SectionLabel>Experience</SectionLabel>
+                  <ExperienceItem
+                    title="Product Designer"
+                    company="Kuhoo Finance Pvt. Ltd."
+                    location="Mumbai, IN"
+                    date="Jan 2024 – Mar 2025"
+                    bullets={[
+                      "Increased in-app engagement by 135% through personalized onboarding and contextual prompts.",
+                      "Conducted A/B testing on rating and feedback flows, improving app review volume and sentiment.",
+                      "Designed and maintained a scalable design system, improving navigation consistency.",
+                      "Collaborated with product managers and engineers to translate business goals into user flows.",
+                    ]}
+                  />
+                  <ExperienceItem
+                    title="Product Design Intern"
+                    company="Nuvama Wealth"
+                    location="Mumbai, IN"
+                    date="Feb 2023 – Dec 2023"
+                    bullets={[
+                      "Designed mobile and web interfaces informed by user research and usability testing.",
+                      "Built an internal CRM portal improving lead-management efficiency by 30%.",
+                      "Contributed to a modular design system ensuring UI consistency across products.",
+                    ]}
+                  />
+                  <ExperienceItem
+                    title="Freelance UX / Product Designer"
+                    company="Independent"
+                    location="Mumbai, IN"
+                    date="May 2021 – Jan 2024"
+                    bullets={[
+                      "Designed end-to-end digital products for startups and small businesses, from discovery through handoff.",
+                      "Created scalable UI systems and brand identities used across web and product experiences.",
+                    ]}
+                  />
+                </section>
+
+                <section>
+                  <SectionLabel>Projects</SectionLabel>
+                  <ProjectItem
+                    title="Habit Forming Application — Read"
+                    bullets={[
+                      "Designed a habit-forming reading app that helps users build a daily reading habit without pressure.",
+                      "Conducted user research, defined personas, and prioritized features using MoSCoW analysis.",
+                    ]}
+                  />
+                  <ProjectItem
+                    title='Astrobrights E-Commerce "Astroverse" UX Concept'
+                    bullets={[
+                      "Designed an e-commerce experience integrated with an AR-based storytelling concept.",
+                      "Conducted user research, defined personas, and prioritized features using MoSCoW analysis.",
+                    ]}
+                  />
+                </section>
+              </div>
+
+              <div>
+                <section className="mb-5">
+                  <SectionLabel>Education</SectionLabel>
+                  <EduItem
+                    degree="M.S. User Experience & Interaction Design"
+                    school="Thomas Jefferson University"
+                    location="Philadelphia, PA"
+                    date="Expected 2027"
+                    detail="UX Design Studio · Interaction Design · User Research & Usability Testing · Information Architecture · Prototyping · Accessibility & Inclusive Design · Product Strategy"
+                  />
+                  <EduItem
+                    degree="B.Tech Information Technology"
+                    school="VJTI"
+                    location="Mumbai, IN"
+                    date="2018 – 2024"
+                  />
+                </section>
+
+                <section>
+                  <SectionLabel>Skills</SectionLabel>
+                  <SkillGroup
+                    label="UX & Product"
+                    items="UX Research, User Interviews, Usability Testing, A/B Testing, Prototyping"
+                  />
+                  <SkillGroup
+                    label="Tools"
+                    items="Figma, Adobe XD, Sketch, FigJam, Miro, Notion"
+                  />
+                  <SkillGroup
+                    label="Collaboration"
+                    items="Product Thinking, Cross-Functional Collaboration, Stakeholder Communication, Agile/Scrum"
+                  />
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </PageShell>
   );
