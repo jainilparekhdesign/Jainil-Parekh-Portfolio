@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.7] - 2026-09-12
+
+### Changed
+- Sectioned cards won the comparison — `/resume` is now that layout (previously at `/resume/v2`). The old single-card layout moved to `/resume/v1` for reference. Both still cross-link to each other.
+
 ## [0.7.6] - 2026-09-12
 
 ### Added
