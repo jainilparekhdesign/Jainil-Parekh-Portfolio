@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.10] - 2026-09-12
+
+### Fixed
+- The Download button drifted out of alignment with the resume card whenever `FitToPage` shrank it — the card scaled down from its horizontal *center*, pulling its right edge inward, while the unscaled, right-aligned button stayed put. `FitToPage` now accepts a `className` applied directly to the scaled element (instead of the width/centering living on an inner child), and scales from `top right` instead of `top center`, so the card's right edge stays anchored to the same position as the button at any scale.
+
 ## [0.7.9] - 2026-09-12
 
 ### Changed

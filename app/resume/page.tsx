@@ -154,8 +154,8 @@ export default function ResumePage() {
         </div>
 
         <div className="print:hidden">
-        <FitToPage>
-          <div className="mx-auto mt-4 flex max-w-[900px] flex-col gap-4">
+        <FitToPage className="mx-auto max-w-[900px]">
+          <div className="mt-4 flex flex-col gap-4">
             <Card className="print:p-0">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
