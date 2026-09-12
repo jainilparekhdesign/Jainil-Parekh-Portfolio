@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.3] - 2026-09-12
+
+### Fixed
+- v0.7.2's fit-to-page shrank the resume to illegible text — the 0.55× minimum scale allowed ~9px body text. Raised the floor to 0.82× (~11.5px minimum) and, more importantly, tightened the resume's own spacing and reduced the oversized 48px name heading to 28px, so the natural content is short enough to actually fit most screens near full scale instead of relying on aggressive shrinking.
+
 ## [0.7.2] - 2026-09-12
 
 ### Added

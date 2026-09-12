@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="font-geist-mono mb-4 border-b border-toolbar-outline pb-2 text-caption tracking-[0.04em] text-blue uppercase">
+    <p className="font-geist-mono mb-2 border-b border-toolbar-outline pb-1 text-caption tracking-[0.04em] text-blue uppercase">
       {children}
     </p>
   );
@@ -31,8 +31,8 @@ function ExperienceItem({
   bullets: string[];
 }) {
   return (
-    <div className="mb-6 last:mb-0">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+    <div className="mb-3 last:mb-0">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
         <p className="font-geist text-ui font-semibold text-ink">
           {title} <span className="text-body-text">· {company}</span>
         </p>
@@ -41,11 +41,11 @@ function ExperienceItem({
         </p>
       </div>
       <p className="font-geist-mono text-caption text-body-text">{location}</p>
-      <ul className="mt-2 flex flex-col gap-1.5">
+      <ul className="mt-1 flex flex-col gap-0.5">
         {bullets.map((b) => (
           <li
             key={b}
-            className="font-geist relative pl-4 text-ui font-normal text-body-text"
+            className="font-geist relative pl-4 text-caption font-normal text-body-text"
           >
             <span className="absolute left-0 text-blue">·</span>
             {b}
@@ -76,13 +76,13 @@ function ProjectItem({
     <p className="font-geist text-ui font-semibold text-ink">{title}</p>
   );
   return (
-    <div className="mb-5 last:mb-0">
+    <div className="mb-3 last:mb-0">
       {heading}
-      <ul className="mt-2 flex flex-col gap-1.5">
+      <ul className="mt-1 flex flex-col gap-0.5">
         {bullets.map((b) => (
           <li
             key={b}
-            className="font-geist relative pl-4 text-ui font-normal text-body-text"
+            className="font-geist relative pl-4 text-caption font-normal text-body-text"
           >
             <span className="absolute left-0 text-blue">·</span>
             {b}
@@ -107,14 +107,14 @@ function EduItem({
   detail?: string;
 }) {
   return (
-    <div className="mb-5 last:mb-0">
+    <div className="mb-3 last:mb-0">
       <p className="font-geist text-ui font-semibold text-ink">{degree}</p>
       <p className="font-geist-mono text-caption text-body-text">
         {school}, {location}
       </p>
       <p className="font-geist-mono text-caption text-body-text">{date}</p>
       {detail && (
-        <p className="font-geist mt-1.5 text-caption text-body-text">
+        <p className="font-geist mt-1 text-caption text-body-text">
           {detail}
         </p>
       )}
@@ -124,11 +124,11 @@ function EduItem({
 
 function SkillGroup({ label, items }: { label: string; items: string }) {
   return (
-    <div className="mb-3 last:mb-0">
+    <div className="mb-2 last:mb-0">
       <p className="font-geist-mono text-caption uppercase tracking-[0.04em] text-blue">
         {label}
       </p>
-      <p className="font-geist mt-1 text-ui font-normal text-body-text">
+      <p className="font-geist mt-0.5 text-caption font-normal text-body-text">
         {items}
       </p>
     </div>
@@ -144,14 +144,14 @@ export default function ResumePage() {
         </div>
 
         <FitToPage>
-        <div className="mx-auto mt-6 max-w-[820px] print:mt-0">
-          <h1 className="font-newsreader text-case-cover text-ink">
+        <div className="mx-auto mt-4 max-w-[820px] print:mt-0">
+          <h1 className="font-newsreader text-section-heading text-ink">
             Jainil Parekh
           </h1>
-          <p className="font-geist mt-1 text-lede text-blue">
+          <p className="font-geist mt-0.5 text-ui font-medium text-blue">
             Product Designer — Fintech &amp; Behavioral Systems
           </p>
-          <div className="font-geist-mono mt-4 flex flex-wrap gap-x-4 gap-y-1 text-caption text-body-text">
+          <div className="font-geist-mono mt-2 flex flex-wrap gap-x-4 gap-y-1 text-caption text-body-text">
             <span>(773) 696-8289</span>
             <span>·</span>
             <span>Philadelphia, PA (open to relocate)</span>
@@ -173,11 +173,11 @@ export default function ResumePage() {
             </a>
           </div>
 
-          <hr className="my-8 border-t border-toolbar-outline" />
+          <hr className="my-4 border-t border-toolbar-outline" />
 
-          <section className="mb-10">
+          <section className="mb-5">
             <SectionLabel>Objective</SectionLabel>
-            <p className="font-geist text-body text-body-text">
+            <p className="font-geist text-caption text-body-text">
               Product Designer specializing in fintech and behavioral
               interaction systems. Experienced in driving measurable
               engagement improvements through experimentation, design
@@ -185,9 +185,9 @@ export default function ResumePage() {
             </p>
           </section>
 
-          <div className="grid gap-10 sm:grid-cols-[1fr_260px]">
+          <div className="grid gap-6 sm:grid-cols-[1fr_260px]">
             <div>
-              <section className="mb-10">
+              <section className="mb-5">
                 <SectionLabel>Experience</SectionLabel>
                 <ExperienceItem
                   title="Product Designer"
@@ -245,7 +245,7 @@ export default function ResumePage() {
             </div>
 
             <div>
-              <section className="mb-10">
+              <section className="mb-5">
                 <SectionLabel>Education</SectionLabel>
                 <EduItem
                   degree="M.S. User Experience & Interaction Design"

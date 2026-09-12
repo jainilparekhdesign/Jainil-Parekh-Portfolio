@@ -4,8 +4,10 @@ import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
 // Below this scale the text would be too small to read comfortably —
 // fall back to normal page scrolling instead of shrinking further.
-const MIN_SCALE = 0.55;
-const BOTTOM_MARGIN = 24;
+// (0.82 of a 14px body size is still ~11.5px; anything smaller stops
+// being comfortably readable.)
+const MIN_SCALE = 0.82;
+const BOTTOM_MARGIN = 16;
 
 export default function FitToPage({ children }: { children: ReactNode }) {
   const contentRef = useRef<HTMLDivElement>(null);
