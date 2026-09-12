@@ -3,6 +3,14 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.4.4] - 2026-09-12
+
+### Changed
+- The homepage "New vs Old" comparison is now genuinely side by side (two columns, divider between) instead of stacked, and each side now actually uses its real fonts: New renders in Figtree with a Geist Mono secondary-font sample line; Old now loads and renders in the real Newsreader serif (previously both sides silently rendered in Figtree, since the `font-newsreader` class is aliased to Figtree post-rebrand — the comparison wasn't showing a real font difference before this). Each side also shows its background/accent color swatches (Snow bg is unchanged between the two; accent is Forest `#2A5548` vs the old Cobalt `#1F38A8`).
+
+### Added
+- All UI icons (text-size, dark-mode toggle, listen, scroll indicator, and the arrow icons on the Projects index and Read case study) are now sourced directly from Lucide (lucide.dev), replacing hand-drawn SVG paths. The scroll indicator also picked up a latent bug fix in the process — it was hardcoded to `stroke="black"`, which never adapted to dark mode. The brand mark (`LogoMark`) and the decorative background grid (`BgGrid`) are intentionally left as custom art, not Lucide icons.
+
 ## [0.4.3] - 2026-09-11
 
 ### Added
