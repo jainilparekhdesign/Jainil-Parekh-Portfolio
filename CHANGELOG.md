@@ -3,6 +3,16 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.5.0] - 2026-09-12
+
+### Changed
+- Final font/size decision from the homepage comparison, applied site-wide: real Newsreader serif loaded and wired back into the `font-newsreader` class (previously aliased to Figtree post-rebrand) — every element already tagged `font-newsreader` across the whole site (headings, section titles, pull quotes, the nav wordmark) now renders in genuine Newsreader, not Figtree. `font-geist`-tagged body/UI text stays Figtree.
+- The homepage headline reverts to its original 32px/26px-mobile size (`text-greeting` token updated) — the v3.0 spec's 48px greeting read too big on review.
+- Removed the temporary three-column New/Old/Hybrid comparison scaffold from the homepage now that a decision's been made; the homepage is back to a single, final hero.
+
+### Fixed
+- Two spots (`app/page.tsx`'s body paragraph, `app/projects/page.tsx`'s deck paragraph) were relying on inherited font from a `font-newsreader`-tagged wrapper rather than declaring `font-geist` themselves — harmless while both aliases pointed at Figtree, but would have silently flipped that body text to serif now that the alias points at real Newsreader. Made both explicit.
+
 ## [0.4.5] - 2026-09-12
 
 ### Added

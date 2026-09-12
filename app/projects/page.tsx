@@ -46,7 +46,7 @@ export default function ProjectsIndex() {
         <h1 className="m-0 mb-6 text-[3.5em] italic leading-[1.1] text-ink max-[640px]:text-[2.25em]">
           Coming Soon
         </h1>
-        <p className="m-0 mb-10 max-w-[620px] text-lede text-body-text">
+        <p className="font-geist m-0 mb-10 max-w-[620px] text-lede text-body-text">
           I&rsquo;m putting together case studies on the systems I&rsquo;ve
           redesigned — the trust drop-offs, activation loops, and retention
           gaps I&rsquo;ve traced and fixed. Check back shortly.

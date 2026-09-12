@@ -74,11 +74,11 @@
   --color-graphite-8: var(--color-graphite-8);
   --color-rust: var(--color-rust);
   --color-rust-pressed: var(--color-rust-pressed);
-  /* Figtree replaces both Geist and Newsreader (see app/layout.tsx) —
-     kept under the old variable names so every existing font-geist /
-     font-newsreader class site-wide picks it up without a mass rename. */
+  /* Figtree is the body/UI face (font-geist); Newsreader is back as the
+     real serif for display/heading moments (font-newsreader) — every
+     element already tagged font-newsreader site-wide picks this up. */
   --font-geist: var(--font-figtree);
-  --font-newsreader: var(--font-figtree);
+  --font-newsreader: var(--font-newsreader-serif);
   --font-geist-mono: var(--font-geist-mono);
   --animate-scroll-dot: scrollDot 0.912266s linear infinite alternate;
 
@@ -125,10 +125,10 @@
   --text-metric--letter-spacing: -0.02em;
   --text-metric--font-weight: 600;
 
-  --text-greeting: 3rem;
-  --text-greeting--line-height: 1.125;
-  --text-greeting--letter-spacing: -0.02em;
-  --text-greeting--font-weight: 600;
+  /* Reverted to the original pre-v3.0 size after side-by-side review —
+     the spec's 48px greeting read too big; this is the old 32px value. */
+  --text-greeting: 2rem;
+  --text-greeting--line-height: 1.3125;
 
   --text-lede: 1.25rem;
   --text-lede--line-height: 1.6;
