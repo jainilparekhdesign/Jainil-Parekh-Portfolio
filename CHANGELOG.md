@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.5.1] - 2026-09-12
+
+### Changed
+- Homepage headline back to the v3.0 spec's 48px greeting size (reverting the 32px rollback from v0.5.0) — now rendered in the real Newsreader serif from v0.5.0, at the new spec's size. Removed the mobile-specific override that came with the old size.
+
 ## [0.5.0] - 2026-09-12
 
 ### Changed

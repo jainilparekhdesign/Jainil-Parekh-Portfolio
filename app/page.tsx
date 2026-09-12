@@ -7,7 +7,7 @@ export default function Home() {
         id="hero"
         className="relative z-[2] flex flex-1 flex-col items-center justify-center text-center p-6 font-newsreader"
       >
-        <h1 className="m-0 mb-6 text-greeting text-ink max-[640px]:text-[1.625em] max-[640px]:leading-[1.3077]">
+        <h1 className="m-0 mb-6 text-greeting text-ink">
           Hi I&rsquo;m Jainil Parekh
         </h1>
         <p className="font-geist m-0 max-w-[862px] text-lede text-body-text">

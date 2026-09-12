@@ -125,10 +125,10 @@
   --text-metric--letter-spacing: -0.02em;
   --text-metric--font-weight: 600;
 
-  /* Reverted to the original pre-v3.0 size after side-by-side review —
-     the spec's 48px greeting read too big; this is the old 32px value. */
-  --text-greeting: 2rem;
-  --text-greeting--line-height: 1.3125;
+  --text-greeting: 3rem;
+  --text-greeting--line-height: 1.125;
+  --text-greeting--letter-spacing: -0.02em;
+  --text-greeting--font-weight: 600;
 
   --text-lede: 1.25rem;
   --text-lede--line-height: 1.6;
