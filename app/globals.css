@@ -223,3 +223,40 @@ html, body {
   outline-offset: 2px;
   border-radius: 8px;
 }
+
+/* Companion modes — independent of theme and of each other */
+
+[data-contrast="high"] {
+  --color-body-text: var(--color-ink);
+  --color-graphite-70: var(--color-body-text);
+  --color-graphite-50: var(--color-graphite-70);
+  --color-toolbar-outline: var(--color-graphite-30);
+}
+[data-contrast="high"] .card,
+[data-contrast="high"] .tag,
+[data-contrast="high"] .btn-secondary {
+  border-width: 1px;
+}
+[data-contrast="high"] :focus-visible {
+  outline-width: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="normal"]) {
+    --dur-micro: 0ms;
+    --dur-page: 0ms;
+  }
+  :root:not([data-motion="normal"]) .animate-scroll-dot {
+    animation: none;
+  }
+}
+[data-motion="reduced"] {
+  --dur-micro: 0ms;
+  --dur-page: 0ms;
+}
+[data-motion="reduced"] .animate-scroll-dot {
+  animation: none;
+}
+[data-motion="reduced"] * {
+  transition-duration: 0ms !important;
+}

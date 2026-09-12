@@ -3,6 +3,15 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.6.0] - 2026-09-12
+
+### Added
+- Two new case studies, built from real source decks:
+  - `/projects/ai-research` — "AI: An Escape from Illusion," a UX research study on trust, efficiency, and understanding in AI-assisted studying (persona, real quotes, adoption-phase data visualized as bar comparisons, recommendations with target metrics). ~5 min read.
+  - `/projects/read-validation` — "Read — Risky Assumption Report," the Lean/pretotyping validation work for Read (three risky assumptions, three tests — Fake Front Door, Mechanical Turk, Smoke Test — each with real results and a hypothesis-proven outcome). ~6 min read.
+- Projects index now lists all three case studies as cards instead of one card plus a "Coming Soon" placeholder.
+- A real accessibility system, replacing the always-visible three-icon toolbar: a single Accessibility icon opens a panel with text size (3-step), dark mode, **high contrast** (new), and **reduced motion** (new) as independent, labeled toggles, plus the existing read-aloud feature and a "Reset to system preferences" action. High contrast and reduced motion default to the OS-level `prefers-contrast`/`prefers-reduced-motion` settings when the user hasn't chosen explicitly, and `[data-contrast="high"]` / `[data-motion="reduced"]` styling was added to `globals.css` to back both.
+
 ## [0.5.1] - 2026-09-12
 
 ### Changed
