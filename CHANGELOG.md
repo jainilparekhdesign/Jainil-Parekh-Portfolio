@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.8] - 2026-09-12
+
+### Removed
+- `/resume/v1` — the single-card layout is retired now that sectioned cards is the confirmed direction. Dropped the now-dead "View v1" link from `/resume`.
+
 ## [0.7.7] - 2026-09-12
 
 ### Changed
