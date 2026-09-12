@@ -3,6 +3,17 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.4.1] - 2026-09-11
+
+### Note
+No source changes — version bump to force a fresh Vercel build after
+v0.3.1, v0.4.0, and an empty retrigger commit were all auto-canceled
+("Canceled from the Vercel Dashboard") immediately on push. Root
+cause not yet identified from the git/GitHub side; likely a Vercel
+account-level setting (build quota, ignored-build-step script, or
+similar) that needs checking directly in the dashboard if this one
+cancels too.
+
 ## [0.4.0] - 2026-09-11
 
 ### Added
