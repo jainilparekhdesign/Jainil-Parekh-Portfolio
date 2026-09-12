@@ -3,6 +3,14 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.3.1] - 2026-09-11
+
+### Fixed
+- "The solution" section's example cards still showed the old fabricated 12-day streak and 15-minute goal, contradicting the real 6-day-streak/10-minute-goal dashboard screenshot now used in the hero. Updated the goal-time chips (now 1/5/10/15/30/60, matching the real Combine iteration) and the badge card (now a real reward name — "Indiana Jones · 200 pts" — and the real 6-day streak).
+
+### Added
+- An estimated read time ("8 min read") next to the case study's eyebrow line, based on an actual word count of the page's content.
+
 ## [0.3.0] - 2026-09-11
 
 ### Changed

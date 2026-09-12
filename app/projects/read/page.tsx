@@ -245,7 +245,7 @@ export default function ReadCaseStudy() {
         </Link>
 
         <div className="mt-12 max-w-[620px]">
-          <SectionLabel>Academic project · Mobile design</SectionLabel>
+          <SectionLabel>Academic project · Mobile design · 8 min read</SectionLabel>
           <h1 className="font-newsreader mt-3 text-[2.5em] leading-[1.1] text-ink sm:text-[3em] dark:text-[#f2f2f0]">
             Read — One page. At a time.
           </h1>
@@ -315,12 +315,12 @@ export default function ReadCaseStudy() {
           <div className="mt-10 rounded-[24px] bg-pill-bg p-6 sm:p-10">
             <div className="grid gap-6 sm:grid-cols-3">
               <SolutionCard step={1} eyebrow="Set today" title="How long today?">
-                <div className="flex gap-2">
-                  {["5", "15", "30", "60"].map((m) => (
+                <div className="flex flex-wrap gap-2">
+                  {["1", "5", "10", "15", "30", "60"].map((m) => (
                     <span
                       key={m}
                       className={`font-geist-mono rounded-lg px-2.5 py-1.5 text-[0.8125em] ${
-                        m === "15"
+                        m === "10"
                           ? "bg-blue/15 text-blue"
                           : "bg-pill-bg text-body-text"
                       }`}
@@ -334,7 +334,7 @@ export default function ReadCaseStudy() {
                     Today
                   </p>
                   <p className="font-newsreader text-[1.25em] text-blue">
-                    15 min
+                    10 min
                   </p>
                 </div>
               </SolutionCard>
@@ -376,7 +376,7 @@ export default function ReadCaseStudy() {
                 <div className="flex flex-col items-center py-1">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue/10">
                     <span className="font-geist-mono text-[1.25em] font-semibold text-blue">
-                      12
+                      6
                     </span>
                   </div>
                   <p className="font-geist mt-2 text-[0.8125em] text-body-text">
@@ -385,10 +385,10 @@ export default function ReadCaseStudy() {
                 </div>
                 <div className="mt-3 rounded-xl bg-blue/10 px-4 py-3">
                   <p className="font-geist text-[0.8125em] text-blue">
-                    Reward unlocked
+                    Badge unlocked
                   </p>
                   <p className="font-geist text-[0.8125em] text-blue">
-                    15% off Penguin Classics
+                    Indiana Jones · 200 pts
                   </p>
                 </div>
               </SolutionCard>
