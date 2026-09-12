@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.4.3] - 2026-09-11
+
+### Added
+- Temporary side-by-side comparison on the homepage: the "Hi I'm Jainil Parekh" headline now renders twice, labeled "New — v3.0 spec" (the `text-greeting` token, 48px) and "Old — previous size" (the original `text-[2em]` styling, ~32px), so the new type-scale size can be judged directly against the old one before deciding whether to keep it. Meant to be removed once a decision is made.
+
 ## [0.4.2] - 2026-09-11
 
 ### Fixed
