@@ -3,6 +3,20 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.4.0] - 2026-09-11
+
+### Added
+- Real type-scale tokens in `app/globals.css` (`--text-hero`, `--text-case-cover`, `--text-section-heading`, `--text-subheading`, `--text-body`, `--text-ui`, `--text-eyebrow`, `--text-caption`, `--text-metric`, `--text-greeting`, `--text-lede`, `--text-nav-wordmark`), matching the v3.0 design system's literal pixel/line-height/letter-spacing values (fluid `clamp()` for the four sizes the spec gives explicit mobile values for: hero, case-study cover, section heading, metric callout).
+- Semantic component classes (`.btn-primary`, `.btn-secondary`, `.card`, `.tag`, `.t-emphasis`) and motion tokens (`--dur-micro`, `--dur-page`, `--ease-page`) plus a global `:focus-visible` ring, per the spec's component and accessibility sections.
+
+### Changed
+- Migrated typography across the Home hero, Nav, Toolbar, Projects index, and the entire Read case study off arbitrary Tailwind bracket values (`text-[1.75em]`, etc.) onto the new named scale — this is a real visual size change in places (e.g. the homepage H1 grows from ~32px to the spec's 48px greeting size), not just a code-quality pass.
+- Removed ~26 redundant manual dark-mode text-color overrides (`dark:text-[#f2f2f0]`) across Nav, Toolbar, Projects index, and the Read case study — the `text-ink` token already flips correctly in dark mode, so these were dead duplicate rules (and in a couple of spots, papering over a `text-black` base that wasn't theme-aware at all in dark mode).
+
+### Known gaps
+- The Resume page keeps its own distinct print-document design language (Instrument Serif/DM Sans, warm tan palette) and was intentionally left untouched.
+- A handful of small illustrative UI-mockup snippets inside "The solution" section's three example cards still use one-off arbitrary sizes — low priority, not part of the case study's real content.
+
 ## [0.3.1] - 2026-09-11
 
 ### Fixed

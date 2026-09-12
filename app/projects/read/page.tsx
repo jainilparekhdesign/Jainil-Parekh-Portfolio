@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="font-geist-mono text-[0.8125em] tracking-[0.04em] text-body-text uppercase">
+    <p className="font-geist-mono text-caption tracking-[0.04em] text-body-text uppercase">
       {children}
     </p>
   );
@@ -24,7 +24,7 @@ function SectionHeading({
 }) {
   return (
     <h2
-      className={`font-newsreader mt-3 text-[1.75em] leading-[1.2] text-ink dark:text-[#f2f2f0] ${className}`}
+      className={`font-newsreader mt-3 text-section-heading text-ink ${className}`}
     >
       {children}
     </h2>
@@ -34,8 +34,8 @@ function SectionHeading({
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="font-geist-mono text-[0.8125em] text-body-text">{label}</p>
-      <p className="font-geist mt-1 text-[1em] text-ink dark:text-[#f2f2f0]">
+      <p className="font-geist-mono text-caption text-body-text">{label}</p>
+      <p className="font-geist mt-1 text-ui text-ink">
         {value}
       </p>
     </div>
@@ -45,10 +45,10 @@ function MetaItem({ label, value }: { label: string; value: string }) {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="font-geist-mono text-[2em] font-semibold text-rust">
+      <p className="font-geist-mono text-metric text-rust">
         {value}
       </p>
-      <p className="font-geist mt-2 max-w-[220px] text-[0.9375em] text-body-text">
+      <p className="font-geist mt-2 max-w-[220px] text-ui font-normal text-body-text">
         {label}
       </p>
     </div>
@@ -69,14 +69,14 @@ function SolutionCard({
   return (
     <div className="rounded-2xl border border-toolbar-outline bg-bg p-5">
       <div className="flex items-center gap-2">
-        <span className="font-geist-mono flex h-6 w-6 items-center justify-center rounded-full bg-blue text-[0.75em] text-white">
+        <span className="font-geist-mono flex h-6 w-6 items-center justify-center rounded-full bg-blue text-caption text-white">
           {step}
         </span>
-        <span className="font-geist-mono text-[0.75em] text-body-text">
+        <span className="font-geist-mono text-caption text-body-text">
           {eyebrow}
         </span>
       </div>
-      <p className="font-newsreader mt-3 text-[1.125em] text-ink dark:text-[#f2f2f0]">
+      <p className="font-newsreader mt-3 text-subheading text-ink">
         {title}
       </p>
       <div className="mt-4">{children}</div>
@@ -95,13 +95,13 @@ function Feature({
 }) {
   return (
     <div>
-      <p className="font-geist-mono text-[1.5em] font-semibold text-blue">
+      <p className="font-geist-mono text-metric text-blue">
         {number}
       </p>
-      <p className="font-geist mt-2 text-[1.0625em] font-bold text-ink dark:text-[#f2f2f0]">
+      <p className="font-geist mt-2 text-ui font-bold text-ink">
         {title}
       </p>
-      <p className="font-geist mt-2 text-[0.9375em] text-body-text">
+      <p className="font-geist mt-2 text-ui font-normal text-body-text">
         {description}
       </p>
     </div>
@@ -118,12 +118,12 @@ function StrategyCard({
   description: string;
 }) {
   return (
-    <div className="rounded-2xl bg-pill-bg p-6">
-      <p className="font-geist-mono text-[0.8125em] text-blue">{label}</p>
-      <p className="font-geist mt-2 text-[1.125em] font-semibold text-ink dark:text-[#f2f2f0]">
+    <div className="card border-0 p-6">
+      <p className="font-geist-mono text-caption text-blue">{label}</p>
+      <p className="font-geist mt-2 text-subheading text-ink">
         {title}
       </p>
-      <p className="font-geist mt-2 text-[0.9375em] text-body-text">
+      <p className="font-geist mt-2 text-ui font-normal text-body-text">
         {description}
       </p>
     </div>
@@ -141,14 +141,14 @@ function InsightItem({
 }) {
   return (
     <div className="grid gap-2 border-t border-toolbar-outline py-8 first:border-t-0 sm:grid-cols-[64px_1fr] sm:gap-8">
-      <p className="font-geist-mono text-[1.5em] font-semibold text-blue">
+      <p className="font-geist-mono text-metric text-blue">
         {number}
       </p>
       <div>
-        <p className="font-newsreader text-[1.25em] text-ink dark:text-[#f2f2f0]">
+        <p className="font-newsreader text-subheading text-ink">
           {title}
         </p>
-        <p className="font-geist mt-2 max-w-[620px] text-[0.9375em] text-body-text">
+        <p className="font-geist mt-2 max-w-[620px] text-ui font-normal text-body-text">
           {description}
         </p>
       </div>
@@ -174,15 +174,15 @@ function IterationBlock({
   return (
     <section>
       <SectionLabel>Iteration {number}</SectionLabel>
-      <h3 className="font-newsreader mt-3 text-[1.5em] text-ink dark:text-[#f2f2f0]">
+      <h3 className="font-newsreader mt-3 text-subheading text-ink">
         {title}
       </h3>
-      <p className="font-geist mt-3 max-w-[620px] text-[0.9375em] text-body-text">
+      <p className="font-geist mt-3 max-w-[620px] text-ui font-normal text-body-text">
         {description}
       </p>
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
         <div>
-          <p className="font-geist-mono text-[0.75em] text-body-text">
+          <p className="font-geist-mono text-caption text-body-text">
             Before
           </p>
           <div className="mt-2 flex justify-center rounded-2xl bg-pill-bg p-6">
@@ -190,14 +190,14 @@ function IterationBlock({
           </div>
         </div>
         <div>
-          <p className="font-geist-mono text-[0.75em] text-blue">After</p>
+          <p className="font-geist-mono text-caption text-blue">After</p>
           <div className="mt-2 flex justify-center rounded-2xl bg-pill-bg p-6">
             {after}
           </div>
         </div>
       </div>
-      <p className="font-geist mt-4 text-[0.9375em] text-body-text">
-        <span className="font-semibold text-ink dark:text-[#f2f2f0]">
+      <p className="font-geist mt-4 text-ui font-normal text-body-text">
+        <span className="font-semibold text-ink">
           What changed —{" "}
         </span>
         {changeCaption}
@@ -209,10 +209,10 @@ function IterationBlock({
 function UsabilityStat({ value, label }: { value: string; label: string }) {
   return (
     <div className="rounded-2xl bg-pill-bg p-5">
-      <p className="font-newsreader text-[1.75em] text-rust">
+      <p className="font-newsreader text-metric text-rust">
         {value}
       </p>
-      <p className="font-geist mt-1 text-[0.8125em] text-body-text">
+      <p className="font-geist mt-1 text-caption text-body-text">
         {label}
       </p>
     </div>
@@ -230,7 +230,7 @@ export default function ReadCaseStudy() {
       >
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-[1em] text-ink no-underline transition-colors hover:text-nav-active dark:text-[#f2f2f0] dark:hover:text-nav-active"
+          className="inline-flex items-center gap-2 text-ui font-normal text-ink no-underline transition-colors hover:text-nav-active"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="block">
             <path
@@ -246,10 +246,10 @@ export default function ReadCaseStudy() {
 
         <div className="mt-12 max-w-[620px]">
           <SectionLabel>Academic project · Mobile design · 8 min read</SectionLabel>
-          <h1 className="font-newsreader mt-3 text-[2.5em] leading-[1.1] text-ink sm:text-[3em] dark:text-[#f2f2f0]">
+          <h1 className="font-newsreader mt-3 text-case-cover text-ink">
             Read — One page. At a time.
           </h1>
-          <p className="font-geist mt-6 max-w-[544px] text-[1.125em] leading-[1.5] text-body-text">
+          <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
             A habit-forming reading app for first-time readers — designed
             around small daily goals, visible progress, and earned rewards.
           </p>
@@ -307,7 +307,7 @@ export default function ReadCaseStudy() {
           <SectionHeading className="max-w-[681px]">
             Don&rsquo;t sell them books. Help them become readers.
           </SectionHeading>
-          <p className="font-geist mt-4 max-w-[620px] text-[1em] text-body-text">
+          <p className="font-geist mt-4 max-w-[620px] text-body text-body-text">
             Three core experiences across the daily reading loop — each
             making progress visible at a different scale.
           </p>
@@ -349,7 +349,7 @@ export default function ReadCaseStudy() {
                     <p className="font-geist-mono text-[0.75em] text-body-text">
                       Time
                     </p>
-                    <p className="font-geist text-[1.125em] font-semibold text-ink dark:text-[#f2f2f0]">
+                    <p className="font-geist text-[1.125em] font-semibold text-ink">
                       18 min
                     </p>
                   </div>
@@ -357,7 +357,7 @@ export default function ReadCaseStudy() {
                     <p className="font-geist-mono text-[0.75em] text-body-text">
                       Pace
                     </p>
-                    <p className="font-geist text-[1.125em] font-semibold text-ink dark:text-[#f2f2f0]">
+                    <p className="font-geist text-[1.125em] font-semibold text-ink">
                       240 wpm
                     </p>
                   </div>
@@ -366,7 +366,7 @@ export default function ReadCaseStudy() {
                   <p className="font-geist-mono text-[0.75em] text-body-text">
                     Pages read
                   </p>
-                  <p className="font-geist text-[1.125em] font-semibold text-ink dark:text-[#f2f2f0]">
+                  <p className="font-geist text-[1.125em] font-semibold text-ink">
                     11 pages
                   </p>
                 </div>
@@ -475,22 +475,22 @@ export default function ReadCaseStudy() {
           </div>
 
           <div className="mt-10 rounded-2xl bg-[var(--rust-wash)] p-8 sm:p-10">
-            <p className="font-geist-mono text-[0.8125em] text-body-text">
+            <p className="font-geist-mono text-caption text-body-text">
               From the usability study
             </p>
-            <p className="font-newsreader mt-4 text-[1.375em] leading-[1.4] text-ink dark:text-[#f2f2f0]">
+            <p className="font-newsreader mt-4 text-subheading text-ink">
               &ldquo;I went to rewards to see if there were different ways to
               go for my rewards&hellip; that opened to Settings.&rdquo;
             </p>
             <div className="mt-6 flex items-center gap-3">
-              <span className="font-geist-mono flex h-9 w-9 items-center justify-center rounded-full bg-rust text-[0.8125em] text-white">
+              <span className="font-geist-mono flex h-9 w-9 items-center justify-center rounded-full bg-rust text-caption text-white">
                 P1
               </span>
               <div>
-                <p className="font-geist text-[0.9375em] font-semibold text-ink dark:text-[#f2f2f0]">
+                <p className="font-geist text-ui font-semibold text-ink">
                   Participant · Usability study
                 </p>
-                <p className="font-geist text-[0.8125em] text-body-text">
+                <p className="font-geist text-caption text-body-text">
                   5-participant moderated study, April 2026
                 </p>
               </div>
@@ -597,7 +597,7 @@ export default function ReadCaseStudy() {
           <SectionHeading>
             Validated with real readers, not assumptions.
           </SectionHeading>
-          <p className="font-geist mt-4 max-w-[620px] text-[1em] text-body-text">
+          <p className="font-geist mt-4 max-w-[620px] text-body text-body-text">
             5 moderated sessions over 2 weeks, run over Zoom against a Figma
             prototype. Tasks were structured around the Hook Model —
             Trigger, Action, Variable Reward, Investment — so testing
@@ -620,7 +620,7 @@ export default function ReadCaseStudy() {
 
         <section>
           <SectionLabel>Biggest learning</SectionLabel>
-          <p className="font-newsreader mt-3 max-w-[700px] text-[1.75em] leading-[1.3] text-ink dark:text-[#f2f2f0]">
+          <p className="font-newsreader mt-3 max-w-[700px] text-section-heading text-ink">
             The most damaging issues weren&rsquo;t structural — they were
             one-word labels that mismatched what people expected. Words ship
             cheaper than rebuilds.

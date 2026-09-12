@@ -74,7 +74,7 @@ export default function Toolbar() {
         aria-label="Increase text size (accessibility)"
         title="Increase text size (accessibility)"
         className={`box-border flex h-10 w-10 cursor-pointer items-center justify-center rounded border border-toolbar-outline bg-bg transition-transform active:scale-[0.92] ${
-          sizeIndex !== 0 ? "text-toolbar-active" : "text-black dark:text-[#f2f2f0]"
+          sizeIndex !== 0 ? "text-toolbar-active" : "text-ink"
         }`}
       >
         <svg viewBox="0 0 24 24" fill="none" className="block h-full w-full">
@@ -103,7 +103,7 @@ export default function Toolbar() {
         aria-label="Toggle dark mode"
         title="Toggle theme"
         className={`flex h-6 w-6 cursor-pointer items-center justify-center rounded-md transition-[background,transform] hover:bg-blue/[0.08] active:scale-[0.92] ${
-          isDark ? "bg-[var(--toolbar-active-bg)] text-toolbar-active" : "text-black dark:text-[#f2f2f0]"
+          isDark ? "bg-[var(--toolbar-active-bg)] text-toolbar-active" : "text-ink"
         }`}
       >
         <svg viewBox="0 0 24 24" fill="none" className="block h-full w-full">
@@ -131,7 +131,7 @@ export default function Toolbar() {
         aria-label="Read page aloud"
         title="Listen"
         className={`flex h-6 w-6 cursor-pointer items-center justify-center rounded-md transition-[background,transform] hover:bg-blue/[0.08] active:scale-[0.92] ${
-          isSpeaking ? "bg-[var(--toolbar-active-bg)] text-toolbar-active" : "text-black dark:text-[#f2f2f0]"
+          isSpeaking ? "bg-[var(--toolbar-active-bg)] text-toolbar-active" : "text-ink"
         }`}
       >
         <svg viewBox="0 0 24 24" fill="none" className="block h-full w-full">

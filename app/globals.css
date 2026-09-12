@@ -28,6 +28,11 @@
   --color-rust: #8b3a1e;
   --color-rust-pressed: #6b2b14;
   --rust-wash: rgba(139, 58, 30, 0.1);
+
+  /* Motion — v3.0 design system: ease-out only, no bounce/spring */
+  --dur-micro: 200ms;
+  --dur-page: 350ms;
+  --ease-page: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dark {
@@ -76,6 +81,63 @@
   --font-newsreader: var(--font-figtree);
   --font-geist-mono: var(--font-geist-mono);
   --animate-scroll-dot: scrollDot 0.912266s linear infinite alternate;
+
+  /* Type scale — v3.0 design system. Fluid (clamp) where the spec gives a
+     mobile clamp, so one class serves both breakpoints. Line-heights and
+     letter-spacing are the spec's desktop values applied at every size. */
+  --text-hero: clamp(3rem, 2.35rem + 2.6vw, 4.5rem);
+  --text-hero--line-height: 1.06;
+  --text-hero--letter-spacing: -0.024em;
+  --text-hero--font-weight: 600;
+
+  --text-case-cover: clamp(2.25rem, 1.95rem + 1.2vw, 2.875rem);
+  --text-case-cover--line-height: 1.1;
+  --text-case-cover--letter-spacing: -0.02em;
+  --text-case-cover--font-weight: 600;
+
+  --text-section-heading: clamp(1.5rem, 1.4rem + 0.4vw, 1.75rem);
+  --text-section-heading--line-height: 1.2;
+  --text-section-heading--letter-spacing: -0.014em;
+  --text-section-heading--font-weight: 600;
+
+  --text-subheading: 1.25rem;
+  --text-subheading--line-height: 1.4;
+  --text-subheading--letter-spacing: -0.008em;
+  --text-subheading--font-weight: 500;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.625;
+
+  --text-ui: 0.875rem;
+  --text-ui--line-height: 1.4286;
+  --text-ui--font-weight: 500;
+
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.3636;
+  --text-eyebrow--letter-spacing: 0.14em;
+  --text-eyebrow--font-weight: 500;
+
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
+
+  --text-metric: clamp(2rem, 1.7rem + 1vw, 2.5rem);
+  --text-metric--line-height: 1;
+  --text-metric--letter-spacing: -0.02em;
+  --text-metric--font-weight: 600;
+
+  --text-greeting: 3rem;
+  --text-greeting--line-height: 1.125;
+  --text-greeting--letter-spacing: -0.02em;
+  --text-greeting--font-weight: 600;
+
+  --text-lede: 1.25rem;
+  --text-lede--line-height: 1.6;
+  --text-lede--letter-spacing: -0.005em;
+
+  --text-nav-wordmark: 1.375rem;
+  --text-nav-wordmark--line-height: 1.1818;
+  --text-nav-wordmark--letter-spacing: -0.01em;
+  --text-nav-wordmark--font-weight: 600;
 }
 
 @keyframes scrollDot {
@@ -88,4 +150,76 @@ html, body {
   padding: 0;
   background: var(--color-bg);
   color: var(--color-ink);
+}
+
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-blue);
+    color: var(--color-bg);
+    border: 0;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: var(--text-ui);
+    line-height: var(--text-ui--line-height);
+    font-weight: var(--text-ui--font-weight);
+    transition: background-color var(--dur-micro) var(--ease-page);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-nav-active);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--color-blue);
+    border: 0.5px solid var(--color-blue);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: var(--text-ui);
+    line-height: var(--text-ui--line-height);
+    font-weight: var(--text-ui--font-weight);
+    transition: background-color var(--dur-micro) var(--ease-page);
+  }
+  .btn-secondary:hover {
+    background-color: var(--toolbar-active-bg);
+  }
+
+  .card {
+    background-color: var(--color-pill-bg);
+    border: 0.5px solid var(--color-toolbar-outline);
+    border-radius: 12px;
+    transition: border-color var(--dur-micro) var(--ease-page);
+  }
+  .card:hover {
+    border-color: var(--color-graphite-30);
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: var(--text-eyebrow);
+    line-height: var(--text-eyebrow--line-height);
+    letter-spacing: var(--text-eyebrow--letter-spacing);
+    font-weight: var(--text-eyebrow--font-weight);
+    text-transform: uppercase;
+    color: var(--color-blue);
+    background-color: var(--toolbar-active-bg);
+    border-radius: 999px;
+    padding: 4px 10px;
+  }
+
+  .t-emphasis {
+    color: var(--color-rust);
+    font-weight: 500;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+  border-radius: 8px;
 }
