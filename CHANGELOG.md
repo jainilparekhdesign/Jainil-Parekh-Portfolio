@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.1] - 2026-09-12
+
+### Fixed
+- Resume content and the download button row are now centered on the page (`mx-auto` on the max-width wrappers) instead of sitting flush left.
+
 ## [0.7.0] - 2026-09-12
 
 ### Added
