@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.4] - 2026-09-12
+
+### Fixed
+- The decorative background grid pattern (`BgGrid`) was showing behind the resume, competing with a dense reference document for attention. Added a `showBgGrid` prop to `PageShell` (defaults to `true`, matching every other page) and turned it off for the resume specifically.
+
 ## [0.7.3] - 2026-09-12
 
 ### Fixed

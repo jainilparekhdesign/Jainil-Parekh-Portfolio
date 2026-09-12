@@ -8,16 +8,18 @@ type PageShellProps = {
   active: "home" | "projects" | "resume";
   children: ReactNode;
   showScrollIndicator?: boolean;
+  showBgGrid?: boolean;
 };
 
 export default function PageShell({
   active,
   children,
   showScrollIndicator = true,
+  showBgGrid = true,
 }: PageShellProps) {
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden">
-      <BgGrid />
+      {showBgGrid && <BgGrid />}
       <Nav active={active} />
       {children}
       {showScrollIndicator && <ScrollIndicator />}

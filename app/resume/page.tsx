@@ -137,7 +137,7 @@ function SkillGroup({ label, items }: { label: string; items: string }) {
 
 export default function ResumePage() {
   return (
-    <PageShell active="resume" showScrollIndicator={false}>
+    <PageShell active="resume" showScrollIndicator={false} showBgGrid={false}>
       <main className="font-geist relative z-[2] pt-4 pb-6 pl-[clamp(24px,8vw,120px)] pr-[clamp(24px,8vw,120px)] print:p-0">
         <div className="mx-auto flex max-w-[820px] justify-end print:hidden">
           <DownloadButton />
