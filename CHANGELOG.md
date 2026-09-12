@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.4.5] - 2026-09-12
+
+### Added
+- A third homepage comparison column: "Hybrid — serif heading, Figtree body" — the headline set in real Newsreader at the new 48px size, with a Figtree body sample underneath, to test a serif-heading/sans-body pairing against the pure-Figtree New and pure-Newsreader/Geist Old variants.
+
 ## [0.4.4] - 2026-09-12
 
 ### Changed
