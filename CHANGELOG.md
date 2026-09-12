@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.4.2] - 2026-09-11
+
+### Fixed
+- Root cause of every deployment since v0.3.0 getting auto-canceled: Vercel's deployment protection requires verified commit signatures, and commits made from this machine weren't signed. Configured git to sign commits with the existing SSH key (`gpg.format=ssh`, `commit.gpgsign=true`) and registered it as a GitHub Signing Key. This commit should be the first one to actually build.
+
 ## [0.4.1] - 2026-09-11
 
 ### Note
