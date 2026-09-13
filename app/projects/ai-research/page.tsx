@@ -232,29 +232,31 @@ export default function AIResearchCaseStudy() {
           All Projects
         </Link>
 
-        <div className="mt-12 max-w-[620px]">
-          <SectionLabel>Research · UX methods · 5 min read</SectionLabel>
-          <h1 className="font-newsreader mt-3 text-case-cover text-ink">
-            AI: An Escape from Illusion
-          </h1>
-          <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
-            A UX research study on trust, efficiency, and understanding:
-            what happens to learning when AI makes studying feel effortless.
-          </p>
-          <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
-            <MetaItem label="Role" value="UX Researcher" />
-            <MetaItem label="Method" value="1:1 interview" />
-            <MetaItem label="Type" value="Academic research" />
-            <MetaItem label="Focus" value="Trust · Efficiency" />
+        <div className="mt-12 flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-[620px]">
+            <SectionLabel>Research · UX methods · 5 min read</SectionLabel>
+            <h1 className="font-newsreader mt-3 text-case-cover text-ink">
+              AI: An Escape from Illusion
+            </h1>
+            <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
+              A UX research study on trust, efficiency, and understanding:
+              what happens to learning when AI makes studying feel effortless.
+            </p>
+            <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+              <MetaItem label="Role" value="UX Researcher" />
+              <MetaItem label="Method" value="1:1 interview" />
+              <MetaItem label="Type" value="Academic research" />
+              <MetaItem label="Focus" value="Trust · Efficiency" />
+            </div>
           </div>
-        </div>
 
-        <div className="mt-12 flex justify-center rounded-[24px] bg-pill-bg p-8 sm:p-12">
-          <img
-            src="/projects/ai-research/ben-persona.png"
-            alt="Illustrated portrait of Ben, the graduate student persona at the center of this study"
-            className="w-full max-w-[280px]"
-          />
+          <div className="flex w-full shrink-0 justify-center rounded-[24px] bg-pill-bg p-8 sm:p-12 lg:w-[320px]">
+            <img
+              src="/projects/ai-research/ben-persona.png"
+              alt="Illustrated portrait of Ben, the graduate student persona at the center of this study"
+              className="w-full max-w-[220px]"
+            />
+          </div>
         </div>
 
         {divider}

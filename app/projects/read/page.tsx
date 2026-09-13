@@ -251,35 +251,37 @@ export default function ReadCaseStudy() {
           All Projects
         </Link>
 
-        <div className="mt-12 max-w-[620px]">
-          <SectionLabel>Academic project · Mobile design · 8 min read</SectionLabel>
-          <h1 className="font-newsreader mt-3 text-case-cover text-ink">
-            Read: One page. At a time.
-          </h1>
-          <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
-            A habit-forming reading app for first-time readers, designed
-            around small daily goals, visible progress, and earned rewards.
-          </p>
-          <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
-            <MetaItem label="Role" value="End-to-end UX" />
-            <MetaItem label="Timeline" value="16 weeks" />
-            <MetaItem label="Type" value="Academic project" />
-            <MetaItem label="Tools" value="Figma · Miro · Lovable" />
+        <div className="mt-12 flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-[620px]">
+            <SectionLabel>Academic project · Mobile design · 8 min read</SectionLabel>
+            <h1 className="font-newsreader mt-3 text-case-cover text-ink">
+              Read: One page. At a time.
+            </h1>
+            <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
+              A habit-forming reading app for first-time readers, designed
+              around small daily goals, visible progress, and earned rewards.
+            </p>
+            <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+              <MetaItem label="Role" value="End-to-end UX" />
+              <MetaItem label="Timeline" value="16 weeks" />
+              <MetaItem label="Type" value="Academic project" />
+              <MetaItem label="Tools" value="Figma · Miro · Lovable" />
+            </div>
           </div>
-        </div>
 
-        <div className="mt-12 rounded-[24px] bg-pill-bg p-8 sm:p-12">
-          <div className="relative mx-auto flex w-full max-w-[440px] items-end justify-center gap-3 sm:gap-4">
-            <img
-              src="/projects/read/splash.png"
-              alt="Read app splash screen with the wordmark and the tagline “One page. At a time.”"
-              className="w-[34%] max-w-[160px] -rotate-6 rounded-[26px] shadow-[0_16px_40px_rgba(0,0,0,0.18)]"
-            />
-            <img
-              src="/projects/read/dashboard.png"
-              alt="Read app home screen showing a 6-day streak, 500 pages read, today's reading goal, and rewards progress"
-              className="relative z-[1] w-[54%] max-w-[240px] rounded-[26px] shadow-[0_20px_48px_rgba(0,0,0,0.22)]"
-            />
+          <div className="flex w-full shrink-0 justify-center rounded-[24px] bg-pill-bg p-8 sm:p-12 lg:w-[380px]">
+            <div className="relative mx-auto flex w-full max-w-[320px] items-end justify-center gap-3">
+              <img
+                src="/projects/read/splash.png"
+                alt="Read app splash screen with the wordmark and the tagline “One page. At a time.”"
+                className="w-[34%] max-w-[130px] -rotate-6 rounded-[26px] shadow-[0_16px_40px_rgba(0,0,0,0.18)]"
+              />
+              <img
+                src="/projects/read/dashboard.png"
+                alt="Read app home screen showing a 6-day streak, 500 pages read, today's reading goal, and rewards progress"
+                className="relative z-[1] w-[54%] max-w-[190px] rounded-[26px] shadow-[0_20px_48px_rgba(0,0,0,0.22)]"
+              />
+            </div>
           </div>
         </div>
 

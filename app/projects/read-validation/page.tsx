@@ -217,31 +217,33 @@ export default function ReadValidationCaseStudy() {
           All Projects
         </Link>
 
-        <div className="mt-12 max-w-[620px]">
-          <SectionLabel>
-            Academic project · Design business · 6 min read
-          </SectionLabel>
-          <h1 className="font-newsreader mt-3 text-case-cover text-ink">
-            Read: Risky Assumption Report
-          </h1>
-          <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
-            Validating demand, habit formation, and willingness to pay for
-            Read, before writing a line of production code.
-          </p>
-          <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
-            <MetaItem label="Role" value="Lean validation" />
-            <MetaItem label="Timeline" value="2.5 weeks testing" />
-            <MetaItem label="Course" value="INDD-701 Design Business" />
-            <MetaItem label="Tools" value="Lovable · Supabase · Sheets" />
+        <div className="mt-12 flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-[620px]">
+            <SectionLabel>
+              Academic project · Design business · 6 min read
+            </SectionLabel>
+            <h1 className="font-newsreader mt-3 text-case-cover text-ink">
+              Read: Risky Assumption Report
+            </h1>
+            <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
+              Validating demand, habit formation, and willingness to pay for
+              Read, before writing a line of production code.
+            </p>
+            <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+              <MetaItem label="Role" value="Lean validation" />
+              <MetaItem label="Timeline" value="2.5 weeks testing" />
+              <MetaItem label="Course" value="INDD-701 Design Business" />
+              <MetaItem label="Tools" value="Lovable · Supabase · Sheets" />
+            </div>
           </div>
-        </div>
 
-        <div className="mt-12 rounded-[24px] bg-pill-bg p-8 sm:p-12">
-          <img
-            src="/projects/read-validation/test1-landing.png"
-            alt="Read Coming Soon landing page used to validate demand, the Fake Front Door test artifact"
-            className="mx-auto w-full max-w-[640px] rounded-[14px] shadow-[0_20px_48px_rgba(0,0,0,0.16)]"
-          />
+          <div className="flex w-full shrink-0 justify-center rounded-[24px] bg-pill-bg p-8 sm:p-12 lg:w-[420px]">
+            <img
+              src="/projects/read-validation/test1-landing.png"
+              alt="Read Coming Soon landing page used to validate demand, the Fake Front Door test artifact"
+              className="mx-auto w-full max-w-[360px] rounded-[14px] shadow-[0_20px_48px_rgba(0,0,0,0.16)]"
+            />
+          </div>
         </div>
 
         {divider}

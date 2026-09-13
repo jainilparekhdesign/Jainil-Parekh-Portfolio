@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.12.1] - 2026-09-13
+
+### Changed
+- Moved each case study's hero thumbnail from below the title block to beside it (right side on desktop, stacking above the title on mobile), across all three case studies.
+
 ## [0.12.0] - 2026-09-13
 
 ### Added
