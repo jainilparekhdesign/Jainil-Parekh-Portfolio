@@ -6,7 +6,7 @@ import DownloadButton from "./DownloadButton";
 import FitToPage from "./FitToPage";
 
 export const metadata: Metadata = {
-  title: "Resume — Jainil Parekh",
+  title: "Resume | Jainil Parekh",
 };
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -163,7 +163,7 @@ export default function ResumePage() {
                     Jainil Parekh
                   </h1>
                   <p className="font-geist mt-0.5 text-ui font-medium text-blue">
-                    Product Designer — Fintech &amp; Behavioral Systems
+                    Product Designer, Fintech &amp; Behavioral Systems
                   </p>
                 </div>
                 <div className="font-geist-mono flex flex-col items-end gap-0.5 text-caption text-body-text">
@@ -237,7 +237,7 @@ export default function ResumePage() {
                 <Card>
                   <SectionLabel>Projects</SectionLabel>
                   <ProjectItem
-                    title="Habit Forming Application — Read"
+                    title="Habit Forming Application: Read"
                     href="/projects/read"
                     bullets={[
                       "Designed a habit-forming reading app that helps users build a daily reading habit without pressure.",
@@ -299,7 +299,7 @@ export default function ResumePage() {
               Jainil Parekh
             </h1>
             <p className="font-geist mt-0.5 text-ui font-medium text-blue">
-              Product Designer — Fintech &amp; Behavioral Systems
+              Product Designer, Fintech &amp; Behavioral Systems
             </p>
             <div className="font-geist-mono mt-2 flex flex-wrap gap-x-4 gap-y-1 text-caption text-body-text">
               <span>(773) 696-8289</span>
@@ -367,7 +367,7 @@ export default function ResumePage() {
                 <section>
                   <SectionLabel>Projects</SectionLabel>
                   <ProjectItem
-                    title="Habit Forming Application — Read"
+                    title="Habit Forming Application: Read"
                     bullets={[
                       "Designed a habit-forming reading app that helps users build a daily reading habit without pressure.",
                       "Conducted user research, defined personas, and prioritized features using MoSCoW analysis.",

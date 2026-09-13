@@ -1,4 +1,13 @@
-import { sql } from "@vercel/postgres";
+import { neon, type NeonQueryFunction } from "@neondatabase/serverless";
+
+let client: NeonQueryFunction<false, false> | undefined;
+
+function sql(strings: TemplateStringsArray, ...values: unknown[]) {
+  if (!client) {
+    client = neon(process.env.POSTGRES_URL!);
+  }
+  return client(strings, ...values);
+}
 
 let schemaReady: Promise<unknown> | null = null;
 
@@ -47,6 +56,17 @@ export async function recordEvent(event: EventInput) {
   `;
 }
 
+export type SessionSummary = {
+  sessionId: string;
+  firstSeen: string;
+  lastSeen: string;
+  country: string | null;
+  city: string | null;
+  totalDurationMs: number;
+  downloadedResume: boolean;
+  pages: { path: string; durationMs: number }[];
+};
+
 export type DashboardData = {
   totalPageviews: number;
   totalDownloads: number;
@@ -55,6 +75,7 @@ export type DashboardData = {
   topReferrers: { referrer: string; visits: number }[];
   topCountries: { country: string; visits: number }[];
   caseStudyViews: { path: string; views: number }[];
+  recentSessions: SessionSummary[];
 };
 
 const CASE_STUDY_PATHS = [
@@ -67,13 +88,15 @@ export async function getDashboardData(): Promise<DashboardData> {
   await ensureSchema();
 
   const [
-    totalPageviewsRes,
-    totalDownloadsRes,
-    avgDurationRes,
-    dailyViewsRes,
-    topReferrersRes,
-    topCountriesRes,
-    caseStudyViewsRes,
+    totalPageviewsRows,
+    totalDownloadsRows,
+    avgDurationRows,
+    dailyViewsRows,
+    topReferrersRows,
+    topCountriesRows,
+    caseStudyViewsRows,
+    sessionsRows,
+    sessionPagesRows,
   ] = await Promise.all([
     sql`SELECT COUNT(*)::int AS count FROM events WHERE event_type = 'pageview'`,
     sql`SELECT COUNT(*)::int AS count FROM events WHERE event_type = 'download_click'`,
@@ -108,15 +131,75 @@ export async function getDashboardData(): Promise<DashboardData> {
         AND path IN (${CASE_STUDY_PATHS[0]}, ${CASE_STUDY_PATHS[1]}, ${CASE_STUDY_PATHS[2]})
       GROUP BY path
     `,
+    sql`
+      SELECT
+        session_id,
+        MIN(created_at) AS first_seen,
+        MAX(created_at) AS last_seen,
+        MAX(country) FILTER (WHERE country IS NOT NULL) AS country,
+        MAX(city) FILTER (WHERE city IS NOT NULL) AS city,
+        COALESCE(SUM(duration_ms) FILTER (WHERE event_type = 'duration'), 0)::int AS total_duration_ms,
+        BOOL_OR(event_type = 'download_click') AS downloaded_resume
+      FROM events
+      GROUP BY session_id
+      ORDER BY MAX(created_at) DESC
+      LIMIT 30
+    `,
+    sql`
+      SELECT session_id, path, SUM(duration_ms)::int AS duration_ms
+      FROM events
+      WHERE event_type = 'duration'
+      GROUP BY session_id, path
+    `,
   ]);
 
+  const sessionIds = new Set(
+    (sessionsRows as { session_id: string }[]).map((r) => r.session_id),
+  );
+  const pagesBySession = new Map<string, { path: string; durationMs: number }[]>();
+  for (const row of sessionPagesRows as {
+    session_id: string;
+    path: string;
+    duration_ms: number;
+  }[]) {
+    if (!sessionIds.has(row.session_id)) continue;
+    const list = pagesBySession.get(row.session_id) ?? [];
+    list.push({ path: row.path, durationMs: row.duration_ms });
+    pagesBySession.set(row.session_id, list);
+  }
+  for (const pages of pagesBySession.values()) {
+    pages.sort((a, b) => b.durationMs - a.durationMs);
+  }
+
+  const recentSessions: SessionSummary[] = (
+    sessionsRows as {
+      session_id: string;
+      first_seen: string;
+      last_seen: string;
+      country: string | null;
+      city: string | null;
+      total_duration_ms: number;
+      downloaded_resume: boolean;
+    }[]
+  ).map((row) => ({
+    sessionId: row.session_id,
+    firstSeen: row.first_seen,
+    lastSeen: row.last_seen,
+    country: row.country,
+    city: row.city,
+    totalDurationMs: row.total_duration_ms,
+    downloadedResume: row.downloaded_resume,
+    pages: pagesBySession.get(row.session_id) ?? [],
+  }));
+
   return {
-    totalPageviews: totalPageviewsRes.rows[0]?.count ?? 0,
-    totalDownloads: totalDownloadsRes.rows[0]?.count ?? 0,
-    avgDurationMs: avgDurationRes.rows[0]?.avg ?? null,
-    dailyViews: dailyViewsRes.rows as { day: string; views: number }[],
-    topReferrers: topReferrersRes.rows as { referrer: string; visits: number }[],
-    topCountries: topCountriesRes.rows as { country: string; visits: number }[],
-    caseStudyViews: caseStudyViewsRes.rows as { path: string; views: number }[],
+    totalPageviews: (totalPageviewsRows[0] as { count: number })?.count ?? 0,
+    totalDownloads: (totalDownloadsRows[0] as { count: number })?.count ?? 0,
+    avgDurationMs: (avgDurationRows[0] as { avg: number | null })?.avg ?? null,
+    dailyViews: dailyViewsRows as { day: string; views: number }[],
+    topReferrers: topReferrersRows as { referrer: string; visits: number }[],
+    topCountries: topCountriesRows as { country: string; visits: number }[],
+    caseStudyViews: caseStudyViewsRows as { path: string; views: number }[],
+    recentSessions,
   };
 }

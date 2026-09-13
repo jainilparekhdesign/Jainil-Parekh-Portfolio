@@ -89,7 +89,7 @@ export default function ProjectsIndex() {
           Case studies on the systems I&rsquo;ve redesigned.
         </h1>
         <p className="font-geist m-0 mb-12 max-w-[620px] text-lede text-body-text">
-          Trust drop-offs, activation loops, retention gaps — traced,
+          Trust drop-offs, activation loops, retention gaps: traced,
           tested, and fixed.
         </p>
         <div className="flex w-full max-w-[900px] flex-col gap-6 text-left">
@@ -99,7 +99,7 @@ export default function ProjectsIndex() {
             thumbnailAlt="Read app home screen showing a reading streak, daily goal, and rewards progress"
             type="Academic"
             topics={["UX Design", "Interaction Design"]}
-            title="Read — One page. At a time."
+            title="Read: One page. At a time."
             description="A habit-forming reading app for first-time readers."
             readTime="8 min read"
           />
@@ -109,7 +109,7 @@ export default function ProjectsIndex() {
             thumbnailAlt="Read app Coming Soon landing page used to validate demand"
             type="Academic"
             topics={["Design Business", "Lean Validation"]}
-            title="Read — Risky Assumption Report"
+            title="Read: Risky Assumption Report"
             description="Validating demand, habit, and willingness to pay before writing code."
             readTime="6 min read"
           />

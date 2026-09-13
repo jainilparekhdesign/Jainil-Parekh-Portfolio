@@ -24,8 +24,25 @@ const newsreader = Newsreader({
   style: ["normal", "italic"],
 });
 
+const description =
+  "Jainil Parekh, a product designer focused on fintech and behavioral systems. UX case studies, research, and resume.";
+
 export const metadata: Metadata = {
-  title: "Jainil Parekh — Portfolio",
+  metadataBase: new URL("https://jainilparekh.design"),
+  title: "Jainil Parekh | Portfolio",
+  description,
+  openGraph: {
+    title: "Jainil Parekh | Portfolio",
+    description,
+    url: "https://jainilparekh.design",
+    siteName: "Jainil Parekh | Portfolio",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Jainil Parekh | Portfolio",
+    description,
+  },
 };
 
 export default function RootLayout({

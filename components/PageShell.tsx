@@ -14,7 +14,7 @@ type PageShellProps = {
 export default function PageShell({
   active,
   children,
-  showScrollIndicator = true,
+  showScrollIndicator = false,
   showBgGrid = true,
 }: PageShellProps) {
   return (

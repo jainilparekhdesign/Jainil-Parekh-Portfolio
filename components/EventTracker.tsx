@@ -42,7 +42,7 @@ export function trackDownload(path: string) {
 
 export default function EventTracker() {
   const pathname = usePathname();
-  const startRef = useRef(Date.now());
+  const startRef = useRef(0);
   const pathRef = useRef(pathname);
 
   useEffect(() => {

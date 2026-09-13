@@ -86,7 +86,7 @@ function Quote({
         &ldquo;{text}&rdquo;
       </p>
       <p className="font-geist-mono mt-4 text-caption text-body-text">
-        — {attribution}
+        {attribution}
       </p>
     </div>
   );
@@ -238,7 +238,7 @@ export default function AIResearchCaseStudy() {
             AI: An Escape from Illusion
           </h1>
           <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
-            A UX research study on trust, efficiency, and understanding —
+            A UX research study on trust, efficiency, and understanding:
             what happens to learning when AI makes studying feel effortless.
           </p>
           <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
@@ -260,13 +260,13 @@ export default function AIResearchCaseStudy() {
             </div>
             <div>
               <p className="font-geist text-ui font-semibold text-ink">
-                Graduate student — International Relations &amp; Law
+                Graduate student, International Relations &amp; Law
               </p>
               <p className="font-geist mt-2 max-w-[560px] text-ui font-normal text-body-text">
                 An ambitious learner searching for clarity in complexity.
                 Ben&rsquo;s coursework runs 80–120 pages of reading a week,
                 with heavy conceptual loads and a real need for precise
-                understanding — exactly the conditions where AI promises the
+                understanding: exactly the conditions where AI promises the
                 most help.
               </p>
             </div>
@@ -284,7 +284,7 @@ export default function AIResearchCaseStudy() {
         <section>
           <SectionLabel>Habits &amp; frustrations</SectionLabel>
           <SectionHeading>
-            A full AI toolkit — and a full list of ways it fails him.
+            A full AI toolkit, and a full list of ways it fails him.
           </SectionHeading>
           <div className="mt-10 grid gap-10 sm:grid-cols-2">
             <div>
@@ -319,13 +319,13 @@ export default function AIResearchCaseStudy() {
           <SectionLabel>Setting</SectionLabel>
           <SectionHeading>Before AI: learning was slow, but deep.</SectionHeading>
           <p className="font-geist mt-4 max-w-[620px] text-body text-body-text">
-            Ben&rsquo;s work was extremely text-heavy — books, articles,
+            Ben&rsquo;s work was extremely text-heavy: books, articles,
             reports. He spent hours synthesizing them by hand. Slow, but the
             understanding stuck.
           </p>
           <div className="mt-8">
             <Quote
-              text="My work was extremely text-heavy — books, articles, reports. I spent hours synthesizing them."
+              text="My work was extremely text-heavy: books, articles, reports. I spent hours synthesizing them."
               attribution="Ben"
             />
           </div>
@@ -350,13 +350,13 @@ export default function AIResearchCaseStudy() {
         <section>
           <SectionLabel>What changed</SectionLabel>
           <SectionHeading>
-            Efficiency rose. Engagement — and understanding — fell.
+            Efficiency rose. Engagement and understanding fell.
           </SectionHeading>
           <div className="mt-10">
             <InsightItem
               number="01"
               title="Mental effort dropped fast, then had to be earned back."
-              description="Self-reported mental effort fell from a 9 (before AI) to a 4 during over-reliance, bottoming out at 3.5 during an engagement dip — before climbing back to 5.5 once Ben deliberately rebalanced his usage."
+              description="Self-reported mental effort fell from a 9 (before AI) to a 4 during over-reliance, bottoming out at 3.5 during an engagement dip, before climbing back to 5.5 once Ben deliberately rebalanced his usage."
             />
             <InsightItem
               number="02"
@@ -368,7 +368,7 @@ export default function AIResearchCaseStudy() {
             <InsightItem
               number="03"
               title="The hidden cost was verification time, not reading time."
-              description="Students re-check everything AI gives out. Time saved in reading became time lost in verifying — and trust in the tool fluctuated session to session rather than settling."
+              description="Students re-check everything AI gives out. Time saved in reading became time lost in verifying, and trust in the tool fluctuated session to session rather than settling."
             />
           </div>
           <div className="mt-10">
@@ -397,7 +397,7 @@ export default function AIResearchCaseStudy() {
           </SectionHeading>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
             <Stat value="92%" label="use AI regularly for academic work" />
-            <Stat value="75%" label="reduced study time — without deepening learning" />
+            <Stat value="75%" label="reduced study time without deepening learning" />
             <Stat value="83%" label="worry about AI accuracy" />
             <Stat value="58%" label="fear losing critical thinking skills" />
           </div>
@@ -416,7 +416,7 @@ export default function AIResearchCaseStudy() {
             same pattern: revising faster, but understanding less; feeling
             productive, but unable to explain the content afterward;
             depending on AI more than he realized. The real problem
-            wasn&rsquo;t time pressure — it was a hidden erosion of
+            wasn&rsquo;t time pressure: it was a hidden erosion of
             understanding.
           </p>
           <div className="mt-8">
@@ -463,7 +463,7 @@ export default function AIResearchCaseStudy() {
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             <RecCard
               title="Think First, Ask AI Second"
-              description="Students jump to AI because it saves time — but that also turns it into a shortcut through reasoning. Have people draft their own take before the AI weighs in."
+              description="Students jump to AI because it saves time, but that also turns it into a shortcut through reasoning. Have people draft their own take before the AI weighs in."
             />
             <RecCard
               title="Structured verification over blind trust"
@@ -471,7 +471,7 @@ export default function AIResearchCaseStudy() {
             />
             <RecCard
               title="Reveal the reasoning path"
-              description="The biggest aha moment was realizing AI hides the work — it gives answers, not reasoning. Tools that show the path let students catch errors and actually learn from them."
+              description="The biggest aha moment was realizing AI hides the work: it gives answers, not reasoning. Tools that show the path let students catch errors and actually learn from them."
             />
           </div>
         </section>

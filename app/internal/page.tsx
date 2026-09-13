@@ -1,16 +1,28 @@
-import { getDashboardData, type DashboardData } from "@/lib/analytics-db";
+import {
+  getDashboardData,
+  type DashboardData,
+  type SessionSummary,
+} from "@/lib/analytics-db";
 import LogoutButton from "@/components/internal/LogoutButton";
+import DashboardSync from "@/components/internal/DashboardSync";
 
 export const dynamic = "force-dynamic";
 
 const CASE_STUDY_TITLES: Record<string, string> = {
   "/projects/read": "Read",
   "/projects/ai-research": "AI: An Escape from Illusion",
-  "/projects/read-validation": "Read — Risky Assumption Report",
+  "/projects/read-validation": "Read: Risky Assumption Report",
+};
+
+const PAGE_LABELS: Record<string, string> = {
+  "/": "Home",
+  "/projects": "Projects",
+  "/resume": "Resume",
+  ...CASE_STUDY_TITLES,
 };
 
 function formatDuration(ms: number | null) {
-  if (!ms) return "—";
+  if (!ms) return "-";
   const seconds = Math.round(ms / 1000);
   if (seconds < 60) return `${seconds}s`;
   const minutes = Math.floor(seconds / 60);
@@ -68,6 +80,81 @@ function RankedList({
   );
 }
 
+function formatTimestamp(iso: string) {
+  return (
+    new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: "UTC",
+    }).format(new Date(iso)) + " UTC"
+  );
+}
+
+function locationLabel(country: string | null, city: string | null) {
+  if (!country && !city) return "Unknown location";
+  if (city && country) return `${city}, ${country}`;
+  return city ?? country ?? "Unknown location";
+}
+
+function VisitorsTable({ sessions }: { sessions: SessionSummary[] }) {
+  return (
+    <div className="card p-6">
+      <p className="font-geist-mono text-eyebrow uppercase text-blue">
+        Recent visitors
+      </p>
+      {sessions.length === 0 ? (
+        <p className="font-geist mt-4 text-body text-graphite-70">
+          No visitors tracked yet.
+        </p>
+      ) : (
+        <ul className="mt-4 flex flex-col divide-y divide-toolbar-outline">
+          {sessions.map((s) => (
+            <li
+              key={s.sessionId}
+              className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-start sm:justify-between"
+            >
+              <div>
+                <p className="font-geist text-ui text-ink">
+                  {locationLabel(s.country, s.city)}
+                </p>
+                <p className="font-geist-mono mt-1 text-caption text-graphite-70">
+                  {formatTimestamp(s.lastSeen)}
+                </p>
+              </div>
+              <div className="flex flex-col gap-1 sm:items-end">
+                <div className="flex items-center gap-3">
+                  <span className="font-geist-mono text-caption text-graphite-70">
+                    {formatDuration(s.totalDurationMs)} total
+                  </span>
+                  <span
+                    className={`font-geist-mono text-caption ${
+                      s.downloadedResume ? "text-blue" : "text-graphite-70"
+                    }`}
+                  >
+                    {s.downloadedResume ? "Downloaded resume" : "No download"}
+                  </span>
+                </div>
+                {s.pages.length > 0 && (
+                  <p className="font-geist text-caption text-graphite-70 sm:text-right">
+                    {s.pages
+                      .map(
+                        (p) =>
+                          `${PAGE_LABELS[p.path] ?? p.path} (${formatDuration(p.durationMs)})`,
+                      )
+                      .join(" · ")}
+                  </p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 async function loadData(): Promise<{ data: DashboardData | null; error: string | null }> {
   try {
     const data = await getDashboardData();
@@ -94,7 +181,10 @@ export default async function InternalDashboardPage() {
             Dashboard
           </h1>
         </div>
-        <LogoutButton />
+        <div className="flex items-center gap-4">
+          <DashboardSync />
+          <LogoutButton />
+        </div>
       </div>
 
       {error && (
@@ -121,7 +211,7 @@ export default async function InternalDashboardPage() {
           </div>
 
           <RankedList
-            title="Page views — last 14 days"
+            title="Page views: last 14 days"
             rows={data.dailyViews.map((d) => ({ label: d.day, value: d.views }))}
             emptyLabel="No page views recorded yet."
           />
@@ -154,6 +244,8 @@ export default async function InternalDashboardPage() {
             }))}
             emptyLabel="No case study views yet."
           />
+
+          <VisitorsTable sessions={data.recentSessions} />
         </div>
       )}
     </div>

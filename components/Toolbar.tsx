@@ -222,6 +222,8 @@ export default function Toolbar() {
 
   function handleTextSize(nextIndex: number) {
     setSizeIndex(nextIndex);
+    // Imperative DOM style mutation from a user click, not a render-time value — safe to mutate directly.
+    // eslint-disable-next-line react-hooks/immutability
     document.documentElement.style.fontSize = SIZE_STEPS[nextIndex];
     localStorage.setItem(TEXT_SIZE_KEY, String(nextIndex));
   }

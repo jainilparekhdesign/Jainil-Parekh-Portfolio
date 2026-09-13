@@ -4,7 +4,7 @@ import Link from "next/link";
 import PageShell from "@/components/PageShell";
 
 export const metadata: Metadata = {
-  title: "Read — Risky Assumption Report | Jainil Parekh",
+  title: "Read: Risky Assumption Report | Jainil Parekh",
 };
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -222,11 +222,11 @@ export default function ReadValidationCaseStudy() {
             Academic project · Design business · 6 min read
           </SectionLabel>
           <h1 className="font-newsreader mt-3 text-case-cover text-ink">
-            Read — Risky Assumption Report
+            Read: Risky Assumption Report
           </h1>
           <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
             Validating demand, habit formation, and willingness to pay for
-            Read — before writing a line of production code.
+            Read, before writing a line of production code.
           </p>
           <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
             <MetaItem label="Role" value="Lean validation" />
@@ -291,22 +291,22 @@ export default function ReadValidationCaseStudy() {
           <SectionHeading>Three risky assumptions.</SectionHeading>
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             <AssumptionCard number="01">
-              Users will actually use the app — if prospective readers are
+              Users will actually use the app: if prospective readers are
               exposed to Read&rsquo;s value prop, they&rsquo;ll sign up.
             </AssumptionCard>
             <AssumptionCard number="02">
-              Users will form a daily reading habit — new users will log
+              Users will form a daily reading habit: new users will log
               reading sessions for 7 consecutive days within their first 30.
             </AssumptionCard>
             <AssumptionCard number="03">
-              Users will commit to pay or pre-reserve — beyond a waitlist, a
+              Users will commit to pay or pre-reserve: beyond a waitlist, a
               meaningful share will pledge or reserve a paid tier before the
               product exists.
             </AssumptionCard>
           </div>
           <p className="font-geist mt-6 max-w-[620px] text-ui font-normal text-body-text">
             All three landed in the same quadrant of the impact ×
-            uncertainty matrix — high impact, high uncertainty — meaning all
+            uncertainty matrix (high impact, high uncertainty), meaning all
             three needed testing before any product got built, not just the
             riskiest one.
           </p>
@@ -318,7 +318,7 @@ export default function ReadValidationCaseStudy() {
           <SectionLabel>From assumption to test</SectionLabel>
           <SectionHeading>Three pretotypes, three signals.</SectionHeading>
           <p className="font-geist mt-4 max-w-[620px] text-body text-body-text">
-            Each assumption got its own pretotyping experiment — a
+            Each assumption got its own pretotyping experiment, a
             classic Savoia-style approach: real signal, no product built.
           </p>
 
@@ -326,8 +326,8 @@ export default function ReadValidationCaseStudy() {
             <TestCard
               step="Test 1"
               name="Fake Front Door"
-              strategy="A Coming Soon landing page pitching Read, funneling visitors into a single low-friction waitlist signup capturing name, email, and reading interest. Shared organically for 2.5 weeks to measure raw demand — does anyone outside my immediate circle even want this?"
-              hypothesis="If prospective customers are exposed to the product and the value it provides, they will sign up for the waitlist — a baseline demand signal."
+              strategy="A Coming Soon landing page pitching Read, funneling visitors into a single low-friction waitlist signup capturing name, email, and reading interest. Shared organically for 2.5 weeks to measure raw demand: does anyone outside my immediate circle even want this?"
+              hypothesis="If prospective customers are exposed to the product and the value it provides, they will sign up for the waitlist, a baseline demand signal."
               artifacts={[
                 {
                   src: "/projects/read-validation/test1-landing.png",
@@ -370,7 +370,7 @@ export default function ReadValidationCaseStudy() {
             <TestCard
               step="Test 2"
               name="Mechanical Turk"
-              strategy="A 7-Day Reading Challenge via a Google Form embedded on the landing page. Participants logged a daily check-in; I manually ran the loop — nudging, reviewing, encouraging — so the 'app' was me behind the scenes."
+              strategy="A 7-Day Reading Challenge via a Google Form embedded on the landing page. Participants logged a daily check-in; I manually ran the loop (nudging, reviewing, encouraging), so the 'app' was me behind the scenes."
               hypothesis="At least 40% of new users will log a reading session for 7 consecutive days within their first 30 days."
               artifacts={[
                 {
@@ -396,12 +396,12 @@ export default function ReadValidationCaseStudy() {
                 {
                   title: "The habit loop works with only human support.",
                   description:
-                    "9 of 10 sessions logged, 17-minute average. 50% hit a perfect consecutive streak — clearing the 40% threshold with nothing but a Google Form and daily nudges.",
+                    "9 of 10 sessions logged, 17-minute average. 50% hit a perfect consecutive streak, clearing the 40% threshold with nothing but a Google Form and daily nudges.",
                 },
                 {
                   title: "Book attachment is a leading indicator.",
                   description:
-                    "Both participants stuck with one book the entire challenge, no switching. The habit forms around a specific book commitment, not the app itself — next: make 'what are you reading right now' a first-class onboarding question.",
+                    "Both participants stuck with one book the entire challenge, no switching. The habit forms around a specific book commitment, not the app itself. Next: make 'what are you reading right now' a first-class onboarding question.",
                 },
               ]}
             />
@@ -409,8 +409,8 @@ export default function ReadValidationCaseStudy() {
             <TestCard
               step="Test 3"
               name="Smoke Test · Pre-Sale"
-              strategy="Two pre-sale mechanisms layered onto the landing page: a voluntary pledge with an open-text reason, and a two-tier pricing reservation ($1.99 early-bird / $3.99 regular) — no card, no charge, just intent."
-              hypothesis="At least 30% of waitlist signups will take a pre-sale action — pledging or reserving a paid tier — a meaningfully stronger commitment than joining a waitlist."
+              strategy="Two pre-sale mechanisms layered onto the landing page: a voluntary pledge with an open-text reason, and a two-tier pricing reservation ($1.99 early-bird / $3.99 regular), no card, no charge, just intent."
+              hypothesis="At least 30% of waitlist signups will take a pre-sale action (pledging or reserving a paid tier), a meaningfully stronger commitment than joining a waitlist."
               artifacts={[
                 {
                   src: "/projects/read-validation/test3-pricing.png",
@@ -435,12 +435,12 @@ export default function ReadValidationCaseStudy() {
                 {
                   title: "Two signals, one clear story.",
                   description:
-                    "3 waitlisters wrote a pledge (30%), 4 reserved a paid tier (40%), 3 did both. 40% of the waitlist took at least one pre-sale action — a real willingness-to-pay signal.",
+                    "3 waitlisters wrote a pledge (30%), 4 reserved a paid tier (40%), 3 did both. 40% of the waitlist took at least one pre-sale action, a real willingness-to-pay signal.",
                 },
                 {
                   title: "A 50/50 price split validates the tier boundary.",
                   description:
-                    "2 users chose $1–2/mo and 2 chose $3–5/mo — no one priced out, no one undervaluing it. Next: launch v1 at $1.99 with a clear premium tier at $3.99.",
+                    "2 users chose $1–2/mo and 2 chose $3–5/mo. No one priced out, no one undervaluing it. Next: launch v1 at $1.99 with a clear premium tier at $3.99.",
                 },
               ]}
             />
@@ -475,7 +475,7 @@ export default function ReadValidationCaseStudy() {
               </div>
               <p className="font-geist mt-3 text-ui font-normal text-body-text">
                 50% hit a perfect consecutive streak with only human
-                support — no app needed.
+                support, no app needed.
               </p>
             </div>
             <div className="card p-6">
@@ -506,7 +506,7 @@ export default function ReadValidationCaseStudy() {
             itself, with book attachment as the leading indicator. Test 3
             validated willingness to pay, with a clean 50/50 split between
             the $1.99 and $3.99 tiers. The idea has demand, commitment, and
-            a working habit loop — time to build v1: fiction-first
+            a working habit loop; time to build v1: fiction-first
             onboarding, book-level tracking, and a $1.99 launch tier with a
             clear premium at $3.99.
           </p>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import PageShell from "@/components/PageShell";
 
 export const metadata: Metadata = {
-  title: "Read — Case Study | Jainil Parekh",
+  title: "Read: Case Study | Jainil Parekh",
 };
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -198,7 +198,7 @@ function IterationBlock({
       </div>
       <p className="font-geist mt-4 text-ui font-normal text-body-text">
         <span className="font-semibold text-ink">
-          What changed —{" "}
+          What changed:{" "}
         </span>
         {changeCaption}
       </p>
@@ -252,10 +252,10 @@ export default function ReadCaseStudy() {
         <div className="mt-12 max-w-[620px]">
           <SectionLabel>Academic project · Mobile design · 8 min read</SectionLabel>
           <h1 className="font-newsreader mt-3 text-case-cover text-ink">
-            Read — One page. At a time.
+            Read: One page. At a time.
           </h1>
           <p className="font-geist mt-6 max-w-[544px] text-lede text-body-text">
-            A habit-forming reading app for first-time readers — designed
+            A habit-forming reading app for first-time readers, designed
             around small daily goals, visible progress, and earned rewards.
           </p>
           <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
@@ -297,7 +297,7 @@ export default function ReadCaseStudy() {
               value="29%"
               label="of started books are abandoned before completion"
             />
-            <Stat value="12" label="average books per year — and declining" />
+            <Stat value="12" label="average books per year, and declining" />
             <Stat
               value="30%"
               label="of readers feel guilty about unfinished books"
@@ -313,7 +313,7 @@ export default function ReadCaseStudy() {
             Don&rsquo;t sell them books. Help them become readers.
           </SectionHeading>
           <p className="font-geist mt-4 max-w-[620px] text-body text-body-text">
-            Three core experiences across the daily reading loop — each
+            Three core experiences across the daily reading loop: each
             making progress visible at a different scale.
           </p>
 
@@ -409,7 +409,7 @@ export default function ReadCaseStudy() {
             <Feature
               number="02"
               title="Daily stats"
-              description="Invisible progress made visible — minutes, pace, pages."
+              description="Invisible progress made visible: minutes, pace, pages."
             />
             <Feature
               number="03"
@@ -440,7 +440,7 @@ export default function ReadCaseStudy() {
             <StrategyCard
               label="Variable reward"
               title="Fulfilling, never the same"
-              description="Stats, streak status, an occasional gift card or new badge — different feedback each time."
+              description="Stats, streak status, an occasional gift card or new badge: different feedback each time."
             />
             <StrategyCard
               label="Investment"
@@ -462,14 +462,14 @@ export default function ReadCaseStudy() {
               number="01"
               title="The features that mattered most were already invisible."
               description={
-                'The reading timer, the current book, and the daily goal all existed in the prototype — participants simply never noticed them. "It also has a timer, so I get to know I reached my goal, but I had to ask," one participant said. The fix wasn’t new features. It was surfacing what had already shipped.'
+                'The reading timer, the current book, and the daily goal all existed in the prototype. Participants simply never noticed them. "It also has a timer, so I get to know I reached my goal, but I had to ask," one participant said. The fix wasn’t new features. It was surfacing what had already shipped.'
               }
             />
             <InsightItem
               number="02"
               title="Settings hid behind Rewards, and no one found their way back."
               description={
-                'Updating a daily goal meant guessing it lived inside the Rewards tab. "I went to rewards to see if there were different ways to go for my rewards… that opened to Settings," one participant said — flagged as a real open issue for the next round, not one fixed in this pass.'
+                'Updating a daily goal meant guessing it lived inside the Rewards tab. "I went to rewards to see if there were different ways to go for my rewards… that opened to Settings," one participant said. This was flagged as a real open issue for the next round, not one fixed in this pass.'
               }
             />
             <InsightItem
@@ -531,8 +531,8 @@ export default function ReadCaseStudy() {
         <IterationBlock
           number="02 · Adapt"
           title="The home screen didn't say what you were reading."
-          description="The hero card on Home is the first thing every visit shows, but it only displayed the daily goal — not which book was in progress. Participants said this would confuse them if they were reading more than one book at a time."
-          changeCaption="Rebuilt the hero card to lead with the book itself — cover, title, chapter, and a day-by-day streak strip — alongside the daily goal."
+          description="The hero card on Home is the first thing every visit shows, but it only displayed the daily goal, not which book was in progress. Participants said this would confuse them if they were reading more than one book at a time."
+          changeCaption="Rebuilt the hero card to lead with the book itself: cover, title, chapter, and a day-by-day streak strip, alongside the daily goal."
           before={
             <img
               src="/projects/read/scamper-adapt-before.png"
@@ -554,7 +554,7 @@ export default function ReadCaseStudy() {
         <IterationBlock
           number="03 · Combine"
           title="Setting a daily goal meant typing a number into an empty field."
-          description="Onboarding asked people to set a reading goal with no guidance on what a reasonable number even was — every participant had to guess."
+          description="Onboarding asked people to set a reading goal with no guidance on what a reasonable number even was: every participant had to guess."
           changeCaption="Combined preset pills (1–60 minutes) with the free-text field, so most people tap once while anyone with a different routine can still type their own value."
           before={
             <img
@@ -604,8 +604,8 @@ export default function ReadCaseStudy() {
           </SectionHeading>
           <p className="font-geist mt-4 max-w-[620px] text-body text-body-text">
             5 moderated sessions over 2 weeks, run over Zoom against a Figma
-            prototype. Tasks were structured around the Hook Model —
-            Trigger, Action, Variable Reward, Investment — so testing
+            prototype. Tasks were structured around the Hook Model
+            (Trigger, Action, Variable Reward, Investment), so testing
             covered the full habit loop, not just individual screens.
           </p>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
@@ -626,7 +626,7 @@ export default function ReadCaseStudy() {
         <section>
           <SectionLabel>Biggest learning</SectionLabel>
           <p className="font-newsreader mt-3 max-w-[700px] text-section-heading text-ink">
-            The most damaging issues weren&rsquo;t structural — they were
+            The most damaging issues weren&rsquo;t structural: they were
             one-word labels that mismatched what people expected. Words ship
             cheaper than rebuilds.
           </p>

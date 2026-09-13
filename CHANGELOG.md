@@ -3,6 +3,23 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.11.0] - 2026-09-13
+
+### Fixed
+- Replaced `@vercel/postgres` with `@neondatabase/serverless`'s `neon()` directly: `@vercel/postgres`'s default client rejected this Neon marketplace integration's connection string as "meant for a direct connection," since it's built around Vercel's own Postgres product's pooled-URL convention. The neutral driver has no such restriction. The client is now constructed lazily (on first query) rather than at module load, so Next.js's build-time page-data collection step doesn't crash before env vars are available.
+- Patched a critical Next.js RCE advisory and several other high-severity transitive vulnerabilities via `npm audit fix --force` (`next` 16.2.12 → 16.3.5, plus `postcss`, `sharp`, `js-yaml`, `nanoid`).
+- Renamed `middleware.ts` to `proxy.ts` (and `middleware()` to `proxy()`) per Next.js 16's file convention change; functionally identical.
+- Fixed three real `react-hooks` lint errors surfaced by the newer React Compiler–oriented ESLint rules: an impure `Date.now()` ref initializer in `EventTracker`, a synchronous `setState` call inside a mount effect in `DashboardSync`, and a pre-existing DOM-mutation false positive in `Toolbar`'s text-size handler (annotated, not changed).
+
+### Added
+- Per-visitor tracking on the internal dashboard: a "Recent visitors" table showing location (city/country), total time spent, per-page time breakdown, and whether they downloaded the resume, sourced from the same `events` table grouped by session.
+- Auto-sync (every 30s) and a manual "Sync now" button on `/internal`, using `router.refresh()` against the `force-dynamic` dashboard route.
+- `description`, Open Graph, and Twitter card metadata on every page (previously only a bare `<title>`); `robots.txt` and `sitemap.xml` via Next.js's metadata file conventions, with `/internal` explicitly disallowed from crawling as defense-in-depth on top of the password gate.
+
+### Changed
+- Scroll indicator (the animated mouse/scroll icon) is now off by default site-wide ahead of launch; the component is untouched so it can be re-enabled later.
+- Removed all stylistic em dashes from visible site copy (titles, descriptions, case study body text) across every page, replacing each with the punctuation the sentence actually called for (colon, comma, semicolon, parentheses, or a period splitting it into two sentences).
+
 ## [0.10.1] - 2026-09-13
 
 ### Fixed
