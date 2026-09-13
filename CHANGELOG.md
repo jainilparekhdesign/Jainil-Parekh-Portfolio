@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.10.1] - 2026-09-13
+
+### Fixed
+- Fixed a build failure in v0.10.0: the case-study-reads query passed a `string[]` as a `@vercel/postgres` template value, which only accepts primitives — switched to three interpolated placeholders in an `IN (...)` clause. Also marked `/internal` as `force-dynamic` so it always renders fresh data instead of Next.js attempting to statically prerender a page that queries the database.
+
 ## [0.10.0] - 2026-09-13
 
 ### Added

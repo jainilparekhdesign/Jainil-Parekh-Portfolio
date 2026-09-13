@@ -1,6 +1,8 @@
 import { getDashboardData, type DashboardData } from "@/lib/analytics-db";
 import LogoutButton from "@/components/internal/LogoutButton";
 
+export const dynamic = "force-dynamic";
+
 const CASE_STUDY_TITLES: Record<string, string> = {
   "/projects/read": "Read",
   "/projects/ai-research": "AI: An Escape from Illusion",

@@ -104,7 +104,8 @@ export async function getDashboardData(): Promise<DashboardData> {
     sql`
       SELECT path, COUNT(*)::int AS views
       FROM events
-      WHERE event_type = 'pageview' AND path = ANY(${CASE_STUDY_PATHS})
+      WHERE event_type = 'pageview'
+        AND path IN (${CASE_STUDY_PATHS[0]}, ${CASE_STUDY_PATHS[1]}, ${CASE_STUDY_PATHS[2]})
       GROUP BY path
     `,
   ]);
