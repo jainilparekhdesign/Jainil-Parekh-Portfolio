@@ -3,6 +3,13 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.10.0] - 2026-09-13
+
+### Added
+- Real event tracking wired into the internal dashboard: a `/api/track` endpoint writes to a Postgres (Neon) `events` table, capturing page views, resume-download clicks, and time-on-page, plus referrer and geo (country/city from Vercel's request headers). `EventTracker` is mounted site-wide and skips `/internal` itself.
+- `/internal` now renders live metrics from that data: total page views, resume downloads, average time on page, a 14-day view trend, top referrers, top locations, and per-case-study read counts — with a graceful empty state before any data exists.
+- Added `@vercel/postgres` as a dependency; requires the Postgres/Neon integration connected in Vercel's Storage tab (already provisioned) so `POSTGRES_URL` etc. are available at runtime.
+
 ## [0.9.0] - 2026-09-13
 
 ### Added

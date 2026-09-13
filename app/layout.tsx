@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, Geist_Mono, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import EventTracker from "@/components/EventTracker";
 import "./globals.css";
 
 const figtree = Figtree({
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body className="font-geist">
         {children}
         <Analytics />
+        <EventTracker />
       </body>
     </html>
   );
