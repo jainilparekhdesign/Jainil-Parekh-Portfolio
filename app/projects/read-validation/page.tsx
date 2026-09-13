@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="font-geist-mono text-caption tracking-[0.04em] text-body-text uppercase">
+    <p className="font-geist text-eyebrow uppercase text-blue">
       {children}
     </p>
   );

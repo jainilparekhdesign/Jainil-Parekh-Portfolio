@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.3] - 2026-09-13
+
+### Fixed
+- The `SectionLabel` eyebrow used throughout all three case studies (the small label above every section heading, plus the case study hero's "Academic project · Mobile design · 8 min read" line) was styled as Geist Mono, 12px, gray, +0.04em tracking — a self-invented style that didn't match the locked spec's actual "Eyebrow" definition (Figtree 500, 11px, +0.14em, Forest). The Projects index page's own eyebrow already used the correct token, which is what made the mismatch visible. Fixed in all three case study files.
+
 ## [0.8.2] - 2026-09-13
 
 ### Fixed
