@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.7] - 2026-09-13
+
+### Fixed
+- Pure whitespace-separated cards felt too plain/unstructured. Brought back a light `.card` border (thin stone border, pill-bg fill, no shadow — not the heavier boxed treatment from earlier) so each project reads as a distinct card again, while keeping the typography and spacing from the minimal direction.
+
 ## [0.8.6] - 2026-09-13
 
 ### Changed

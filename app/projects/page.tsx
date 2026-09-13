@@ -27,15 +27,18 @@ function ProjectCard({
   readTime: string;
 }) {
   return (
-    <Link href={href} className="group flex flex-col text-left no-underline">
-      <div className="aspect-[8/5] w-full overflow-hidden rounded-xl bg-pill-bg">
+    <Link
+      href={href}
+      className="card group flex flex-col overflow-hidden text-left no-underline"
+    >
+      <div className="aspect-[8/5] w-full overflow-hidden bg-pill-bg">
         <img
           src={thumbnail}
           alt={thumbnailAlt}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
       </div>
-      <div className="flex flex-col pt-4">
+      <div className="flex flex-1 flex-col p-5">
         <span className="font-geist text-card-tag uppercase text-blue">
           {type} · {topics.join(" · ")}
         </span>
@@ -89,7 +92,7 @@ export default function ProjectsIndex() {
           Trust drop-offs, activation loops, retention gaps — traced,
           tested, and fixed.
         </p>
-        <div className="grid w-full max-w-[1080px] gap-8 text-left lg:grid-cols-3">
+        <div className="grid w-full max-w-[1080px] gap-6 text-left lg:grid-cols-3">
           <ProjectCard
             href="/projects/read"
             thumbnail="/projects/thumbnails/read.png"
