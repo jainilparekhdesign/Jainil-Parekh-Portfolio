@@ -237,11 +237,11 @@ export default function ReadValidationCaseStudy() {
             </div>
           </div>
 
-          <div className="flex w-full shrink-0 justify-center rounded-[24px] bg-pill-bg p-8 sm:p-12 lg:w-[420px]">
+          <div className="flex w-full shrink-0 justify-center lg:w-[520px]">
             <img
               src="/projects/read-validation/test1-landing.png"
               alt="Read Coming Soon landing page used to validate demand, the Fake Front Door test artifact"
-              className="mx-auto w-full max-w-[360px] rounded-[14px] shadow-[0_20px_48px_rgba(0,0,0,0.16)]"
+              className="mx-auto w-full max-w-[480px] rounded-[14px] shadow-[0_20px_48px_rgba(0,0,0,0.16)]"
             />
           </div>
         </div>

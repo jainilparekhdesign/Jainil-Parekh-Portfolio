@@ -3,6 +3,12 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.12.2] - 2026-09-13
+
+### Changed
+- Removed the `bg-pill-bg` card wrapper behind each case study's hero thumbnail (Read, AI research, Read Validation) — the images now sit directly on the page with only their own shadows, no boxed background.
+- Sized up all three hero thumbnails, since the side-by-side layout from v0.12.1 left them looking small and cramped next to the title block.
+
 ## [0.12.1] - 2026-09-13
 
 ### Changed

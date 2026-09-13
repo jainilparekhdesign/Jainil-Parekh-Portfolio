@@ -269,17 +269,17 @@ export default function ReadCaseStudy() {
             </div>
           </div>
 
-          <div className="flex w-full shrink-0 justify-center rounded-[24px] bg-pill-bg p-8 sm:p-12 lg:w-[380px]">
-            <div className="relative mx-auto flex w-full max-w-[320px] items-end justify-center gap-3">
+          <div className="flex w-full shrink-0 justify-center lg:w-[460px]">
+            <div className="relative mx-auto flex w-full max-w-[440px] items-end justify-center gap-4">
               <img
                 src="/projects/read/splash.png"
                 alt="Read app splash screen with the wordmark and the tagline “One page. At a time.”"
-                className="w-[34%] max-w-[130px] -rotate-6 rounded-[26px] shadow-[0_16px_40px_rgba(0,0,0,0.18)]"
+                className="w-[34%] max-w-[170px] -rotate-6 rounded-[26px] shadow-[0_16px_40px_rgba(0,0,0,0.18)]"
               />
               <img
                 src="/projects/read/dashboard.png"
                 alt="Read app home screen showing a 6-day streak, 500 pages read, today's reading goal, and rewards progress"
-                className="relative z-[1] w-[54%] max-w-[190px] rounded-[26px] shadow-[0_20px_48px_rgba(0,0,0,0.22)]"
+                className="relative z-[1] w-[54%] max-w-[250px] rounded-[26px] shadow-[0_20px_48px_rgba(0,0,0,0.22)]"
               />
             </div>
           </div>

@@ -250,11 +250,11 @@ export default function AIResearchCaseStudy() {
             </div>
           </div>
 
-          <div className="flex w-full shrink-0 justify-center rounded-[24px] bg-pill-bg p-8 sm:p-12 lg:w-[320px]">
+          <div className="flex w-full shrink-0 justify-center lg:w-[420px]">
             <img
               src="/projects/ai-research/ben-persona.png"
               alt="Illustrated portrait of Ben, the graduate student persona at the center of this study"
-              className="w-full max-w-[220px]"
+              className="w-full max-w-[320px]"
             />
           </div>
         </div>
