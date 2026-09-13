@@ -5,6 +5,7 @@ import {
 } from "@/lib/analytics-db";
 import LogoutButton from "@/components/internal/LogoutButton";
 import DashboardSync from "@/components/internal/DashboardSync";
+import DataControls from "@/components/internal/DataControls";
 
 export const dynamic = "force-dynamic";
 
@@ -172,7 +173,7 @@ export default async function InternalDashboardPage() {
 
   return (
     <div className="font-geist min-h-screen bg-bg px-[clamp(24px,8vw,120px)] py-10">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-geist-mono text-eyebrow uppercase text-blue">
             Internal
@@ -181,7 +182,8 @@ export default async function InternalDashboardPage() {
             Dashboard
           </h1>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-3">
+          <DataControls />
           <DashboardSync />
           <LogoutButton />
         </div>

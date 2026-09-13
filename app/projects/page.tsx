@@ -96,7 +96,7 @@ export default function ProjectsIndex() {
           <ProjectCard
             href="/projects/read"
             thumbnail="/projects/thumbnails/read.png"
-            thumbnailAlt="Read app home screen showing a reading streak, daily goal, and rewards progress"
+            thumbnailAlt="Read app splash screen and home screen showing a reading streak, daily goal, and rewards progress"
             type="Academic"
             topics={["UX Design", "Interaction Design"]}
             title="Read: One page. At a time."

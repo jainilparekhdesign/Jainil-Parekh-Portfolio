@@ -67,7 +67,7 @@ function SolutionCard({
   children: ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-toolbar-outline bg-bg p-5">
+    <div className="rounded-2xl bg-bg p-5 shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
       <div className="flex items-center gap-2">
         <span className="font-geist-mono flex h-6 w-6 items-center justify-center rounded-full bg-blue text-caption text-white">
           {step}
@@ -79,7 +79,9 @@ function SolutionCard({
       <p className="font-newsreader mt-3 text-subheading text-ink">
         {title}
       </p>
-      <div className="mt-4">{children}</div>
+      <div className="mt-4 rounded-xl border border-toolbar-outline/60 p-4">
+        {children}
+      </div>
     </div>
   );
 }

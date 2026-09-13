@@ -40,6 +40,31 @@ export type EventInput = {
   durationMs?: number | null;
 };
 
+export type RawEvent = {
+  event_type: string;
+  path: string;
+  referrer: string | null;
+  session_id: string;
+  country: string | null;
+  city: string | null;
+  duration_ms: number | null;
+  created_at: string;
+};
+
+export async function getAllEvents(): Promise<RawEvent[]> {
+  await ensureSchema();
+  return (await sql`
+    SELECT event_type, path, referrer, session_id, country, city, duration_ms, created_at
+    FROM events
+    ORDER BY created_at DESC
+  `) as RawEvent[];
+}
+
+export async function resetEvents() {
+  await ensureSchema();
+  await sql`TRUNCATE TABLE events`;
+}
+
 export async function recordEvent(event: EventInput) {
   await ensureSchema();
   await sql`

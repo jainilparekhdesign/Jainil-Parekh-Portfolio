@@ -3,6 +3,16 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.12.0] - 2026-09-13
+
+### Added
+- Hero visual added to every case study, matching a pattern Read already had: a rounded image card right below the title/meta block. AI research now shows the Ben persona illustration; Read Validation shows the "Fake Front Door" Coming Soon landing page (with its editor watermark cleaned up, along with the other four Read Validation test-artifact screenshots that had the same watermark).
+- Recomposed the Read project's index-card thumbnail: instead of a single flat screenshot, it now shows the app's splash screen and home screen layered together with soft shadows.
+- Internal dashboard: "Download data" (exports the raw `events` table as CSV via `/api/internal/export`) and "Reset data" (permanently clears all tracked events via `/api/internal/reset`, behind a confirmation prompt) — both routes check the session cookie directly since `/api/internal/*` isn't covered by the proxy's route matcher.
+
+### Changed
+- Polished the "Three core experiences" cards on the Read case study (goal-setting, session-complete, badge-earned) with real elevation and an inset panel, rather than flat unstyled boxes. Kept these as styled components rather than flat image assets — no real screenshots exist for these three specific app moments, and a hand-composited mockup image would look worse than a well-crafted component; revisit if real screens become available.
+
 ## [0.11.0] - 2026-09-13
 
 ### Fixed

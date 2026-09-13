@@ -249,6 +249,14 @@ export default function AIResearchCaseStudy() {
           </div>
         </div>
 
+        <div className="mt-12 flex justify-center rounded-[24px] bg-pill-bg p-8 sm:p-12">
+          <img
+            src="/projects/ai-research/ben-persona.png"
+            alt="Illustrated portrait of Ben, the graduate student persona at the center of this study"
+            className="w-full max-w-[280px]"
+          />
+        </div>
+
         {divider}
 
         <section>
