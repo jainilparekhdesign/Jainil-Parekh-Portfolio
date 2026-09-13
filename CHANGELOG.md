@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.11] - 2026-09-13
+
+### Changed
+- Moved the Download button inside the header card (above the contact info) instead of floating in its own row above the resume — it's now visually part of the card rather than a separate element sitting on top of it.
+
 ## [0.7.10] - 2026-09-12
 
 ### Fixed
