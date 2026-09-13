@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.9] - 2026-09-13
+
+### Changed
+- Removed the pill-bg fill from project cards — border only now, page background shows through instead of a filled card surface.
+
 ## [0.8.8] - 2026-09-13
 
 ### Changed

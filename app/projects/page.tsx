@@ -27,7 +27,7 @@ function ProjectCard({
   readTime: string;
 }) {
   return (
-    <div className="card group flex flex-col-reverse items-center gap-6 p-6 sm:flex-row">
+    <div className="group flex flex-col-reverse items-center gap-6 rounded-2xl border border-toolbar-outline p-6 sm:flex-row">
       <div className="flex flex-1 flex-col items-start">
         <h3 className="font-newsreader text-card-title text-ink">{title}</h3>
         <p className="font-geist-mono mt-2 text-caption text-graphite-70">
