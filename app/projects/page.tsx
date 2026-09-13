@@ -9,41 +9,71 @@ export const metadata: Metadata = {
 
 function ProjectCard({
   href,
-  eyebrow,
+  thumbnail,
+  thumbnailAlt,
+  type,
+  topics,
   title,
   description,
+  readTime,
 }: {
   href: string;
-  eyebrow: string;
+  thumbnail: string;
+  thumbnailAlt: string;
+  type: string;
+  topics: string[];
   title: string;
   description: string;
+  readTime: string;
 }) {
   return (
     <Link
       href={href}
-      className="group font-geist flex w-full items-center justify-between gap-4 rounded-2xl border border-toolbar-outline bg-blue/[0.04] px-6 py-5 text-left no-underline transition-colors hover:bg-blue/[0.08]"
+      className="card group flex flex-col overflow-hidden text-left no-underline"
     >
-      <span className="flex flex-col gap-1">
-        <span className="font-geist-mono text-caption uppercase tracking-[0.04em] text-blue">
-          {eyebrow}
-        </span>
-        <span className="text-body font-medium text-ink">{title}</span>
-        <span className="text-caption text-body-text">{description}</span>
-      </span>
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="block shrink-0 text-nav-active transition-transform group-hover:translate-x-1"
-      >
-        <path d="M5 12h14" />
-        <path d="m12 5 7 7-7 7" />
-      </svg>
+      <div className="aspect-[8/5] w-full overflow-hidden bg-pill-bg">
+        <img
+          src={thumbnail}
+          alt={thumbnailAlt}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="tag">{type}</span>
+          <span className="font-geist-mono text-caption text-body-text">
+            {topics.join(" · ")}
+          </span>
+        </div>
+        <h3 className="font-newsreader mt-3 text-subheading text-ink">
+          {title}
+        </h3>
+        <p className="font-geist mt-1 text-ui font-normal text-body-text">
+          {description}
+        </p>
+        <div className="mt-4 flex items-center justify-between gap-4 border-t border-toolbar-outline pt-3">
+          <span className="font-geist-mono text-caption text-body-text">
+            {readTime}
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-caption font-medium text-nav-active">
+            Read case study
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="block transition-transform group-hover:translate-x-1"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </div>
     </Link>
   );
 }
@@ -84,24 +114,36 @@ export default function ProjectsIndex() {
           Trust drop-offs, activation loops, retention gaps — traced,
           tested, and fixed.
         </p>
-        <div className="flex w-full max-w-[620px] flex-col gap-4">
+        <div className="grid w-full max-w-[1080px] gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
           <ProjectCard
             href="/projects/read"
-            eyebrow="UX case study"
+            thumbnail="/projects/thumbnails/read.png"
+            thumbnailAlt="Read app home screen showing a reading streak, daily goal, and rewards progress"
+            type="Academic"
+            topics={["UX Design", "Interaction Design"]}
             title="Read — One page. At a time."
             description="A habit-forming reading app for first-time readers."
+            readTime="8 min read"
           />
           <ProjectCard
             href="/projects/read-validation"
-            eyebrow="Design business"
+            thumbnail="/projects/thumbnails/read-validation.png"
+            thumbnailAlt="Read app Coming Soon landing page used to validate demand"
+            type="Academic"
+            topics={["Design Business", "Lean Validation"]}
             title="Read — Risky Assumption Report"
             description="Validating demand, habit, and willingness to pay before writing code."
+            readTime="6 min read"
           />
           <ProjectCard
             href="/projects/ai-research"
-            eyebrow="Research · UX methods"
+            thumbnail="/projects/thumbnails/ai-research.png"
+            thumbnailAlt="An impossible-triangle illusion, representing the case study's theme"
+            type="Academic"
+            topics={["UX Research", "Methods"]}
             title="AI: An Escape from Illusion"
             description="What AI does to trust, efficiency, and understanding while studying."
+            readTime="5 min read"
           />
         </div>
         <Link

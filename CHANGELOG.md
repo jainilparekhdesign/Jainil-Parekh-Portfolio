@@ -3,6 +3,12 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.0] - 2026-09-13
+
+### Added
+- Real thumbnails for all three case studies, composed on brand-colored canvases (matching the site's Forest/Rust semantic roles — Forest for the two Read projects, Rust for the research piece): the Read home-screen phone mockup, the Risky Assumption Report's landing-page mockup, and a white impossible-triangle silhouette extracted from the AI research deck (ties directly to the case study's "illusion" title) recolored and composited rather than left as a raw slide screenshot.
+- Redesigned Projects index cards: each now shows a thumbnail, project type (as a `.tag` pill — Academic/Work), topic tags, the project name, a one-line description, estimated read time, and a "Read case study" affordance — replacing the previous plain link-row layout with a proper 3-column card grid.
+
 ## [0.7.12] - 2026-09-13
 
 ### Changed
