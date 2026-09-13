@@ -45,10 +45,10 @@ function ProjectCard({
             {topics.join(" · ")}
           </span>
         </div>
-        <h3 className="font-newsreader mt-3 text-card-title text-ink">
+        <h3 className="font-newsreader mt-3 min-h-[60px] text-card-title text-ink">
           {title}
         </h3>
-        <p className="font-geist mt-1 text-body text-body-text">
+        <p className="font-geist mt-1 min-h-[52px] text-body text-body-text">
           {description}
         </p>
         <div className="mt-auto flex items-center justify-between gap-4 border-t border-toolbar-outline pt-3">

@@ -3,6 +3,12 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.4] - 2026-09-13
+
+### Changed
+- Made the three project card thumbnails actually feel like a set: all three now share the same Forest background (was 2 Forest + 1 Rust) and a similar visual fill-density (was a full-bleed browser screenshot next to a small centered icon). Replaced the AI Research thumbnail's flat triangle silhouette with the "Meet Ben" persona illustration from the research deck — a real asset with its background removed and recomposited on Forest, rather than a generated icon.
+- Added minimum heights to each card's title and description blocks so differing text lengths no longer produce different internal card rhythms even though overall card height was already equalized.
+
 ## [0.8.3] - 2026-09-13
 
 ### Fixed
