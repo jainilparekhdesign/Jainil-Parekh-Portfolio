@@ -134,6 +134,18 @@
   --text-lede--line-height: 1.6;
   --text-lede--letter-spacing: -0.005em;
 
+  /* Homepage "selected work" card typography — spec §04, distinct from
+     the generic subheading/ui tokens used elsewhere. */
+  --text-card-title: 1.5rem;
+  --text-card-title--line-height: 1.25;
+  --text-card-title--letter-spacing: -0.012em;
+  --text-card-title--font-weight: 600;
+
+  --text-card-tag: 0.6875rem;
+  --text-card-tag--line-height: 1.3636;
+  --text-card-tag--letter-spacing: 0.14em;
+  --text-card-tag--font-weight: 500;
+
   --text-nav-wordmark: 1.375rem;
   --text-nav-wordmark--line-height: 1.1818;
   --text-nav-wordmark--letter-spacing: -0.01em;

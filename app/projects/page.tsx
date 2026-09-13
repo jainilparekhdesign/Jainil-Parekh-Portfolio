@@ -41,18 +41,18 @@ function ProjectCard({
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2">
           <span className="tag">{type}</span>
-          <span className="font-geist-mono text-caption text-body-text">
+          <span className="font-geist text-card-tag uppercase text-blue">
             {topics.join(" · ")}
           </span>
         </div>
-        <h3 className="font-newsreader mt-3 text-subheading text-ink">
+        <h3 className="font-newsreader mt-3 text-card-title text-ink">
           {title}
         </h3>
-        <p className="font-geist mt-1 text-ui font-normal text-body-text">
+        <p className="font-geist mt-1 text-body text-body-text">
           {description}
         </p>
-        <div className="mt-4 flex items-center justify-between gap-4 border-t border-toolbar-outline pt-3">
-          <span className="font-geist-mono text-caption text-body-text">
+        <div className="mt-auto flex items-center justify-between gap-4 border-t border-toolbar-outline pt-3">
+          <span className="font-geist-mono text-caption text-graphite-70">
             {readTime}
           </span>
           <span className="inline-flex items-center gap-1.5 text-caption font-medium text-nav-active">
@@ -114,7 +114,7 @@ export default function ProjectsIndex() {
           Trust drop-offs, activation loops, retention gaps — traced,
           tested, and fixed.
         </p>
-        <div className="grid w-full max-w-[1080px] gap-6 text-left sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full max-w-[1080px] gap-6 text-left lg:grid-cols-3">
           <ProjectCard
             href="/projects/read"
             thumbnail="/projects/thumbnails/read.png"

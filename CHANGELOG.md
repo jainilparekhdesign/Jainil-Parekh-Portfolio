@@ -3,6 +3,12 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.1] - 2026-09-13
+
+### Fixed
+- The AI Research card sat alone, misaligned, on tablet-width screens — the grid went 1→2→3 columns, and 3 cards in a 2-column grid always strands the last one alone on its own row. Removed the 2-column intermediate step (now 1 column until it jumps straight to 3), and pinned each card's read-time/CTA footer to the bottom (`mt-auto`) so uneven description lengths no longer leave cards visually unbalanced.
+- Card typography wasn't actually using the locked design system's card-specific type scale — title and description were borrowing generic subheading/UI tokens instead of the spec's dedicated "Card title" (24px) and "Card deck" (16px) values, and the topic tags weren't styled per the spec's "Card tag" role (11px, uppercase, forest) at all. Added `--text-card-title` and `--text-card-tag` tokens and applied them correctly, and the read-time meta now uses the spec's gr-70 color instead of the default body-text shade.
+
 ## [0.8.0] - 2026-09-13
 
 ### Added
