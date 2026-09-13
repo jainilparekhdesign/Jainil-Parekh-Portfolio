@@ -3,6 +3,12 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.9.0] - 2026-09-13
+
+### Added
+- Internal, password-gated `/internal` route for a future analytics dashboard. Next.js middleware (`middleware.ts`) protects `/internal/:path*`, redirecting unauthenticated visitors to `/internal/login`. Login posts a password to `/api/internal/login`, which checks it against the `INTERNAL_DASHBOARD_TOKEN` environment variable and sets an HttpOnly session cookie; `/api/internal/logout` clears it. `/internal` currently renders a placeholder page confirming the gate works — dashboard content/metrics to follow.
+- Requires setting `INTERNAL_DASHBOARD_TOKEN` in Vercel's Project Settings → Environment Variables (and locally in `.env.local`) for the gate to function in production.
+
 ## [0.8.11] - 2026-09-13
 
 ### Changed
