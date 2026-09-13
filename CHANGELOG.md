@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.11] - 2026-09-13
+
+### Changed
+- Removed the neutral pill-bg letterbox and padding behind the thumbnail entirely — no background of any kind there now, just the image.
+
 ## [0.8.10] - 2026-09-13
 
 ### Changed

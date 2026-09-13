@@ -44,7 +44,7 @@ function ProjectCard({
         href={href}
         aria-hidden="true"
         tabIndex={-1}
-        className="flex h-[175px] w-[280px] shrink-0 items-center justify-center overflow-hidden rounded-xl bg-pill-bg p-4"
+        className="flex h-[175px] w-[280px] shrink-0 items-center justify-center overflow-hidden rounded-xl"
       >
         <img
           src={thumbnail}
