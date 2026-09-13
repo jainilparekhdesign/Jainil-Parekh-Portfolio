@@ -39,7 +39,7 @@ function ProjectCard({
         />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-col items-start gap-1.5">
           <span className="tag">{type}</span>
           <span className="font-geist text-card-tag uppercase text-blue">
             {topics.join(" · ")}

@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.2] - 2026-09-13
+
+### Fixed
+- The type pill and topic tags wrapped onto one or two lines depending on how much text each card had (the AI Research card's shorter "UX Research · Methods" fit next to "Academic" on one line, while the other two cards' longer topic strings wrapped to a second) — different cards ended up with different header heights. Now stacked in a fixed column (type pill, then topics below it) always, regardless of text length.
+
 ## [0.8.1] - 2026-09-13
 
 ### Fixed
