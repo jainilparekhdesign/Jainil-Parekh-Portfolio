@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.7.12] - 2026-09-13
+
+### Changed
+- Download button moved back out of the header card into its own row above — the ask was for it to sit outside the card but aligned with its edge (the v0.7.10 fix), not literally inside it.
+
 ## [0.7.11] - 2026-09-13
 
 ### Changed

@@ -149,6 +149,10 @@ export default function ResumePage() {
   return (
     <PageShell active="resume" showScrollIndicator={false} showBgGrid={false}>
       <main className="font-geist relative z-[2] pt-4 pb-6 pl-[clamp(24px,8vw,120px)] pr-[clamp(24px,8vw,120px)] print:p-0">
+        <div className="mx-auto flex max-w-[900px] justify-end print:hidden">
+          <DownloadButton />
+        </div>
+
         <div className="print:hidden">
         <FitToPage className="mx-auto max-w-[900px]">
           <div className="mt-4 flex flex-col gap-4">
@@ -162,24 +166,21 @@ export default function ResumePage() {
                     Product Designer — Fintech &amp; Behavioral Systems
                   </p>
                 </div>
-                <div className="flex flex-col items-end gap-2">
-                  <DownloadButton />
-                  <div className="font-geist-mono flex flex-col items-end gap-0.5 text-caption text-body-text">
-                    <span>(773) 696-8289</span>
-                    <span>Philadelphia, PA (open to relocate)</span>
-                    <a
-                      href="mailto:jainilparekh.design@gmail.com"
-                      className="text-body-text no-underline hover:text-nav-active"
-                    >
-                      jainilparekh.design@gmail.com
-                    </a>
-                    <a
-                      href="https://jainilparekh.design"
-                      className="text-body-text no-underline hover:text-nav-active"
-                    >
-                      jainilparekh.design
-                    </a>
-                  </div>
+                <div className="font-geist-mono flex flex-col items-end gap-0.5 text-caption text-body-text">
+                  <span>(773) 696-8289</span>
+                  <span>Philadelphia, PA (open to relocate)</span>
+                  <a
+                    href="mailto:jainilparekh.design@gmail.com"
+                    className="text-body-text no-underline hover:text-nav-active"
+                  >
+                    jainilparekh.design@gmail.com
+                  </a>
+                  <a
+                    href="https://jainilparekh.design"
+                    className="text-body-text no-underline hover:text-nav-active"
+                  >
+                    jainilparekh.design
+                  </a>
                 </div>
               </div>
             </Card>
