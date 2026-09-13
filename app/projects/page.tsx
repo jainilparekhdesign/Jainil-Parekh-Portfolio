@@ -27,52 +27,27 @@ function ProjectCard({
   readTime: string;
 }) {
   return (
-    <Link
-      href={href}
-      className="card group flex flex-col overflow-hidden text-left no-underline"
-    >
-      <div className="aspect-[8/5] w-full overflow-hidden bg-pill-bg">
+    <Link href={href} className="group flex flex-col text-left no-underline">
+      <div className="aspect-[8/5] w-full overflow-hidden rounded-xl bg-pill-bg">
         <img
           src={thumbnail}
           alt={thumbnailAlt}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex flex-col items-start gap-1.5">
-          <span className="tag">{type}</span>
-          <span className="font-geist text-card-tag uppercase text-blue">
-            {topics.join(" · ")}
-          </span>
-        </div>
-        <h3 className="font-newsreader mt-3 min-h-[60px] text-card-title text-ink">
+      <div className="flex flex-col pt-4">
+        <span className="font-geist text-card-tag uppercase text-blue">
+          {type} · {topics.join(" · ")}
+        </span>
+        <h3 className="font-newsreader mt-2 min-h-[60px] text-card-title text-ink transition-colors group-hover:text-nav-active">
           {title}
         </h3>
         <p className="font-geist mt-1 min-h-[52px] text-body text-body-text">
           {description}
         </p>
-        <div className="mt-auto flex items-center justify-between gap-4 border-t border-toolbar-outline pt-3">
-          <span className="font-geist-mono text-caption text-graphite-70">
-            {readTime}
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-caption font-medium text-nav-active">
-            Read case study
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="block transition-transform group-hover:translate-x-1"
-            >
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-          </span>
-        </div>
+        <p className="font-geist-mono mt-3 text-caption text-graphite-70">
+          {readTime}
+        </p>
       </div>
     </Link>
   );
@@ -114,7 +89,7 @@ export default function ProjectsIndex() {
           Trust drop-offs, activation loops, retention gaps — traced,
           tested, and fixed.
         </p>
-        <div className="grid w-full max-w-[1080px] gap-6 text-left lg:grid-cols-3">
+        <div className="grid w-full max-w-[1080px] gap-8 text-left lg:grid-cols-3">
           <ProjectCard
             href="/projects/read"
             thumbnail="/projects/thumbnails/read.png"

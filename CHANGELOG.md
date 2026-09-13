@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.6] - 2026-09-13
+
+### Changed
+- Projects page adopts the borderless/minimal card style (style 3 from the comparison) — dropped the `.card` border/shadow, separation now comes from whitespace alone, matching the borderless feel of the case studies themselves. Removed the now-decided `/projects/card-styles` comparison page.
+
 ## [0.8.5] - 2026-09-13
 
 ### Added
