@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.8] - 2026-09-13
+
+### Changed
+- Project cards rebuilt per explicit spec: horizontal layout with title, a "type · topic · read time" meta line, description, and a real "Read case study" button on the left, thumbnail fixed at 280×175px on the right (same size on every card regardless of content). Stacks to thumbnail-on-top on mobile. The whole card is no longer one giant link — only the button and thumbnail are real links (thumbnail is `tabIndex={-1}`/`aria-hidden` so it doesn't create a redundant keyboard/screen-reader stop alongside the button).
+
 ## [0.8.7] - 2026-09-13
 
 ### Fixed

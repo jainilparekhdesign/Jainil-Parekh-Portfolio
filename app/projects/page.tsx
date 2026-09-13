@@ -27,32 +27,32 @@ function ProjectCard({
   readTime: string;
 }) {
   return (
-    <Link
-      href={href}
-      className="card group flex flex-col overflow-hidden text-left no-underline"
-    >
-      <div className="aspect-[8/5] w-full overflow-hidden bg-pill-bg">
+    <div className="card group flex flex-col-reverse items-center gap-6 p-6 sm:flex-row">
+      <div className="flex flex-1 flex-col items-start">
+        <h3 className="font-newsreader text-card-title text-ink">{title}</h3>
+        <p className="font-geist-mono mt-2 text-caption text-graphite-70">
+          {type} · {topics.join(" · ")} · {readTime}
+        </p>
+        <p className="font-geist mt-3 text-body text-body-text">
+          {description}
+        </p>
+        <Link href={href} className="btn-primary mt-5">
+          Read case study
+        </Link>
+      </div>
+      <Link
+        href={href}
+        aria-hidden="true"
+        tabIndex={-1}
+        className="block h-[175px] w-[280px] shrink-0 overflow-hidden rounded-xl bg-pill-bg"
+      >
         <img
           src={thumbnail}
           alt={thumbnailAlt}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
-      </div>
-      <div className="flex flex-1 flex-col p-5">
-        <span className="font-geist text-card-tag uppercase text-blue">
-          {type} · {topics.join(" · ")}
-        </span>
-        <h3 className="font-newsreader mt-2 min-h-[60px] text-card-title text-ink transition-colors group-hover:text-nav-active">
-          {title}
-        </h3>
-        <p className="font-geist mt-1 min-h-[52px] text-body text-body-text">
-          {description}
-        </p>
-        <p className="font-geist-mono mt-3 text-caption text-graphite-70">
-          {readTime}
-        </p>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 
@@ -92,7 +92,7 @@ export default function ProjectsIndex() {
           Trust drop-offs, activation loops, retention gaps — traced,
           tested, and fixed.
         </p>
-        <div className="grid w-full max-w-[1080px] gap-6 text-left lg:grid-cols-3">
+        <div className="flex w-full max-w-[900px] flex-col gap-6 text-left">
           <ProjectCard
             href="/projects/read"
             thumbnail="/projects/thumbnails/read.png"
