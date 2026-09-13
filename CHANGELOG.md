@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.10] - 2026-09-13
+
+### Changed
+- Removed the Forest-green canvas from all three thumbnails — they now show the raw asset (phone mockup, browser mockup, persona illustration) directly, with a neutral pill-bg letterbox behind anything that doesn't fill the 280×175 box, instead of a colored background. Switched from `object-cover` to `object-contain` so the portrait phone mockup no longer gets cropped to fit a landscape frame. Also fixed a stale alt text left over from the triangle-icon thumbnail (replaced by the persona illustration back in v0.8.4).
+
 ## [0.8.9] - 2026-09-13
 
 ### Changed

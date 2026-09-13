@@ -44,12 +44,12 @@ function ProjectCard({
         href={href}
         aria-hidden="true"
         tabIndex={-1}
-        className="block h-[175px] w-[280px] shrink-0 overflow-hidden rounded-xl bg-pill-bg"
+        className="flex h-[175px] w-[280px] shrink-0 items-center justify-center overflow-hidden rounded-xl bg-pill-bg p-4"
       >
         <img
           src={thumbnail}
           alt={thumbnailAlt}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
         />
       </Link>
     </div>
@@ -116,7 +116,7 @@ export default function ProjectsIndex() {
           <ProjectCard
             href="/projects/ai-research"
             thumbnail="/projects/thumbnails/ai-research.png"
-            thumbnailAlt="An impossible-triangle illusion, representing the case study's theme"
+            thumbnailAlt="Illustration of Ben, the research persona"
             type="Academic"
             topics={["UX Research", "Methods"]}
             title="AI: An Escape from Illusion"
