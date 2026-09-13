@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.8.5] - 2026-09-13
+
+### Added
+- `/projects/card-styles` — an internal comparison page (not linked from the site) showing the same three projects rendered in four different card styles: poster/overlay, horizontal row, borderless/minimal, and hover-reveal. For evaluating which direction to take the live Projects page in, not itself a permanent page.
+
 ## [0.8.4] - 2026-09-13
 
 ### Changed
