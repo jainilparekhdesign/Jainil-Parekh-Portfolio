@@ -125,7 +125,7 @@
   --text-metric--letter-spacing: -0.02em;
   --text-metric--font-weight: 600;
 
-  --text-greeting: 3rem;
+  --text-greeting: clamp(2rem, 1.6rem + 2vw, 3rem);
   --text-greeting--line-height: 1.125;
   --text-greeting--letter-spacing: -0.02em;
   --text-greeting--font-weight: 600;

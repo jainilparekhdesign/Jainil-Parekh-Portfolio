@@ -3,6 +3,12 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.15.1] - 2026-09-13
+
+### Fixed
+- Nav overflow on mobile: "About Me" now hides below 640px (it also currently points at an `#about` section that doesn't exist on the homepage yet — hiding it removes a dead link too), the wordmark text ("Jainil Parekh") hides below 480px leaving just the logo mark, and the link gap tightens further on small screens.
+- The homepage's greeting heading (`text-greeting`, "Hi I'm Jainil Parekh") was a fixed 48px regardless of screen size, unlike every other large heading token (`text-hero`, `text-case-cover`), which scale down via `clamp()`. Made it responsive the same way.
+
 ## [0.15.0] - 2026-09-13
 
 ### Added

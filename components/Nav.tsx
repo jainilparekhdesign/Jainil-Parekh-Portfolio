@@ -10,9 +10,9 @@ export default function Nav({ active }: NavProps) {
     <nav className="relative z-[2] flex items-center justify-between h-[88px] px-[clamp(24px,8vw,120px)] py-5 print:hidden">
       <div className="font-newsreader flex items-center gap-2 text-nav-wordmark whitespace-nowrap text-ink">
         <LogoMark className="h-10 w-auto text-blue" />
-        Jainil Parekh
+        <span className="max-[480px]:hidden">Jainil Parekh</span>
       </div>
-      <div className="flex items-center gap-12 max-[640px]:gap-6 text-ui whitespace-nowrap">
+      <div className="flex items-center gap-12 max-[640px]:gap-4 text-ui whitespace-nowrap">
         <Link
           href="/"
           className={`relative no-underline transition-colors hover:text-nav-active ${
@@ -35,7 +35,7 @@ export default function Nav({ active }: NavProps) {
         </Link>
         <Link
           href="/#about"
-          className="relative font-normal text-ink no-underline transition-colors hover:text-nav-active"
+          className="relative font-normal text-ink no-underline transition-colors hover:text-nav-active max-[640px]:hidden"
         >
           About Me
         </Link>
