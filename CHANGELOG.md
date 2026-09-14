@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.12.3] - 2026-09-13
+
+### Fixed
+- Replaced the Read app's dashboard and splash screenshots with the actual full-resolution exports (1696×3584, down from 426×900) — the low-res versions were looking soft now that the hero and thumbnail images render larger. Downscaled to web-appropriate sizes (1000px wide for the individual screens, 1400px long edge for the composited thumbnail) while staying well above retina sharpness at display size.
+
 ## [0.12.2] - 2026-09-13
 
 ### Changed
