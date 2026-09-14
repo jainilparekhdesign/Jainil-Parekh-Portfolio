@@ -83,10 +83,13 @@ export default function Nav({ active }: NavProps) {
 
   return (
     <nav className="relative z-20 flex items-center justify-between h-[88px] px-[clamp(24px,8vw,120px)] py-5 print:hidden">
-      <div className="font-newsreader flex items-center gap-2 text-nav-wordmark whitespace-nowrap text-ink">
+      <Link
+        href="/"
+        className="font-newsreader flex items-center gap-2 text-nav-wordmark whitespace-nowrap text-ink no-underline"
+      >
         <LogoMark className="h-10 w-auto text-blue" />
         <span className="max-[480px]:hidden">Jainil Parekh</span>
-      </div>
+      </Link>
 
       <div className="flex items-center gap-4 sm:gap-8">
         <div className="hidden items-center gap-12 text-ui whitespace-nowrap sm:flex">
@@ -96,7 +99,6 @@ export default function Nav({ active }: NavProps) {
           <NavLink href="/projects" isActive={active === "projects"}>
             Projects
           </NavLink>
-          <NavLink href="/#about">About Me</NavLink>
           <NavLink href="/resume" isActive={active === "resume"}>
             Resume
           </NavLink>

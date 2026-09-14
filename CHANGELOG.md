@@ -3,6 +3,12 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.18.1] - 2026-09-13
+
+### Changed
+- Removed the "About Me" nav link entirely (desktop included) — it pointed at an `#about` section that doesn't exist on the homepage yet, so it was a dead link everywhere, not just on mobile.
+- The logo/wordmark in the nav is now a link back to `/`, as expected.
+
 ## [0.18.0] - 2026-09-13
 
 ### Added
