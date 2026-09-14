@@ -88,61 +88,70 @@ export default function Nav({ active }: NavProps) {
         <span className="max-[480px]:hidden">Jainil Parekh</span>
       </div>
 
-      <div className="hidden items-center gap-12 text-ui whitespace-nowrap sm:flex">
-        <NavLink href="/" isActive={active === "home"}>
-          Home
-        </NavLink>
-        <NavLink href="/projects" isActive={active === "projects"}>
-          Projects
-        </NavLink>
-        <NavLink href="/#about">About Me</NavLink>
-        <NavLink href="/resume" isActive={active === "resume"}>
-          Resume
-        </NavLink>
-      </div>
+      <div className="flex items-center gap-4 sm:gap-8">
+        <div className="hidden items-center gap-12 text-ui whitespace-nowrap sm:flex">
+          <NavLink href="/" isActive={active === "home"}>
+            Home
+          </NavLink>
+          <NavLink href="/projects" isActive={active === "projects"}>
+            Projects
+          </NavLink>
+          <NavLink href="/#about">About Me</NavLink>
+          <NavLink href="/resume" isActive={active === "resume"}>
+            Resume
+          </NavLink>
+        </div>
 
-      <div className="sm:hidden">
-        <button
-          type="button"
-          aria-expanded={isMenuOpen}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          onClick={() => setIsMenuOpen((open) => !open)}
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-toolbar-outline bg-pill-bg text-ink"
+        <a
+          href="mailto:jainilparekh.design@gmail.com"
+          className="btn-primary shrink-0 whitespace-nowrap max-[380px]:px-3 max-[380px]:text-caption"
         >
-          {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
-        </button>
+          Get in touch
+        </a>
 
-        {isMenuOpen && (
-          <div
-            role="dialog"
-            aria-label="Site navigation"
-            className="absolute right-[clamp(24px,8vw,120px)] top-[72px] w-[200px] rounded-2xl border border-toolbar-outline bg-pill-bg p-4 shadow-[0_12px_40px_rgba(0,0,0,0.14)]"
+        <div className="sm:hidden">
+          <button
+            type="button"
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-toolbar-outline bg-pill-bg text-ink"
           >
-            <div className="flex flex-col gap-4 text-ui">
-              <NavLink
-                href="/"
-                isActive={active === "home"}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </NavLink>
-              <NavLink
-                href="/projects"
-                isActive={active === "projects"}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Projects
-              </NavLink>
-              <NavLink
-                href="/resume"
-                isActive={active === "resume"}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Resume
-              </NavLink>
+            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+
+          {isMenuOpen && (
+            <div
+              role="dialog"
+              aria-label="Site navigation"
+              className="absolute right-[clamp(24px,8vw,120px)] top-[72px] w-[200px] rounded-2xl border border-toolbar-outline bg-pill-bg p-4 shadow-[0_12px_40px_rgba(0,0,0,0.14)]"
+            >
+              <div className="flex flex-col gap-4 text-ui">
+                <NavLink
+                  href="/"
+                  isActive={active === "home"}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Home
+                </NavLink>
+                <NavLink
+                  href="/projects"
+                  isActive={active === "projects"}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Projects
+                </NavLink>
+                <NavLink
+                  href="/resume"
+                  isActive={active === "resume"}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Resume
+                </NavLink>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </nav>
   );

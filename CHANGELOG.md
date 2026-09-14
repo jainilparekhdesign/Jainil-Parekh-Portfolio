@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.18.0] - 2026-09-13
+
+### Added
+- "Get in touch" button in the nav, linking to `mailto:jainilparekh.design@gmail.com`. Visible on both desktop (after the inline links) and mobile (next to the hamburger button), rather than being tucked inside the mobile menu.
+
 ## [0.17.1] - 2026-09-13
 
 ### Fixed
