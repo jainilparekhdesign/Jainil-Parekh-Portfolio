@@ -412,7 +412,7 @@ export default function ReadCaseStudy() {
                     Pace
                   </p>
                   <p className="font-geist text-[1.125em] font-semibold text-ink">
-                    240 wpm
+                    170 wpm
                   </p>
                 </div>
               </div>

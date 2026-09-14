@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.17.1] - 2026-09-13
+
+### Fixed
+- The Read case study's "Session complete" mockup had numbers that didn't reconcile: 18 min at 240 wpm works out to ~4,320 words over only 11 pages, or ~393 words/page — implausibly dense for a book page. Changed the pace to 170 wpm (~278 words/page, a normal density, and a more believable pace for the app's actual audience of casual/first-time readers).
+
 ## [0.17.0] - 2026-09-13
 
 ### Fixed
