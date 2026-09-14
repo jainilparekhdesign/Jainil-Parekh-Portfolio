@@ -33,7 +33,7 @@ export default function CampaignGenerator() {
     }
 
     const { campaign } = await res.json();
-    setLink(`${window.location.origin}/?ref=${campaign.slug}`);
+    setLink(`${window.location.origin}/r/${campaign.slug}`);
     setCompanyName("");
     router.refresh();
   }
@@ -52,6 +52,10 @@ export default function CampaignGenerator() {
     <div className="card p-6">
       <p className="font-geist-mono text-eyebrow uppercase text-blue">
         Generate a tracked link
+      </p>
+      <p className="font-geist mt-2 text-caption text-graphite-70">
+        The link redirects straight to your homepage — the visitor never
+        sees a tracking parameter, just jainilparekh.design.
       </p>
       <form onSubmit={handleSubmit} className="mt-4 flex flex-wrap gap-3">
         <input

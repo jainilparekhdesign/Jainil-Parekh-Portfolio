@@ -199,7 +199,7 @@ function CampaignTable({ campaigns }: { campaigns: CampaignStats[] }) {
               <div>
                 <p className="font-geist text-ui text-ink">{c.companyName}</p>
                 <p className="font-geist-mono mt-1 text-caption text-graphite-70">
-                  ?ref={c.slug}
+                  /r/{c.slug}
                   {c.lastSeen ? ` · last opened ${formatTimestamp(c.lastSeen)}` : ""}
                 </p>
               </div>

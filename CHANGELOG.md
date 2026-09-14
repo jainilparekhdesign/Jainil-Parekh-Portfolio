@@ -3,6 +3,12 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.14.1] - 2026-09-13
+
+### Changed
+- Tracked links no longer expose anything in the visible URL. Generated links are now `jainilparekh.design/r/<random-code>` — a new `/r/[code]` route sets a cookie and 307-redirects straight to `/`, so the address bar the visitor actually sees just shows the clean homepage URL. The code is random rather than derived from the company name, so even the short link itself carries no readable information.
+- `EventTracker` now reads the campaign tag from that cookie (falling back to a `?ref=` query param if one's ever used directly), and `/r` is blocked in `robots.txt` alongside `/internal`.
+
 ## [0.14.0] - 2026-09-13
 
 ### Added

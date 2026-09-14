@@ -2,12 +2,14 @@ import { NextResponse, type NextRequest } from "next/server";
 import { isAuthorized } from "@/lib/internal-auth";
 import { upsertCampaign } from "@/lib/analytics-db";
 
-function slugify(input: string) {
-  return input
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+const CODE_CHARS = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+function generateCode(length = 7) {
+  let code = "";
+  for (let i = 0; i < length; i++) {
+    code += CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
+  }
+  return code;
 }
 
 export async function POST(request: NextRequest) {
@@ -20,12 +22,11 @@ export async function POST(request: NextRequest) {
     | null;
 
   const companyName = body?.companyName?.trim();
-  const slug = companyName ? slugify(companyName) : "";
 
-  if (!companyName || !slug) {
+  if (!companyName) {
     return NextResponse.json({ error: "Invalid company name" }, { status: 400 });
   }
 
-  const campaign = await upsertCampaign(slug, companyName);
+  const campaign = await upsertCampaign(generateCode(), companyName);
   return NextResponse.json({ campaign });
 }

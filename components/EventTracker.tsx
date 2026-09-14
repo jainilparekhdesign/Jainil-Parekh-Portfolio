@@ -19,9 +19,18 @@ function getSessionId() {
   }
 }
 
+function getCookie(name: string): string | undefined {
+  const match = document.cookie.match(
+    new RegExp(`(?:^|; )${name}=([^;]*)`),
+  );
+  return match ? decodeURIComponent(match[1]) : undefined;
+}
+
 function getCampaign(): string | undefined {
   try {
-    const ref = new URLSearchParams(window.location.search).get("ref");
+    const ref =
+      new URLSearchParams(window.location.search).get("ref") ??
+      getCookie(CAMPAIGN_KEY);
     if (ref) {
       sessionStorage.setItem(CAMPAIGN_KEY, ref);
       return ref;
