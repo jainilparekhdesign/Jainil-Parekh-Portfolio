@@ -92,8 +92,8 @@ function formatTimestamp(iso: string) {
       day: "numeric",
       hour: "numeric",
       minute: "2-digit",
-      timeZone: "UTC",
-    }).format(new Date(iso)) + " UTC"
+      timeZone: "America/New_York",
+    }).format(new Date(iso)) + " ET"
   );
 }
 

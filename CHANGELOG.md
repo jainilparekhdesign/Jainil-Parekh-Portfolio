@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.18.2] - 2026-09-13
+
+### Changed
+- Dashboard timestamps ("Recent visitors", "Tracked links") now show Eastern Time instead of UTC, using the `America/New_York` IANA zone so it automatically follows EST/EDT — labeled "ET" rather than hardcoding "EST", which would read wrong for roughly half the year.
+
 ## [0.18.1] - 2026-09-13
 
 ### Changed
