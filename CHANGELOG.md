@@ -3,6 +3,14 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.16.0] - 2026-09-13
+
+### Fixed
+- `BgGrid`'s decorative pattern was stretching on narrow screens: it uses `preserveAspectRatio="none"` with a responsive width but a fixed 812px height, so on mobile the width shrank while the height didn't, distorting the diamond pattern. Replaced the fixed height with `aspect-[1354/812]` so the box always matches the source ratio.
+
+### Changed
+- Nav is now a real collapsible mobile menu instead of just hiding items to fit. Below 640px, the inline links are replaced by a hamburger button (Escape to close, matching the accessibility toolbar's existing panel pattern) that opens a dropdown with Home, Projects, and Resume — About Me stays out of it per the earlier "hide for now" request. Desktop nav (≥640px) is unchanged, all four links inline.
+
 ## [0.15.1] - 2026-09-13
 
 ### Fixed
