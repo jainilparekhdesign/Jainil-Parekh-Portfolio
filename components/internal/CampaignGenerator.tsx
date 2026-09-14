@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 export default function CampaignGenerator() {
   const router = useRouter();
   const [companyName, setCompanyName] = useState("");
+  const [customCode, setCustomCode] = useState("");
   const [link, setLink] = useState("");
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -22,19 +23,23 @@ export default function CampaignGenerator() {
     const res = await fetch("/api/internal/campaigns", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ companyName }),
+      body: JSON.stringify({
+        companyName,
+        customCode: customCode.trim() || undefined,
+      }),
     });
 
+    const body = await res.json().catch(() => ({}));
     setLoading(false);
 
     if (!res.ok) {
-      setError("Couldn't generate the link.");
+      setError(body?.error || "Couldn't generate the link.");
       return;
     }
 
-    const { campaign } = await res.json();
-    setLink(`${window.location.origin}/r/${campaign.slug}`);
+    setLink(`${window.location.origin}/r/${body.campaign.slug}`);
     setCompanyName("");
+    setCustomCode("");
     router.refresh();
   }
 
@@ -55,7 +60,8 @@ export default function CampaignGenerator() {
       </p>
       <p className="font-geist mt-2 text-caption text-graphite-70">
         The link redirects straight to your homepage — the visitor never
-        sees a tracking parameter, just jainilparekh.design.
+        sees a tracking parameter, just jainilparekh.design. Give it a
+        custom word so it also reads as an ordinary link when you share it.
       </p>
       <form onSubmit={handleSubmit} className="mt-4 flex flex-wrap gap-3">
         <input
@@ -63,6 +69,13 @@ export default function CampaignGenerator() {
           value={companyName}
           onChange={(e) => setCompanyName(e.target.value)}
           placeholder="Company name, e.g. Acme Corp"
+          className="font-geist min-w-[220px] flex-1 rounded-lg border border-toolbar-outline bg-bg px-3 py-2.5 text-ui text-ink outline-none focus-visible:border-blue"
+        />
+        <input
+          type="text"
+          value={customCode}
+          onChange={(e) => setCustomCode(e.target.value)}
+          placeholder="Custom link text (optional), e.g. hello"
           className="font-geist min-w-[220px] flex-1 rounded-lg border border-toolbar-outline bg-bg px-3 py-2.5 text-ui text-ink outline-none focus-visible:border-blue"
         />
         <button

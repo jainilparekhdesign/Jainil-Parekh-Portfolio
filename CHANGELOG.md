@@ -3,6 +3,15 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.15.0] - 2026-09-13
+
+### Added
+- Delete button on each row of the "Tracked links" table (behind a confirm prompt) — removes the campaign record via a new `DELETE /api/internal/campaigns/[slug]`. Historical events already recorded under that link stay in the raw data; only the managed link entry is removed.
+- Optional custom link text in the generator: instead of a random code, type your own word (e.g., "hello") and the link becomes `jainilparekh.design/r/hello` — reads as an ordinary short link when posted on social media or anywhere public, rather than a random string. Falls back to a random code if left blank. Custom text that's already taken is rejected with a clear error rather than silently overwriting the existing link.
+
+### Changed
+- `upsertCampaign` replaced with `createCampaign`, which never overwrites an existing campaign's company name on a slug collision — the old upsert behavior was unsafe now that custom (attacker-guessable-ish) slugs are supported.
+
 ## [0.14.1] - 2026-09-13
 
 ### Changed

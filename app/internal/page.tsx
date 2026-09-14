@@ -9,6 +9,7 @@ import LogoutButton from "@/components/internal/LogoutButton";
 import DashboardSync from "@/components/internal/DashboardSync";
 import DataControls from "@/components/internal/DataControls";
 import CampaignGenerator from "@/components/internal/CampaignGenerator";
+import DeleteCampaignButton from "@/components/internal/DeleteCampaignButton";
 
 export const dynamic = "force-dynamic";
 
@@ -220,6 +221,7 @@ function CampaignTable({ campaigns }: { campaigns: CampaignStats[] }) {
                 <span className="font-geist-mono text-caption text-graphite-70">
                   {formatDuration(c.totalDurationMs)} total
                 </span>
+                <DeleteCampaignButton slug={c.slug} companyName={c.companyName} />
               </div>
             </li>
           ))}

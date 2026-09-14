@@ -99,19 +99,25 @@ export type Campaign = {
   createdAt: string;
 };
 
-export async function upsertCampaign(
+export async function createCampaign(
   slug: string,
   companyName: string,
-): Promise<Campaign> {
+): Promise<Campaign | null> {
   await ensureSchema();
   const rows = (await sql`
     INSERT INTO campaigns (slug, company_name)
     VALUES (${slug}, ${companyName})
-    ON CONFLICT (slug) DO UPDATE SET company_name = EXCLUDED.company_name
+    ON CONFLICT (slug) DO NOTHING
     RETURNING slug, company_name, created_at
   `) as { slug: string; company_name: string; created_at: string }[];
   const row = rows[0];
+  if (!row) return null;
   return { slug: row.slug, companyName: row.company_name, createdAt: row.created_at };
+}
+
+export async function deleteCampaign(slug: string) {
+  await ensureSchema();
+  await sql`DELETE FROM campaigns WHERE slug = ${slug}`;
 }
 
 export type CampaignStats = {
