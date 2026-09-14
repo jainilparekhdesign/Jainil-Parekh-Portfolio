@@ -55,55 +55,93 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-function SolutionCard({
-  step,
-  eyebrow,
-  title,
-  children,
-}: {
-  step: number;
-  eyebrow: string;
-  title: string;
-  children: ReactNode;
-}) {
+function ClockIcon() {
   return (
-    <div className="rounded-2xl bg-bg p-5 shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
-      <div className="flex items-center gap-2">
-        <span className="font-geist-mono flex h-6 w-6 items-center justify-center rounded-full bg-blue text-caption text-white">
-          {step}
-        </span>
-        <span className="font-geist-mono text-caption text-body-text">
-          {eyebrow}
-        </span>
-      </div>
-      <p className="font-newsreader mt-3 text-subheading text-ink">
-        {title}
-      </p>
-      <div className="mt-4 rounded-xl border border-toolbar-outline/60 p-4">
-        {children}
-      </div>
-    </div>
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
   );
 }
 
-function Feature({
+function CheckCircleIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
+  );
+}
+
+function AwardIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="8" r="6" />
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+    </svg>
+  );
+}
+
+function ExperienceCard({
   number,
+  icon,
+  eyebrow,
   title,
   description,
+  children,
 }: {
   number: string;
+  icon: ReactNode;
+  eyebrow: string;
   title: string;
   description: string;
+  children: ReactNode;
 }) {
   return (
-    <div>
-      <p className="font-geist-mono text-metric text-blue">
-        {number}
+    <div className="flex flex-col rounded-2xl bg-bg p-6 shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
+      <div className="flex items-start justify-between">
+        <span className="font-geist-mono text-metric text-blue">
+          {number}
+        </span>
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue/10 text-blue">
+          {icon}
+        </span>
+      </div>
+      <p className="font-geist-mono mt-4 text-caption uppercase text-body-text">
+        {eyebrow}
       </p>
-      <p className="font-geist mt-2 text-ui font-bold text-ink">
-        {title}
-      </p>
-      <p className="font-geist mt-2 text-ui font-normal text-body-text">
+      <p className="font-newsreader mt-1 text-subheading text-ink">{title}</p>
+      <div className="mt-4 rounded-xl border border-toolbar-outline/60 p-4">
+        {children}
+      </div>
+      <p className="font-geist mt-4 text-ui font-normal text-body-text">
         {description}
       </p>
     </div>
@@ -321,105 +359,99 @@ export default function ReadCaseStudy() {
             making progress visible at a different scale.
           </p>
 
-          <div className="mt-10 rounded-[24px] bg-pill-bg p-6 sm:p-10">
-            <div className="grid gap-6 sm:grid-cols-3">
-              <SolutionCard step={1} eyebrow="Set today" title="How long today?">
-                <div className="flex flex-wrap gap-2">
-                  {["1", "5", "10", "15", "30", "60"].map((m) => (
-                    <span
-                      key={m}
-                      className={`font-geist-mono rounded-lg px-2.5 py-1.5 text-[0.8125em] ${
-                        m === "10"
-                          ? "bg-blue/15 text-blue"
-                          : "bg-pill-bg text-body-text"
-                      }`}
-                    >
-                      {m}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 rounded-xl bg-blue/10 px-4 py-3">
-                  <p className="font-geist-mono text-[0.75em] text-blue">
-                    Today
-                  </p>
-                  <p className="font-newsreader text-[1.25em] text-blue">
-                    10 min
-                  </p>
-                </div>
-              </SolutionCard>
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            <ExperienceCard
+              number="01"
+              icon={<ClockIcon />}
+              eyebrow="Set today"
+              title="How long today?"
+              description="Daily target from 1 min to 60. Calibrated to the user's pace."
+            >
+              <div className="flex flex-wrap gap-2">
+                {["1", "5", "10", "15", "30", "60"].map((m) => (
+                  <span
+                    key={m}
+                    className={`font-geist-mono rounded-lg px-2.5 py-1.5 text-[0.8125em] ${
+                      m === "10"
+                        ? "bg-blue/15 text-blue"
+                        : "bg-pill-bg text-body-text"
+                    }`}
+                  >
+                    {m}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-4 rounded-xl bg-blue/10 px-4 py-3">
+                <p className="font-geist-mono text-[0.75em] text-blue">
+                  Today
+                </p>
+                <p className="font-newsreader text-[1.25em] text-blue">
+                  10 min
+                </p>
+              </div>
+            </ExperienceCard>
 
-              <SolutionCard
-                step={2}
-                eyebrow="Session complete"
-                title="Nice work today."
-              >
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <p className="font-geist-mono text-[0.75em] text-body-text">
-                      Time
-                    </p>
-                    <p className="font-geist text-[1.125em] font-semibold text-ink">
-                      18 min
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-geist-mono text-[0.75em] text-body-text">
-                      Pace
-                    </p>
-                    <p className="font-geist text-[1.125em] font-semibold text-ink">
-                      240 wpm
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-3">
+            <ExperienceCard
+              number="02"
+              icon={<CheckCircleIcon />}
+              eyebrow="Session complete"
+              title="Nice work today."
+              description="Invisible progress made visible: minutes, pace, pages."
+            >
+              <div className="grid grid-cols-2 gap-3">
+                <div>
                   <p className="font-geist-mono text-[0.75em] text-body-text">
-                    Pages read
+                    Time
                   </p>
                   <p className="font-geist text-[1.125em] font-semibold text-ink">
-                    11 pages
+                    18 min
                   </p>
                 </div>
-              </SolutionCard>
+                <div>
+                  <p className="font-geist-mono text-[0.75em] text-body-text">
+                    Pace
+                  </p>
+                  <p className="font-geist text-[1.125em] font-semibold text-ink">
+                    240 wpm
+                  </p>
+                </div>
+              </div>
+              <div className="mt-3">
+                <p className="font-geist-mono text-[0.75em] text-body-text">
+                  Pages read
+                </p>
+                <p className="font-geist text-[1.125em] font-semibold text-ink">
+                  11 pages
+                </p>
+              </div>
+            </ExperienceCard>
 
-              <SolutionCard step={3} eyebrow="You earned" title="A new badge.">
-                <div className="flex flex-col items-center py-1">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue/10">
-                    <span className="font-geist-mono text-[1.25em] font-semibold text-blue">
-                      6
-                    </span>
-                  </div>
-                  <p className="font-geist mt-2 text-[0.8125em] text-body-text">
-                    Day streak
-                  </p>
-                </div>
-                <div className="mt-3 rounded-xl bg-blue/10 px-4 py-3">
-                  <p className="font-geist text-[0.8125em] text-blue">
-                    Badge unlocked
-                  </p>
-                  <p className="font-geist text-[0.8125em] text-blue">
-                    Indiana Jones · 200 pts
-                  </p>
-                </div>
-              </SolutionCard>
-            </div>
-          </div>
-
-          <div className="mt-12 grid gap-10 sm:grid-cols-3">
-            <Feature
-              number="01"
-              title="Small target goals"
-              description="Daily target from 1 min to 60. Calibrated to the user's pace."
-            />
-            <Feature
-              number="02"
-              title="Daily stats"
-              description="Invisible progress made visible: minutes, pace, pages."
-            />
-            <Feature
+            <ExperienceCard
               number="03"
-              title="Rewards & growth"
+              icon={<AwardIcon />}
+              eyebrow="You earned"
+              title="A new badge."
               description="Streaks, badges, and curated rewards compound over time."
-            />
+            >
+              <div className="flex flex-col items-center py-1">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue/10">
+                  <span className="font-geist-mono text-[1.25em] font-semibold text-blue">
+                    6
+                  </span>
+                </div>
+                <p className="font-geist mt-2 text-[0.8125em] text-body-text">
+                  Day streak
+                </p>
+              </div>
+              <div className="mt-3 rounded-xl bg-blue/10 px-4 py-3">
+                <p className="font-geist text-[0.8125em] text-blue">
+                  Badge unlocked
+                </p>
+                <p className="font-geist text-[0.8125em] text-blue">
+                  Indiana Jones · 200 pts
+                </p>
+              </div>
+            </ExperienceCard>
           </div>
         </section>
 

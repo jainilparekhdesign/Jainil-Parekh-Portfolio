@@ -3,6 +3,11 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.13.0] - 2026-09-13
+
+### Changed
+- Redesigned the "Three core experiences" section on the Read case study. It previously duplicated itself: a row of three mockup cards, then a separate row of "01/02/03" text blocks explaining the same three things again. Merged both into one unified card per step — number, icon (clock, check-circle, award), eyebrow, title, the mockup preview, and the explanatory copy all in one place — removing the redundant second row entirely.
+
 ## [0.12.3] - 2026-09-13
 
 ### Fixed
