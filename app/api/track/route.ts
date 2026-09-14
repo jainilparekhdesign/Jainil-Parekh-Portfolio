@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
         sessionId?: string;
         durationMs?: number;
         campaign?: string;
+        deviceType?: string;
       }
     | null;
 
@@ -42,6 +43,7 @@ export async function POST(request: NextRequest) {
     city,
     durationMs: body.durationMs,
     campaign: body.campaign,
+    deviceType: body.deviceType,
   });
 
   return NextResponse.json({ ok: true });

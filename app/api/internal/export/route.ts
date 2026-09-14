@@ -10,6 +10,8 @@ const COLUMNS: (keyof RawEvent)[] = [
   "country",
   "city",
   "duration_ms",
+  "campaign",
+  "device_type",
   "created_at",
 ];
 

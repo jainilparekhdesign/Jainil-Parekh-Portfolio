@@ -82,7 +82,7 @@ export default function Nav({ active }: NavProps) {
   }, [isMenuOpen]);
 
   return (
-    <nav className="relative z-[2] flex items-center justify-between h-[88px] px-[clamp(24px,8vw,120px)] py-5 print:hidden">
+    <nav className="relative z-20 flex items-center justify-between h-[88px] px-[clamp(24px,8vw,120px)] py-5 print:hidden">
       <div className="font-newsreader flex items-center gap-2 text-nav-wordmark whitespace-nowrap text-ink">
         <LogoMark className="h-10 w-auto text-blue" />
         <span className="max-[480px]:hidden">Jainil Parekh</span>

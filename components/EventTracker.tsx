@@ -41,12 +41,20 @@ function getCampaign(): string | undefined {
   }
 }
 
+function getDeviceType(): string {
+  const ua = navigator.userAgent;
+  if (/iPad|Tablet(?!.*Mobile)/i.test(ua)) return "Tablet";
+  if (/Mobi|Android|iPhone/i.test(ua)) return "Mobile";
+  return "Desktop";
+}
+
 function send(type: string, path: string, extra?: Record<string, unknown>) {
   const payload = JSON.stringify({
     type,
     path,
     sessionId: getSessionId(),
     campaign: getCampaign(),
+    deviceType: getDeviceType(),
     ...extra,
   });
 

@@ -123,6 +123,7 @@ function VisitorsTable({ sessions }: { sessions: SessionSummary[] }) {
               <div>
                 <p className="font-geist text-ui text-ink">
                   {locationLabel(s.country, s.city)}
+                  {s.deviceType ? ` · ${s.deviceType}` : ""}
                 </p>
                 <p className="font-geist-mono mt-1 text-caption text-graphite-70">
                   {formatTimestamp(s.lastSeen)}
@@ -285,7 +286,7 @@ export default async function InternalDashboardPage() {
             emptyLabel="No page views recorded yet."
           />
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <RankedList
               title="Top referrers"
               rows={data.topReferrers.map((r) => ({
@@ -301,6 +302,14 @@ export default async function InternalDashboardPage() {
                 value: c.visits,
               }))}
               emptyLabel="No location data yet."
+            />
+            <RankedList
+              title="Devices"
+              rows={data.topDevices.map((d) => ({
+                label: d.device,
+                value: d.visits,
+              }))}
+              emptyLabel="No device data yet."
             />
           </div>
 

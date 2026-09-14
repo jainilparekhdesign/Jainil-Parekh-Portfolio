@@ -28,6 +28,7 @@ export function ensureSchema() {
         )
       `;
       await sql`ALTER TABLE events ADD COLUMN IF NOT EXISTS campaign TEXT`;
+      await sql`ALTER TABLE events ADD COLUMN IF NOT EXISTS device_type TEXT`;
       await sql`
         CREATE TABLE IF NOT EXISTS campaigns (
           slug TEXT PRIMARY KEY,
@@ -49,6 +50,7 @@ export type EventInput = {
   city?: string | null;
   durationMs?: number | null;
   campaign?: string | null;
+  deviceType?: string | null;
 };
 
 export type RawEvent = {
@@ -59,13 +61,15 @@ export type RawEvent = {
   country: string | null;
   city: string | null;
   duration_ms: number | null;
+  campaign: string | null;
+  device_type: string | null;
   created_at: string;
 };
 
 export async function getAllEvents(): Promise<RawEvent[]> {
   await ensureSchema();
   return (await sql`
-    SELECT event_type, path, referrer, session_id, country, city, duration_ms, created_at
+    SELECT event_type, path, referrer, session_id, country, city, duration_ms, campaign, device_type, created_at
     FROM events
     ORDER BY created_at DESC
   `) as RawEvent[];
@@ -79,7 +83,7 @@ export async function resetEvents() {
 export async function recordEvent(event: EventInput) {
   await ensureSchema();
   await sql`
-    INSERT INTO events (event_type, path, referrer, session_id, country, city, duration_ms, campaign)
+    INSERT INTO events (event_type, path, referrer, session_id, country, city, duration_ms, campaign, device_type)
     VALUES (
       ${event.type},
       ${event.path},
@@ -88,7 +92,8 @@ export async function recordEvent(event: EventInput) {
       ${event.country ?? null},
       ${event.city ?? null},
       ${event.durationMs ?? null},
-      ${event.campaign ?? null}
+      ${event.campaign ?? null},
+      ${event.deviceType ?? null}
     )
   `;
 }
@@ -176,6 +181,7 @@ export type SessionSummary = {
   lastSeen: string;
   country: string | null;
   city: string | null;
+  deviceType: string | null;
   totalDurationMs: number;
   downloadedResume: boolean;
   pages: { path: string; durationMs: number }[];
@@ -188,6 +194,7 @@ export type DashboardData = {
   dailyViews: { day: string; views: number }[];
   topReferrers: { referrer: string; visits: number }[];
   topCountries: { country: string; visits: number }[];
+  topDevices: { device: string; visits: number }[];
   caseStudyViews: { path: string; views: number }[];
   recentSessions: SessionSummary[];
 };
@@ -208,6 +215,7 @@ export async function getDashboardData(): Promise<DashboardData> {
     dailyViewsRows,
     topReferrersRows,
     topCountriesRows,
+    topDevicesRows,
     caseStudyViewsRows,
     sessionsRows,
     sessionPagesRows,
@@ -239,6 +247,13 @@ export async function getDashboardData(): Promise<DashboardData> {
       LIMIT 8
     `,
     sql`
+      SELECT device_type, COUNT(*)::int AS visits
+      FROM events
+      WHERE event_type = 'pageview' AND device_type IS NOT NULL AND device_type <> ''
+      GROUP BY device_type
+      ORDER BY visits DESC
+    `,
+    sql`
       SELECT path, COUNT(*)::int AS views
       FROM events
       WHERE event_type = 'pageview'
@@ -252,6 +267,7 @@ export async function getDashboardData(): Promise<DashboardData> {
         MAX(created_at) AS last_seen,
         MAX(country) FILTER (WHERE country IS NOT NULL) AS country,
         MAX(city) FILTER (WHERE city IS NOT NULL) AS city,
+        MAX(device_type) FILTER (WHERE device_type IS NOT NULL) AS device_type,
         COALESCE(SUM(duration_ms) FILTER (WHERE event_type = 'duration'), 0)::int AS total_duration_ms,
         BOOL_OR(event_type = 'download_click') AS downloaded_resume
       FROM events
@@ -292,6 +308,7 @@ export async function getDashboardData(): Promise<DashboardData> {
       last_seen: string;
       country: string | null;
       city: string | null;
+      device_type: string | null;
       total_duration_ms: number;
       downloaded_resume: boolean;
     }[]
@@ -301,6 +318,7 @@ export async function getDashboardData(): Promise<DashboardData> {
     lastSeen: row.last_seen,
     country: row.country,
     city: row.city,
+    deviceType: row.device_type,
     totalDurationMs: row.total_duration_ms,
     downloadedResume: row.downloaded_resume,
     pages: pagesBySession.get(row.session_id) ?? [],
@@ -313,6 +331,9 @@ export async function getDashboardData(): Promise<DashboardData> {
     dailyViews: dailyViewsRows as { day: string; views: number }[],
     topReferrers: topReferrersRows as { referrer: string; visits: number }[],
     topCountries: topCountriesRows as { country: string; visits: number }[],
+    topDevices: (topDevicesRows as { device_type: string; visits: number }[]).map(
+      (row) => ({ device: row.device_type, visits: row.visits }),
+    ),
     caseStudyViews: caseStudyViewsRows as { path: string; views: number }[],
     recentSessions,
   };

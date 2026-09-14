@@ -3,6 +3,14 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.17.0] - 2026-09-13
+
+### Fixed
+- The mobile menu wasn't tappable: `Nav` and every page's `<main>` both used `z-[2]` as siblings in the same stacking context, and `<main>` comes later in the DOM — so it silently painted (and captured taps) on top of anything from `Nav` that extended past its own 88px height, like the dropdown panel. Bumped `Nav` to `z-20` so it's unambiguously on top regardless of what any page renders below it.
+
+### Added
+- Device-type tracking: a lightweight user-agent check classifies each visit as Mobile, Tablet, or Desktop, stored per-event and shown as a "Devices" breakdown on the dashboard alongside referrers and locations, plus per-visitor in the "Recent visitors" table. Also backfilled into the CSV export, which was missing both `device_type` and the earlier-added `campaign` column.
+
 ## [0.16.0] - 2026-09-13
 
 ### Fixed
