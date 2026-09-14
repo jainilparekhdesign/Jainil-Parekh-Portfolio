@@ -3,6 +3,14 @@
 All notable changes to this project are documented here, newest first.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); versions follow semver in `package.json`.
 
+## [0.14.0] - 2026-09-13
+
+### Added
+- Campaign-tagged link tracking, for identifying which company/application a visit came from without asking visitors anything. `EventTracker` captures a `?ref=` query param on first visit, persists it in `sessionStorage` for the rest of that session, and tags every event (pageview, duration, resume download) with it.
+- A "Generate a tracked link" tool on the internal dashboard: type a company name, get back a link like `jainilparekh.design/?ref=acme-corp` to use in that application, with copy-to-clipboard. Backed by a new `campaigns` table (slug + display name) and `/api/internal/campaigns`.
+- A "Tracked links" table on the dashboard showing, per company: visits, page views, resume downloads, and total time spent, updating automatically as that link gets used.
+- `events` table gained a `campaign` column via an idempotent `ALTER TABLE ... ADD COLUMN IF NOT EXISTS`, so this evolves the existing live table without losing any already-tracked data.
+
 ## [0.13.0] - 2026-09-13
 
 ### Changed

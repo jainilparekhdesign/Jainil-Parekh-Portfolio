@@ -1,11 +1,14 @@
 import {
   getDashboardData,
+  getCampaignStats,
   type DashboardData,
   type SessionSummary,
+  type CampaignStats,
 } from "@/lib/analytics-db";
 import LogoutButton from "@/components/internal/LogoutButton";
 import DashboardSync from "@/components/internal/DashboardSync";
 import DataControls from "@/components/internal/DataControls";
+import CampaignGenerator from "@/components/internal/CampaignGenerator";
 
 export const dynamic = "force-dynamic";
 
@@ -168,8 +171,67 @@ async function loadData(): Promise<{ data: DashboardData | null; error: string |
   }
 }
 
+async function loadCampaigns(): Promise<CampaignStats[]> {
+  try {
+    return await getCampaignStats();
+  } catch {
+    return [];
+  }
+}
+
+function CampaignTable({ campaigns }: { campaigns: CampaignStats[] }) {
+  return (
+    <div className="card p-6">
+      <p className="font-geist-mono text-eyebrow uppercase text-blue">
+        Tracked links
+      </p>
+      {campaigns.length === 0 ? (
+        <p className="font-geist mt-4 text-body text-graphite-70">
+          No tracked links yet — generate one above.
+        </p>
+      ) : (
+        <ul className="mt-4 flex flex-col divide-y divide-toolbar-outline">
+          {campaigns.map((c) => (
+            <li
+              key={c.slug}
+              className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-start sm:justify-between"
+            >
+              <div>
+                <p className="font-geist text-ui text-ink">{c.companyName}</p>
+                <p className="font-geist-mono mt-1 text-caption text-graphite-70">
+                  ?ref={c.slug}
+                  {c.lastSeen ? ` · last opened ${formatTimestamp(c.lastSeen)}` : ""}
+                </p>
+              </div>
+              <div className="flex items-center gap-4 sm:items-end">
+                <span className="font-geist-mono text-caption text-graphite-70">
+                  {c.sessions} {c.sessions === 1 ? "visit" : "visits"}
+                </span>
+                <span className="font-geist-mono text-caption text-graphite-70">
+                  {c.pageviews} {c.pageviews === 1 ? "page view" : "page views"}
+                </span>
+                <span
+                  className={`font-geist-mono text-caption ${
+                    c.downloads > 0 ? "text-blue" : "text-graphite-70"
+                  }`}
+                >
+                  {c.downloads} {c.downloads === 1 ? "download" : "downloads"}
+                </span>
+                <span className="font-geist-mono text-caption text-graphite-70">
+                  {formatDuration(c.totalDurationMs)} total
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 export default async function InternalDashboardPage() {
   const { data, error } = await loadData();
+  const campaigns = await loadCampaigns();
 
   return (
     <div className="font-geist min-h-screen bg-bg px-[clamp(24px,8vw,120px)] py-10">
@@ -211,6 +273,9 @@ export default async function InternalDashboardPage() {
               value={data.dailyViews.length}
             />
           </div>
+
+          <CampaignGenerator />
+          <CampaignTable campaigns={campaigns} />
 
           <RankedList
             title="Page views: last 14 days"

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 const SESSION_KEY = "analytics_session_id";
+const CAMPAIGN_KEY = "analytics_campaign";
 
 function getSessionId() {
   try {
@@ -18,11 +19,25 @@ function getSessionId() {
   }
 }
 
+function getCampaign(): string | undefined {
+  try {
+    const ref = new URLSearchParams(window.location.search).get("ref");
+    if (ref) {
+      sessionStorage.setItem(CAMPAIGN_KEY, ref);
+      return ref;
+    }
+    return sessionStorage.getItem(CAMPAIGN_KEY) ?? undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 function send(type: string, path: string, extra?: Record<string, unknown>) {
   const payload = JSON.stringify({
     type,
     path,
     sessionId: getSessionId(),
+    campaign: getCampaign(),
     ...extra,
   });
 

@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
         referrer?: string;
         sessionId?: string;
         durationMs?: number;
+        campaign?: string;
       }
     | null;
 
@@ -40,6 +41,7 @@ export async function POST(request: NextRequest) {
     country,
     city,
     durationMs: body.durationMs,
+    campaign: body.campaign,
   });
 
   return NextResponse.json({ ok: true });

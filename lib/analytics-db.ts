@@ -13,19 +13,29 @@ let schemaReady: Promise<unknown> | null = null;
 
 export function ensureSchema() {
   if (!schemaReady) {
-    schemaReady = sql`
-      CREATE TABLE IF NOT EXISTS events (
-        id BIGSERIAL PRIMARY KEY,
-        event_type TEXT NOT NULL,
-        path TEXT NOT NULL,
-        referrer TEXT,
-        session_id TEXT NOT NULL,
-        country TEXT,
-        city TEXT,
-        duration_ms INTEGER,
-        created_at TIMESTAMPTZ NOT NULL DEFAULT now()
-      )
-    `;
+    schemaReady = (async () => {
+      await sql`
+        CREATE TABLE IF NOT EXISTS events (
+          id BIGSERIAL PRIMARY KEY,
+          event_type TEXT NOT NULL,
+          path TEXT NOT NULL,
+          referrer TEXT,
+          session_id TEXT NOT NULL,
+          country TEXT,
+          city TEXT,
+          duration_ms INTEGER,
+          created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+        )
+      `;
+      await sql`ALTER TABLE events ADD COLUMN IF NOT EXISTS campaign TEXT`;
+      await sql`
+        CREATE TABLE IF NOT EXISTS campaigns (
+          slug TEXT PRIMARY KEY,
+          company_name TEXT NOT NULL,
+          created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+        )
+      `;
+    })();
   }
   return schemaReady;
 }
@@ -38,6 +48,7 @@ export type EventInput = {
   country?: string | null;
   city?: string | null;
   durationMs?: number | null;
+  campaign?: string | null;
 };
 
 export type RawEvent = {
@@ -68,7 +79,7 @@ export async function resetEvents() {
 export async function recordEvent(event: EventInput) {
   await ensureSchema();
   await sql`
-    INSERT INTO events (event_type, path, referrer, session_id, country, city, duration_ms)
+    INSERT INTO events (event_type, path, referrer, session_id, country, city, duration_ms, campaign)
     VALUES (
       ${event.type},
       ${event.path},
@@ -76,9 +87,81 @@ export async function recordEvent(event: EventInput) {
       ${event.sessionId},
       ${event.country ?? null},
       ${event.city ?? null},
-      ${event.durationMs ?? null}
+      ${event.durationMs ?? null},
+      ${event.campaign ?? null}
     )
   `;
+}
+
+export type Campaign = {
+  slug: string;
+  companyName: string;
+  createdAt: string;
+};
+
+export async function upsertCampaign(
+  slug: string,
+  companyName: string,
+): Promise<Campaign> {
+  await ensureSchema();
+  const rows = (await sql`
+    INSERT INTO campaigns (slug, company_name)
+    VALUES (${slug}, ${companyName})
+    ON CONFLICT (slug) DO UPDATE SET company_name = EXCLUDED.company_name
+    RETURNING slug, company_name, created_at
+  `) as { slug: string; company_name: string; created_at: string }[];
+  const row = rows[0];
+  return { slug: row.slug, companyName: row.company_name, createdAt: row.created_at };
+}
+
+export type CampaignStats = {
+  slug: string;
+  companyName: string;
+  createdAt: string;
+  sessions: number;
+  pageviews: number;
+  downloads: number;
+  totalDurationMs: number;
+  lastSeen: string | null;
+};
+
+export async function getCampaignStats(): Promise<CampaignStats[]> {
+  await ensureSchema();
+  const rows = (await sql`
+    SELECT
+      c.slug,
+      c.company_name,
+      c.created_at,
+      COUNT(DISTINCT e.session_id) FILTER (WHERE e.event_type = 'pageview')::int AS sessions,
+      COUNT(*) FILTER (WHERE e.event_type = 'pageview')::int AS pageviews,
+      COUNT(*) FILTER (WHERE e.event_type = 'download_click')::int AS downloads,
+      COALESCE(SUM(e.duration_ms) FILTER (WHERE e.event_type = 'duration'), 0)::int AS total_duration_ms,
+      MAX(e.created_at) AS last_seen
+    FROM campaigns c
+    LEFT JOIN events e ON e.campaign = c.slug
+    GROUP BY c.slug, c.company_name, c.created_at
+    ORDER BY MAX(e.created_at) DESC NULLS LAST, c.created_at DESC
+  `) as {
+    slug: string;
+    company_name: string;
+    created_at: string;
+    sessions: number;
+    pageviews: number;
+    downloads: number;
+    total_duration_ms: number;
+    last_seen: string | null;
+  }[];
+
+  return rows.map((row) => ({
+    slug: row.slug,
+    companyName: row.company_name,
+    createdAt: row.created_at,
+    sessions: row.sessions,
+    pageviews: row.pageviews,
+    downloads: row.downloads,
+    totalDurationMs: row.total_duration_ms,
+    lastSeen: row.last_seen,
+  }));
 }
 
 export type SessionSummary = {
