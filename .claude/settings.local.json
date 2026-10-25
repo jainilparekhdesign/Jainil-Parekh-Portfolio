@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /Users/jainilparekh/Desktop/Jainilparekhportfolio.github.io/public/projects/read)",
+      "Bash(curl -sL -o hero-screen-1.png \"https://www.figma.com/api/mcp/asset/8652f984-3a4d-4575-adb3-647a19ce9b8c.png\")",
+      "Bash(curl -sL -o hero-screen-2.png \"https://www.figma.com/api/mcp/asset/7d089b5c-f716-4c46-b407-54aa4693d765.png\")",
+      "Bash(curl -sL -o role-icon-1.svg \"https://www.figma.com/api/mcp/asset/de608241-9154-4783-8546-cb7330ac1acd.svg\")",
+      "Bash(curl -sL -o role-icon-2.svg \"https://www.figma.com/api/mcp/asset/77194edd-705e-481c-bc6f-7fd2fedac436.svg\")"
+    ]
+  }
+}
